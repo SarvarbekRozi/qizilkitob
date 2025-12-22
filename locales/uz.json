@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "home": "Bosh sahifa",
+    "species": "Turlar",
+    "animals": "Hayvonlar",
+    "plants": "O'simliklar",
+    "about": "Biz haqimizda",
+    "gallery": "Galereya",
+    "blog": "Yangiliklar",
+    "map": "Xarita",
+    "contact": "Aloqa"
+  },
+  "common": {
+    "readMore": "Batafsil",
+    "viewAll": "Barchasini ko'rish",
+    "viewDetails": "Tafsilotlar",
+    "search": "Qidirish",
+    "reset": "Tozalash",
+    "submit": "Yuborish",
+    "loading": "Yuklanmoqda...",
+    "noResults": "Natija topilmadi"
+  },
+  "species": {
+    "title": "Yo'qolib ketish xavfi ostidagi turlar",
+    "filter": "Filter",
+    "search": "Turlarni qidiring...",
+    "category": "Kategoriya",
+    "dangerLevel": "Xavf darajasi",
+    "all": "Barchasi",
+    "animals": "Hayvonlar",
+    "plants": "O'simliklar",
+    "habitat": "Yashash joyi",
+    "stats": {
+      "mass": "Og'irlik",
+      "speed": "Tezlik",
+      "lifespan": "Umr ko'rish muddati",
+      "diet": "Oziqlanish",
+      "height": "Balandlik",
+      "bloomPeriod": "Gullash davri"
+    },
+    "conservationStatus": "Muhofaza holati",
+    "population": "Populyatsiya",
+    "threats": "Tahdidlar",
+    "relatedSpecies": "O'xshash turlar"
+  },
+  "dangerLevels": {
+    "critically_endangered": "Juda xavfli",
+    "endangered": "Xavfli",
+    "vulnerable": "Zaif",
+    "near_threatened": "Xavf ostida"
+  },
+  "home": {
+    "hero": {
+      "title": "Tabiatni birga asraylik",
+      "subtitle": "Yo'qolib ketish xavfi ostidagi hayvonlar va o'simliklarni muhofaza qilish",
+      "cta": "Batafsil ma'lumot"
+    },
+    "about": {
+      "title": "Qizil Kitob haqida",
+      "description": "Qizil Kitob - bu yo'qolib ketish xavfi ostidagi noyob va kam uchraydigan hayvonlar, o'simliklar va zamburug'lar haqidagi ma'lumotlar to'plami."
+    },
+    "featured": {
+      "title": "Xavf ostidagi turlar",
+      "description": "Muhofaza qilishni talab qilayotgan turlar bilan tanishing"
+    }
+  },
+  "blog": {
+    "title": "Yangiliklar va Maqolalar",
+    "latestPosts": "So'nggi maqolalar",
+    "readMore": "O'qishda davom etish",
+    "author": "Muallif",
+    "publishDate": "Chop etilgan sana",
+    "category": "Kategoriya",
+    "tags": "Teglar",
+    "relatedPosts": "O'xshash maqolalar"
+  },
+  "contact": {
+    "title": "Biz bilan bog'laning",
+    "name": "Ism",
+    "email": "Email",
+    "phone": "Telefon",
+    "subject": "Mavzu",
+    "message": "Xabar",
+    "send": "Yuborish",
+    "address": "Manzil",
+    "followUs": "Ijtimoiy tarmoqlarda"
+  },
+  "footer": {
+    "about": "Qizil Kitob - O'zbekiston tabiatini asrash dasturi",
+    "quickLinks": "Tezkor havolalar",
+    "contactInfo": "Aloqa ma'lumotlari",
+    "gallery": "Galereya",
+    "copyright": "© 2024 Qizil Kitob. Barcha huquqlar himoyalangan."
+  }
+}

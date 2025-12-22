@@ -1,0 +1,95 @@
+{
+  "nav": {
+    "home": "Home",
+    "species": "Species",
+    "animals": "Animals",
+    "plants": "Plants",
+    "about": "About",
+    "gallery": "Gallery",
+    "blog": "News",
+    "map": "Map",
+    "contact": "Contact"
+  },
+  "common": {
+    "readMore": "Read More",
+    "viewAll": "View All",
+    "viewDetails": "View Details",
+    "search": "Search",
+    "reset": "Reset",
+    "submit": "Submit",
+    "loading": "Loading...",
+    "noResults": "No results found"
+  },
+  "species": {
+    "title": "Endangered Species",
+    "filter": "Filter",
+    "search": "Search species...",
+    "category": "Category",
+    "dangerLevel": "Conservation Status",
+    "all": "All",
+    "animals": "Animals",
+    "plants": "Plants",
+    "habitat": "Habitat",
+    "stats": {
+      "mass": "Mass",
+      "speed": "Speed",
+      "lifespan": "Lifespan",
+      "diet": "Diet",
+      "height": "Height",
+      "bloomPeriod": "Bloom Period"
+    },
+    "conservationStatus": "Conservation Status",
+    "population": "Population",
+    "threats": "Threats",
+    "relatedSpecies": "Related Species"
+  },
+  "dangerLevels": {
+    "critically_endangered": "Critically Endangered",
+    "endangered": "Endangered",
+    "vulnerable": "Vulnerable",
+    "near_threatened": "Near Threatened"
+  },
+  "home": {
+    "hero": {
+      "title": "Protect Nature Together",
+      "subtitle": "Conservation of endangered animals and plants",
+      "cta": "Learn More"
+    },
+    "about": {
+      "title": "About the Red Book",
+      "description": "The Red Book is a collection of information about rare and endangered animals, plants, and fungi."
+    },
+    "featured": {
+      "title": "Endangered Species",
+      "description": "Discover species that need our protection"
+    }
+  },
+  "blog": {
+    "title": "News and Articles",
+    "latestPosts": "Latest Posts",
+    "readMore": "Read More",
+    "author": "Author",
+    "publishDate": "Published Date",
+    "category": "Category",
+    "tags": "Tags",
+    "relatedPosts": "Related Posts"
+  },
+  "contact": {
+    "title": "Contact Us",
+    "name": "Name",
+    "email": "Email",
+    "phone": "Phone",
+    "subject": "Subject",
+    "message": "Message",
+    "send": "Send",
+    "address": "Address",
+    "followUs": "Follow Us"
+  },
+  "footer": {
+    "about": "Red Book - Uzbekistan Nature Conservation Program",
+    "quickLinks": "Quick Links",
+    "contactInfo": "Contact Information",
+    "gallery": "Gallery",
+    "copyright": "© 2024 Red Book. All rights reserved."
+  }
+}

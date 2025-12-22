@@ -1,0 +1,247 @@
+{
+  "animals": [
+    {
+      "id": "qor-qoploni",
+      "slug": "qor-qoploni",
+      "category": "animal",
+      "dangerLevel": "vulnerable",
+      "name": {
+        "en": "Snow Leopard",
+        "uz": "Qor qoploni"
+      },
+      "scientificName": "Panthera uncia",
+      "description": {
+        "en": {
+          "short": "A rare big cat species living in high mountains",
+          "full": "The snow leopard is a large cat native to the mountain ranges of Central and South Asia. Known for its beautiful thick fur and powerful build, it is perfectly adapted to life in cold, high-altitude environments. These elusive cats are excellent climbers and can leap great distances.",
+          "bullets": [
+            "Native to Central Asian mountains",
+            "Excellent climbers and jumpers",
+            "Solitary hunters with keen eyesight"
+          ]
+        },
+        "uz": {
+          "short": "Baland tog'larda yashaydigan noyob yirik mushuk turi",
+          "full": "Qor qoploni Markaziy va Janubiy Osiyo tog' tizmalari xud udi bo'lgan yirik mushukdir. Go'zal qalin mo'ynasi va kuchli tuzilishi bilan tanilgan bu hayvon sovuq, baland tog' muhitida yashashga mukammal moslashgan. Bu sir toli mushuklar ajoyib tog'ga chiquvchilar va uzoq masofaga sakrashi mumkin.",
+          "bullets": [
+            "Markaziy Osiyo tog'larining mahalliy turi",
+            "Ajoyib tog'ga chiquvchi va sakrash qobiliyatiga ega",
+            "O'tkir ko'zi bor yolg'iz ovchi"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&h=600&fit=crop",
+        "gallery": [
+          "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&h=600&fit=crop",
+          "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=800&h=600&fit=crop"
+        ]
+      },
+      "stats": {
+        "mass": "22-55 kg",
+        "speed": "55-65 km/h",
+        "lifespan": "10-12 yil (yovvoyi tabiatta)",
+        "diet": "Tog' echkilari, qo'ylar, kiyiklar"
+      },
+      "habitat": {
+        "location": {
+          "en": "Central Asian mountains",
+          "uz": "Markaziy Osiyo tog'lari"
+        },
+        "coordinates": {
+          "lat": 41.311,
+          "lng": 69.240
+        }
+      },
+      "conservationStatus": {
+        "level": "vulnerable",
+        "population": "~4000-6500",
+        "threats": {
+          "en": ["Poaching for fur", "Habitat loss", "Climate change"],
+          "uz": ["Mo'yna uchun brakonierlik", "Yashash joyining yo'qolishi", "Iqlim o'zgarishi"]
+        }
+      },
+      "relatedSpecies": ["turkiston-silovsi", "qongir-ayiq"]
+    },
+    {
+      "id": "turkiston-silovsi",
+      "slug": "turkiston-silovsi",
+      "category": "animal",
+      "dangerLevel": "endangered",
+      "name": {
+        "en": "Turkestan Lynx",
+        "uz": "Turkiston silovsi"
+      },
+      "scientificName": "Lynx lynx isabellinus",
+      "description": {
+        "en": {
+          "short": "A medium-sized wild cat with distinctive ear tufts",
+          "full": "The Turkestan lynx is a subspecies of the Eurasian lynx found in Central Asia. It has a beautiful reddish-brown coat with dark spots and characteristic black ear tufts. These cats are excellent hunters and play an important role in controlling rodent populations.",
+          "bullets": [
+            "Medium-sized cat with distinctive appearance",
+            "Excellent hearing and night vision",
+            "Important for ecosystem balance"
+          ]
+        },
+        "uz": {
+          "short": "O'ziga xos quloq tutamlari bor o'rta kattalikdagi yovvoyi mushuk",
+          "full": "Turkiston silovsi Markaziy Osiyoda uchraydigan Yevroosiyo silvsining kenja turi. Uning qizil-jigarrang rangli, qora dog'li chiroyli mo'ynasi va xarakterli qora quloq tutamlari bor. Bu mushuklar ajoyib ovchilar va kemiruvchilar populyatsiyasini nazorat qilishda muhim rol o'ynaydi.",
+          "bullets": [
+            "O'ziga xos ko'rinishga ega o'rta kattalikdagi mushuk",
+            "Ajoyib eshitish va tungi ko'rish qobiliyati",
+            "Ekotizim muvozanati uchun muhim"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=800&h=600&fit=crop",
+        "gallery": ["https://images.unsplash.com/photo-1614027164847-1b28cfe1df60?w=800&h=600&fit=crop"]
+      },
+      "stats": {
+        "mass": "18-30 kg",
+        "speed": "50-60 km/h",
+        "lifespan": "12-15 yil",
+        "diet": "Quyonlar, kichik sutemizuvchilar, qushlar"
+      },
+      "habitat": {
+        "location": {
+          "en": "Mountain forests and rocky areas",
+          "uz": "Tog' o'rmonlari va toshloq hududlar"
+        },
+        "coordinates": {
+          "lat": 40.5,
+          "lng": 68.8
+        }
+      },
+      "conservationStatus": {
+        "level": "endangered",
+        "population": "~2000-3000",
+        "threats": {
+          "en": ["Habitat fragmentation", "Hunting", "Prey depletion"],
+          "uz": ["Yashash joyining parchalanishi", "Ov", "O'lja kamayishi"]
+        }
+      },
+      "relatedSpecies": ["qor-qoploni", "qongir-ayiq"]
+    },
+    {
+      "id": "qongir-ayiq",
+      "slug": "qongir-ayiq",
+      "category": "animal",
+      "dangerLevel": "vulnerable",
+      "name": {
+        "en": "Brown Bear",
+        "uz": "Qo'ng'ir ayiq"
+      },
+      "scientificName": "Ursus arctos",
+      "description": {
+        "en": {
+          "short": "Large omnivorous mammal with thick fur",
+          "full": "The brown bear is one of the largest land carnivores. In Central Asia, these bears inhabit mountain forests and alpine meadows. They are omnivorous, feeding on both plants and animals, and play a crucial role in seed dispersal and ecosystem health.",
+          "bullets": [
+            "Largest land predator in the region",
+            "Omnivorous diet with seasonal variation",
+            "Important seed disperser"
+          ]
+        },
+        "uz": {
+          "short": "Qalin mo'ynali katta hamma narsaxo'r sutemizuvchi",
+          "full": "Qo'ng'ir ayiq eng yirik quruqlik yirtqichlaridan biri. Markaziy Osiyoda bu ayiqlar tog' o'rmonlari va alp yaylovlarida yashaydi. Ular hamma narsaxo'r bo'lib, o'simlik va hayvonlar bilan oziqlanadi hamda urug'larni tarqatish va ekotizim salomatligi uchun muhim rol o'ynaydi.",
+          "bullets": [
+            "Mintaqadagi eng yirik quruqlik yirtqichi",
+            "Mavsumga qarab o'zgaruvchan hamma narsaxo'r ovqatlanish",
+            "Muhim urug' tarqatuvchi"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&h=600&fit=crop&q=80&auto=format&sat=-100",
+        "gallery": ["https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=800&h=600&fit=crop&q=80&auto=format&sat=-100"]
+      },
+      "stats": {
+        "mass": "150-350 kg",
+        "speed": "40-50 km/h",
+        "lifespan": "20-30 yil",
+        "diet": "Mevalar, yong'oqlar, baliq, go'sht"
+      },
+      "habitat": {
+        "location": {
+          "en": "Mountain forests and meadows",
+          "uz": "Tog' o'rmonlari va yaylovlar"
+        },
+        "coordinates": {
+          "lat": 41.0,
+          "lng": 70.5
+        }
+      },
+      "conservationStatus": {
+        "level": "vulnerable",
+        "population": "~500-800",
+        "threats": {
+          "en": ["Habitat loss", "Human conflict", "Poaching"],
+          "uz": ["Yashash joyining yo'qolishi", "Inson bilan to'qnashuv", "Brakonierlik"]
+        }
+      },
+      "relatedSpecies": ["qor-qoploni", "turkiston-silovsi"]
+    },
+    {
+      "id": "sirtlon",
+      "slug": "sirtlon",
+      "category": "animal",
+      "dangerLevel": "near_threatened",
+      "name": {
+        "en": "Striped Hyena",
+        "uz": "Sirtlon"
+      },
+      "scientificName": "Hyaena hyaena",
+      "description": {
+        "en": {
+          "short": "Nocturnal scavenger with distinctive stripes",
+          "full": "The striped hyena is a nocturnal carnivore found in dry regions. Despite their reputation, they play an important ecological role as scavengers, helping to clean up carrion and control disease spread.",
+          "bullets": [
+            "Primarily nocturnal and solitary",
+            "Important scavenger in ecosystem",
+            "Strong jaws and digestive system"
+          ]
+        },
+        "uz": {
+          "short": "O'ziga xos yo'llar bilan tungi murda ye vchi",
+          "full": "Sirtlon quruq hududlarda uchraysigan tungi yirtqichdir. Yomon obro'siga qaramay, ular murda yevuvchilar sifatida ekologik muhim rol o'ynaб, o'likxo'rlarni tozalash va kasallik tarqalishini nazorat qilishda yordam beradi.",
+          "bullets": [
+            "Asosan tungi va yolg'iz",
+            "Ekotizimdagi muhim murda yevuvchi",
+            "Kuchli jag' va hazm tizimi"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1551897765-98e0c8c7e924?w=800&h=600&fit=crop",
+        "gallery": ["https://images.unsplash.com/photo-1551897765-98e0c8c7e924?w=800&h=600&fit=crop"]
+      },
+      "stats": {
+        "mass": "25-45 kg",
+        "speed": "50-60 km/h",
+        "lifespan": "12-15 yil",
+        "diet": "Murda, kichik hayvonlar, mevalar"
+      },
+      "habitat": {
+        "location": {
+          "en": "Arid and semi-arid regions",
+          "uz": "Qurg'oqchil va yarim qurg'oqchil hududlar"
+        },
+        "coordinates": {
+          "lat": 39.5,
+          "lng": 66.8
+        }
+      },
+      "conservationStatus": {
+        "level": "near_threatened",
+        "population": "~1000-1500",
+        "threats": {
+          "en": ["Persecution", "Habitat loss", "Poisoning"],
+          "uz": ["Ta'qib", "Yashash joyining yo'qolishi", "Zaharlanish"]
+        }
+      },
+      "relatedSpecies": ["turkiston-silovsi"]
+    }
+  ]
+}

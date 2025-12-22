@@ -1,0 +1,41 @@
+/* Color Variables */
+:root {
+  /* Primary Colors */
+  --primary-color: #fd5634;
+  --secondary-color: #f7bf39;
+
+  /* Text Colors */
+  --text-color: #71747a;
+  --heading-color: #151c2c;
+  --white-color: #ffffff;
+  --black-color: #000000;
+
+  /* Danger Level Colors */
+  --critically-endangered: #d32f2f;
+  --endangered: #f57c00;
+  --vulnerable: #fbc02d;
+  --near-threatened: #689f38;
+
+  /* Background Colors */
+  --bg-gray: #f5f5f5;
+  --bg-dark: #1a1a1a;
+
+  /* Fonts */
+  --font-family: 'Rubik', sans-serif;
+
+  /* Container Widths */
+  --container-width: 1200px;
+  --large-container: 1570px;
+  --small-container: 680px;
+
+  /* Spacing */
+  --section-padding: 100px;
+  --section-padding-mobile: 60px;
+
+  /* Border Radius */
+  --border-radius: 8px;
+  --border-radius-large: 16px;
+
+  /* Transitions */
+  --transition: all 0.3s ease;
+}

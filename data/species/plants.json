@@ -1,0 +1,244 @@
+{
+  "plants": [
+    {
+      "id": "kaufman-lolasi",
+      "slug": "kaufman-lolasi",
+      "category": "plant",
+      "dangerLevel": "endangered",
+      "name": {
+        "en": "Kaufmann's Tulip",
+        "uz": "Kaufman lolasi"
+      },
+      "scientificName": "Tulipa kaufmanniana",
+      "description": {
+        "en": {
+          "short": "Early-blooming tulip with cream and red petals",
+          "full": "Kaufmann's tulip is one of the earliest tulips to bloom in spring. Native to Central Asian mountains, it features beautiful cream-colored petals with red markings. This tulip has been widely used in breeding ornamental varieties.",
+          "bullets": [
+            "One of the earliest spring flowers",
+            "Native to Tian Shan mountains",
+            "Important for horticulture"
+          ]
+        },
+        "uz": {
+          "short": "Krem va qizil gulbargil erta gulaydigan lola",
+          "full": "Kaufman lolasi bahorda gullaydigan eng erta lolalardan biri. Markaziy Osiyo tog'lariga xos bo'lgan bu lola qizil belgilari bor chiroyli krem rangdagi gulbarglari bilan ajralib turadi. Bu lola manzarali navlarni ko'paytirishda keng qo'llaniladi.",
+          "bullets": [
+            "Eng erta bahorgi gullardan biri",
+            "Tyan-Shan tog'larining mahalliy turi",
+            "Bog'dorchilik uchun muhim"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop",
+        "gallery": ["https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=800&h=600&fit=crop"]
+      },
+      "stats": {
+        "height": "15-25 sm",
+        "bloomPeriod": "Mart-Aprel",
+        "lifespan": "Ko'p yillik",
+        "habitat": "Tog' yon bag'irlari"
+      },
+      "habitat": {
+        "location": {
+          "en": "Tian Shan Mountains, Uzbekistan",
+          "uz": "Tyan-Shan tog'lari, O'zbekiston"
+        },
+        "coordinates": {
+          "lat": 41.5,
+          "lng": 70.0
+        }
+      },
+      "conservationStatus": {
+        "level": "endangered",
+        "population": "Kamaymoqda",
+        "threats": {
+          "en": ["Over-collection", "Habitat degradation", "Climate change"],
+          "uz": ["Haddan tashqari yig'ish", "Yashash joyining buzilishi", "Iqlim o'zgarishi"]
+        }
+      },
+      "relatedSpecies": ["greig-lolasi", "jizzax-aralashi"]
+    },
+    {
+      "id": "greig-lolasi",
+      "slug": "greig-lolasi",
+      "category": "plant",
+      "dangerLevel": "vulnerable",
+      "name": {
+        "en": "Greig's Tulip",
+        "uz": "Greig lolasi"
+      },
+      "scientificName": "Tulipa greigii",
+      "description": {
+        "en": {
+          "short": "Spectacular tulip with mottled leaves and bright red flowers",
+          "full": "Greig's tulip is known for its striking appearance with mottled purple-striped leaves and large, bright red to orange flowers. It grows in rocky mountain slopes and has been extensively used in tulip breeding programs worldwide.",
+          "bullets": [
+            "Distinctive mottled foliage",
+            "Large, vibrant flowers",
+            "Parent of many garden tulips"
+          ]
+        },
+        "uz": {
+          "short": "Dog'li barglari va yorqin qizil gullari bor ajoyib lola",
+          "full": "Greig lolasi dog'li binafsha yo'lli barglari va yirik, yorqin qizildan to'q sariq ranggacha bo'lgan gullari bilan mashhur. U toshloq tog' yon bag'irlarida o'sadi va butun dunyoda lola naslchilik dasturlarida keng qo'llanilgan.",
+          "bullets": [
+            "O'ziga xos dog'li barglari",
+            "Yirik, jonli gullari",
+            "Ko'plab bog' lolalarining ota-onasi"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=600&fit=crop",
+        "gallery": ["https://images.unsplash.com/photo-1585320806297-9794b3e4eeae?w=800&h=600&fit=crop"]
+      },
+      "stats": {
+        "height": "20-30 sm",
+        "bloomPeriod": "Aprel-May",
+        "lifespan": "Ko'p yillik",
+        "habitat": "Toshloq tog' yon bag'irlari"
+      },
+      "habitat": {
+        "location": {
+          "en": "Mountain slopes of Central Asia",
+          "uz": "Markaziy Osiyo tog' yon bag'irlari"
+        },
+        "coordinates": {
+          "lat": 40.8,
+          "lng": 72.5
+        }
+      },
+      "conservationStatus": {
+        "level": "vulnerable",
+        "population": "Kamaymoqda",
+        "threats": {
+          "en": ["Collection for trade", "Grazing pressure", "Habitat loss"],
+          "uz": ["Savdo uchun yig'ish", "Yaylov bosimi", "Yashash joyining yo'qolishi"]
+        }
+      },
+      "relatedSpecies": ["kaufman-lolasi", "jizzax-aralashi"]
+    },
+    {
+      "id": "jizzax-aralashi",
+      "slug": "jizzax-aralashi",
+      "category": "plant",
+      "dangerLevel": "critically_endangered",
+      "name": {
+        "en": "Jizzakh Onion",
+        "uz": "Jizzax aralashi"
+      },
+      "scientificName": "Allium jizzaxense",
+      "description": {
+        "en": {
+          "short": "Rare endemic onion species from Uzbekistan",
+          "full": "The Jizzakh onion is a critically endangered species endemic to the Jizzakh region of Uzbekistan. It grows in specific rocky habitats and has beautiful purple flowers. This species is of great conservation importance due to its extremely limited range.",
+          "bullets": [
+            "Endemic to Jizzakh region",
+            "Extremely limited distribution",
+            "Beautiful ornamental potential"
+          ]
+        },
+        "uz": {
+          "short": "O'zbekistonning noyob endemik piyoz turi",
+          "full": "Jizzax aralashi O'zbekistonning Jizzax viloyatiga xos juda xavfli endemik turdir. U ma'lum toshloq yashash joylarida o'sadi va chiroyli binafsha gullarga ega. Bu tur juda cheklangan tarqalishi tufayli katta muhofaza ahamiyatiga ega.",
+          "bullets": [
+            "Jizzax viloyatiga xos endemik",
+            "Juda cheklangan tarqalish",
+            "Chiroyli bezak imkoniyati"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1609150274925-43ee4fa47420?w=800&h=600&fit=crop",
+        "gallery": ["https://images.unsplash.com/photo-1609150274925-43ee4fa47420?w=800&h=600&fit=crop"]
+      },
+      "stats": {
+        "height": "30-40 sm",
+        "bloomPeriod": "May-Iyun",
+        "lifespan": "Ko'p yillik",
+        "habitat": "Toshloq tog' yon bag'irlari"
+      },
+      "habitat": {
+        "location": {
+          "en": "Jizzakh region mountains",
+          "uz": "Jizzax viloyati tog'lari"
+        },
+        "coordinates": {
+          "lat": 40.1,
+          "lng": 67.8
+        }
+      },
+      "conservationStatus": {
+        "level": "critically_endangered",
+        "population": "Juda kam",
+        "threats": {
+          "en": ["Very limited range", "Habitat disturbance", "Collection"],
+          "uz": ["Juda cheklangan hudud", "Yashash joyining buzilishi", "Yig'ilishi"]
+        }
+      },
+      "relatedSpecies": ["kaufman-lolasi"]
+    },
+    {
+      "id": "zarafshon-archa",
+      "slug": "zarafshon-archa",
+      "category": "plant",
+      "dangerLevel": "vulnerable",
+      "name": {
+        "en": "Zarafshan Juniper",
+        "uz": "Zarafshon archasi"
+      },
+      "scientificName": "Juniperus seravschanica",
+      "description": {
+        "en": {
+          "short": "Ancient juniper tree forming mountain forests",
+          "full": "The Zarafshan juniper is a slow-growing evergreen tree that forms unique mountain forests in Central Asia. These ancient trees can live for hundreds of years and play a crucial role in preventing soil erosion and maintaining water resources.",
+          "bullets": [
+            "Forms ancient mountain forests",
+            "Lives for hundreds of years",
+            "Critical for watershed protection"
+          ]
+        },
+        "uz": {
+          "short": "Tog' o'rmonlarini tashkil qiluvchi qadimiy archa daraxti",
+          "full": "Zarafshon archasi Markaziy Osiyoda noyob tog' o'rmonlarini tashkil qiluvchi sekin o'sadigan doim yashil daraxtdir. Bu qadimiy daraxtlar yuzlab yillar yashashi mumkin va tuproq eroziyasini oldini olish hamda suv resurslarini saqlashda hal qiluvchi rol o'ynaydi.",
+          "bullets": [
+            "Qadimiy tog' o'rmonlarini tashkil qiladi",
+            "Yuzlab yillar yashaydi",
+            "Suv havzalarini himoya qilish uchun muhim"
+          ]
+        }
+      },
+      "images": {
+        "main": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop",
+        "gallery": ["https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800&h=600&fit=crop"]
+      },
+      "stats": {
+        "height": "10-15 metr",
+        "bloomPeriod": "Aprel-May",
+        "lifespan": "300-1000 yil",
+        "habitat": "Tog' yon bag'irlari 1500-3000m"
+      },
+      "habitat": {
+        "location": {
+          "en": "Zarafshan and Hissar mountain ranges",
+          "uz": "Zarafshon va Hisor tog' tizmalari"
+        },
+        "coordinates": {
+          "lat": 39.5,
+          "lng": 67.5
+        }
+      },
+      "conservationStatus": {
+        "level": "vulnerable",
+        "population": "Kamaymoqda",
+        "threats": {
+          "en": ["Logging", "Forest fires", "Climate change"],
+          "uz": ["O'rmon kesish", "O'rmon yong'inlari", "Iqlim o'zgarishi"]
+        }
+      },
+      "relatedSpecies": []
+    }
+  ]
+}
