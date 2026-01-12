@@ -17,8 +17,8 @@
     <!-- Blog Detail Section -->
     <section class="blog-detail sec-pad">
       <div class="auto-container">
-        <div class="row">
-          <div class="col-lg-8 col-md-12">
+        <div class="row justify-content-center">
+          <div class="col-lg-10 col-md-12">
             <article class="blog-post">
               <!-- Featured Image -->
               <figure class="featured-image">
@@ -28,8 +28,6 @@
               <!-- Post Meta -->
               <div class="post-meta">
                 <span><i class="fas fa-calendar"></i> {{ formatDate(post.publishDate) }}</span>
-                <span><i class="fas fa-user"></i> {{ post.author }}</span>
-                <span><i class="fas fa-tag"></i> {{ post.category }}</span>
               </div>
 
               <!-- Post Content -->
@@ -39,44 +37,76 @@
                 </p>
               </div>
 
-              <!-- Tags -->
-              <div class="post-tags">
-                <h4>{{ t('blog.tags') }}:</h4>
-                <div class="tags-list">
-                  <span v-for="tag in post.tags" :key="tag" class="tag">
-                    {{ tag }}
-                  </span>
+              <!-- Media Section -->
+              <div class="media-section" v-if="post.video || post.audio">
+                <!-- Video Player -->
+                <div v-if="post.video" class="media-item">
+                  <h4 class="media-title">
+                    <i class="fas fa-video"></i> Video
+                  </h4>
+                  <div class="video-wrapper">
+                    <video controls class="video-player">
+                      <source :src="post.video" type="video/mp4">
+                      Brauzeringiz video ni qo'llab-quvvatlamaydi.
+                    </video>
+                  </div>
                 </div>
-              </div>
-            </article>
-          </div>
 
-          <!-- Sidebar -->
-          <div class="col-lg-4 col-md-12">
-            <div class="blog-sidebar">
-              <div class="sidebar-widget">
-                <h3>{{ t('blog.latestPosts') }}</h3>
-                <div class="latest-posts">
-                  <div
-                    v-for="latestPost in latestPosts"
-                    :key="latestPost.id"
-                    class="post-item"
-                  >
-                    <div class="post-thumb">
-                      <img :src="latestPost.image" :alt="latestPost.title[locale]" />
-                    </div>
-                    <div class="post-info">
-                      <h5>
-                        <NuxtLink :to="localePath(`/blog/${latestPost.slug}`)">
-                          {{ latestPost.title[locale] }}
-                        </NuxtLink>
-                      </h5>
-                      <span class="date">{{ formatDate(latestPost.publishDate) }}</span>
-                    </div>
+                <!-- Audio Player -->
+                <div v-if="post.audio" class="media-item">
+                  <h4 class="media-title">
+                    <i class="fas fa-music"></i> Audio
+                  </h4>
+                  <div class="audio-wrapper">
+                    <audio controls class="audio-player">
+                      <source :src="post.audio" type="audio/mpeg">
+                      Brauzeringiz audio ni qo'llab-quvvatlamaydi.
+                    </audio>
                   </div>
                 </div>
               </div>
-            </div>
+
+              <!-- Comments Section -->
+              <div class="comments-section">
+                <h3 class="comments-title">Izohlar ({{ comments.length }})</h3>
+
+                <!-- Comments List -->
+                <div class="comments-list" v-if="comments.length > 0">
+                  <div v-for="comment in comments" :key="comment.id" class="comment-item">
+                    <div class="comment-content">
+                      <div class="comment-header">
+                        <span class="comment-author">Anonim</span>
+                        <span class="comment-date">{{ formatDate(comment.date) }}</span>
+                      </div>
+                      <p>{{ comment.message }}</p>
+                    </div>
+                  </div>
+                </div>
+
+                <div v-else class="no-comments">
+                  <p>Hali izohlar yo'q</p>
+                </div>
+
+                <!-- Comment Form -->
+                <div class="comment-form">
+                  <form @submit.prevent="submitComment">
+                    <textarea
+                      v-model="commentForm.message"
+                      class="form-control"
+                      rows="3"
+                      placeholder="Izohingiz..."
+                      required
+                    ></textarea>
+                    <button type="submit" class="submit-btn" :disabled="isSubmitting">
+                      {{ isSubmitting ? 'Yuklanmoqda...' : 'Yuborish' }}
+                    </button>
+                    <div v-if="submitMessage" class="submit-message" :class="submitMessage.type">
+                      {{ submitMessage.text }}
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </article>
           </div>
         </div>
       </div>
@@ -89,14 +119,10 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 
-const { getPostBySlug, getLatestPosts } = useBlog()
+const { getPostBySlug } = useBlog()
 
 const post = computed(() => {
   return getPostBySlug(route.params.slug as string)
-})
-
-const latestPosts = computed(() => {
-  return getLatestPosts(5).filter(p => p.id !== post.value?.id)
 })
 
 const contentParagraphs = computed(() => {
@@ -105,11 +131,82 @@ const contentParagraphs = computed(() => {
 })
 
 const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString(locale.value === 'uz' ? 'uz-UZ' : 'en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  const d = new Date(date)
+  const day = d.getDate()
+  const month = d.getMonth() + 1
+  const year = d.getFullYear()
+
+  // Format: DD.MM.YYYY
+  return `${day.toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${year}`
+}
+
+// Comments state
+const comments = ref<Array<{
+  id: number
+  message: string
+  date: string
+}>>([])
+
+// Comment form state
+const commentForm = ref({
+  message: ''
+})
+
+const isSubmitting = ref(false)
+const submitMessage = ref<{ text: string; type: 'success' | 'error' } | null>(null)
+
+// Load comments from localStorage
+onMounted(() => {
+  const postSlug = route.params.slug as string
+  const savedComments = localStorage.getItem(`comments_${postSlug}`)
+  if (savedComments) {
+    comments.value = JSON.parse(savedComments)
+  }
+})
+
+// Submit comment
+const submitComment = async () => {
+  isSubmitting.value = true
+  submitMessage.value = null
+
+  // Simulate API delay
+  await new Promise(resolve => setTimeout(resolve, 500))
+
+  try {
+    const newComment = {
+      id: Date.now(),
+      message: commentForm.value.message,
+      date: new Date().toISOString()
+    }
+
+    comments.value.unshift(newComment)
+
+    // Save to localStorage
+    const postSlug = route.params.slug as string
+    localStorage.setItem(`comments_${postSlug}`, JSON.stringify(comments.value))
+
+    // Reset form
+    commentForm.value = {
+      message: ''
+    }
+
+    submitMessage.value = {
+      text: 'Yuborildi',
+      type: 'success'
+    }
+
+    // Clear success message after 3 seconds
+    setTimeout(() => {
+      submitMessage.value = null
+    }, 3000)
+  } catch (error) {
+    submitMessage.value = {
+      text: 'Xatolik yuz berdi',
+      type: 'error'
+    }
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 if (!post.value) {
@@ -235,6 +332,215 @@ useHead({
   color: var(--text-color);
 }
 
+/* Media Section */
+.media-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 2px solid var(--bg-gray);
+}
+
+.media-item {
+  margin-bottom: 30px;
+}
+
+.media-item:last-child {
+  margin-bottom: 0;
+}
+
+.media-title {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.media-title i {
+  color: var(--primary-color);
+  font-size: 24px;
+}
+
+.video-wrapper {
+  position: relative;
+  width: 100%;
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  background-color: #000;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.video-player {
+  width: 100%;
+  max-height: 500px;
+  display: block;
+  outline: none;
+}
+
+.audio-wrapper {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 30px;
+  border-radius: var(--border-radius-large);
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.audio-player {
+  width: 100%;
+  outline: none;
+  border-radius: var(--border-radius);
+}
+
+.audio-player::-webkit-media-controls-panel {
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: var(--border-radius);
+}
+
+/* Comments Section */
+.comments-section {
+  margin-top: 50px;
+  padding-top: 30px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.comments-title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+}
+
+.comments-list {
+  margin-bottom: 30px;
+}
+
+.comment-item {
+  margin-bottom: 15px;
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 8px;
+}
+
+.comment-item:last-child {
+  margin-bottom: 0;
+}
+
+.comment-content {
+  width: 100%;
+}
+
+.comment-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  gap: 10px;
+}
+
+.comment-author {
+  font-size: 13px;
+  font-weight: 500;
+  color: #6c757d;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #adb5bd;
+}
+
+.comment-content p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-color);
+  margin: 0;
+}
+
+.no-comments {
+  padding: 20px;
+  text-align: center;
+  color: #adb5bd;
+  font-size: 14px;
+  margin-bottom: 30px;
+}
+
+.no-comments p {
+  margin: 0;
+}
+
+.comment-form {
+  padding: 0;
+}
+
+.comment-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-control {
+  width: 100%;
+  padding: 12px 15px;
+  border: 1px solid #dee2e6;
+  border-radius: 8px;
+  font-size: 14px;
+  color: var(--text-color);
+  transition: border-color 0.2s;
+  background-color: var(--white-color);
+  font-family: inherit;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-control::placeholder {
+  color: #adb5bd;
+}
+
+textarea.form-control {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.submit-btn {
+  align-self: flex-start;
+  padding: 10px 24px;
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  font-weight: 500;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+}
+
+.submit-btn:hover:not(:disabled) {
+  background-color: #3d8b5c;
+}
+
+.submit-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.submit-message {
+  padding: 10px 15px;
+  border-radius: 6px;
+  font-size: 13px;
+}
+
+.submit-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.submit-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
+}
+
 .post-tags {
   margin-top: 40px;
   padding-top: 30px;
@@ -347,6 +653,38 @@ useHead({
 
   .featured-image img {
     height: 250px;
+  }
+
+  .comments-title {
+    font-size: 18px;
+  }
+
+  .comment-item {
+    padding: 12px;
+  }
+
+  .video-player {
+    max-height: 300px;
+  }
+
+  .audio-wrapper {
+    padding: 20px;
+  }
+
+  .media-title {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 576px) {
+  .comment-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+
+  .submit-btn {
+    width: 100%;
   }
 }
 </style>

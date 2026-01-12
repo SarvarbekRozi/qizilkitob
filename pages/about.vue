@@ -42,12 +42,68 @@
         </div>
       </div>
     </section>
+
+    <!-- Team Section -->
+    <section class="team-section sec-pad" style="background-color: #f8f9fa;">
+      <div class="auto-container">
+        <div class="sec-title text-center">
+          <h2>Bizning jamoa</h2>
+          <p>Professional mutaxassislar jamoasi tabiatni muhofaza qilish uchun ishlamoqda</p>
+        </div>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12" v-for="member in teamMembers" :key="member.name">
+            <div class="team-card">
+              <div class="team-image">
+                <img :src="member.image" :alt="member.name" />
+              </div>
+              <div class="team-info">
+                <h4>{{ member.name }}</h4>
+                <p class="position">{{ member.position }}</p>
+                <p class="bio">{{ member.bio }}</p>
+                <div class="social-links">
+                  <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                  <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
+                  <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </div>
 </template>
 
 <script setup lang="ts">
 const { t } = useI18n()
 const localePath = useLocalePath()
+
+const teamMembers = [
+  {
+    name: "Aziza Karimova",
+    position: "Bosh direktor",
+    bio: "Biologiya fanlari nomzodi, 15 yillik tajriba",
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop'
+  },
+  {
+    name: "Sardor Alimov",
+    position: "Ilmiy rahbar",
+    bio: "Ekologiya bo'yicha mutaxassis, professor",
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop'
+  },
+  {
+    name: "Dilnoza Yusupova",
+    position: "Tadqiqotchi",
+    bio: "Botanika bo'yicha ekspert, 10 yillik tajriba",
+    image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop'
+  },
+  {
+    name: "Javohir Toshmatov",
+    position: "Zoolog",
+    bio: "Hayvonlar olami bo'yicha mutaxassis",
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop'
+  }
+]
 
 useHead({
   title: t('nav.about'),
@@ -156,5 +212,115 @@ useHead({
   color: var(--primary-color);
   font-weight: bold;
   font-size: 20px;
+}
+
+/* Team Section */
+.team-section {
+  padding: 80px 0;
+}
+
+.team-card {
+  background: var(--white-color);
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 30px;
+  height: 100%;
+}
+
+.team-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+}
+
+.team-image {
+  position: relative;
+  overflow: hidden;
+  height: 280px;
+}
+
+.team-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.team-card:hover .team-image img {
+  transform: scale(1.1);
+}
+
+.team-info {
+  padding: 25px 20px;
+  text-align: center;
+}
+
+.team-info h4 {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 8px;
+}
+
+.team-info .position {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 14px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.team-info .bio {
+  color: var(--text-light);
+  font-size: 14px;
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.social-links {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.social-links a {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  border-radius: 50%;
+  color: var(--text-color);
+  transition: all 0.3s ease;
+  font-size: 16px;
+}
+
+.social-links a:hover {
+  background-color: var(--primary-color);
+  color: var(--white-color);
+  transform: translateY(-3px);
+}
+
+@media (max-width: 991px) {
+  .team-image {
+    height: 300px;
+  }
+}
+
+@media (max-width: 767px) {
+  .team-section {
+    padding: 60px 0;
+  }
+
+  .team-image {
+    height: 250px;
+  }
+
+  .team-info h4 {
+    font-size: 20px;
+  }
 }
 </style>

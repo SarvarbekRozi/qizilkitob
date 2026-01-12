@@ -1,0 +1,164 @@
+{
+  "resources": [
+    {
+      "id": "tog-tizimalari",
+      "slug": "tog-tizimalari",
+      "title": "Tog' tizimlari",
+      "excerpt": "Tyan-Shan va Pomir-Oloy tog' tizmalari noyob biologik xilma-xillik va tabiiy resurslar manbai.",
+      "content": "O'zbekistonning tog'li hududlari mamlakatning sharqiy va janubi-sharqiy qismlarida joylashgan. Bu yerda Tyan-Shan va Pomir-Oloy tog' tizmalari o'zining noyob tabiati bilan ajralib turadi.\n\nTog'lar mamlakatning eng muhim suv manbalari hisoblanadi. Bu yerda ko'plab daryolar boshlanadi va qishloq xo'jaligiga zarur bo'lgan suv ta'minoti amalga oshiriladi.\n\nTog'li hududlarda noyob o'simlik va hayvonlar dunyosi mavjud. Ko'plab endemik turlar faqat shu hududlarda uchraydi va ular maxsus muhofaza ostida.\n\nEkologik turizm uchun katta imkoniyatlar mavjud. Alpinizm, trekking va tog' sayyohligi yildan-yilga rivojlanib bormoqda.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop",
+      "category": "geografiya",
+      "features": [
+        "4000 metrdan baland cho'qqilar",
+        "Noyob flora va fauna",
+        "Muzliklar va doimiy qorlar",
+        "Ekologik turizm markazi"
+      ],
+      "stats": {
+        "area": "5% dan ortiq",
+        "species": "500+ tur",
+        "protected": "15 ta qo'riqxona"
+      }
+    },
+    {
+      "id": "daryolar-kolar",
+      "slug": "daryolar-kolar",
+      "title": "Daryolar va ko'llar",
+      "excerpt": "Amudaryo, Sirdaryo va boshqa suv havzalari hayot manbai va biologik xilma-xillik markazi.",
+      "content": "O'zbekiston hududidan ikkita yirik daryo - Amudaryo va Sirdaryo oqib o'tadi. Bu daryolar ming yillar davomida mamlakatning asosiy suv manbalari bo'lib kelgan.\n\nDaryolar atrofida rivojlangan ekotizimlar ko'plab hayvon va o'simlik turlarining yashash joyi hisoblanadi. Qamishzorlar, suv qushlari va baliqlar uchun muhim muhit.\n\nOrol dengizi masalasi va uning oqibatlari butun dunyo miqyosida muhokama qilinadi. Hozirda dengizni tiklash bo'yicha keng ko'lamli ishlar olib borilmoqda.\n\nKo'llar, jumladan, Aydarkul va boshqa sun'iy suv havzalari baliqchilik va dam olish uchun muhim ahamiyatga ega.",
+      "image": "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1200&h=800&fit=crop",
+      "category": "gidrologiya",
+      "features": [
+        "2 ta yirik daryo tizimi",
+        "Ko'plab ko'llar",
+        "Boy baliq resurslari",
+        "Suv qushlari migratsiya yo'li"
+      ],
+      "stats": {
+        "area": "Daryo havzalari",
+        "species": "200+ suv turlari",
+        "protected": "8 ta qo'riqxona"
+      }
+    },
+    {
+      "id": "chollar",
+      "slug": "chollar",
+      "title": "Cho'llar",
+      "excerpt": "Qizilqum va Qoraqum cho'llari o'ziga xos flora va faunaga ega noyob ekotizim.",
+      "content": "O'zbekiston hududining katta qismi cho'l zonasida joylashgan. Qizilqum cho'li eng katta cho'llardan biri hisoblanadi.\n\nCho'l sharoitlariga moslashgan o'simlik va hayvonlar hayoti o'ziga xos xususiyatlarga ega. Saxovul, kandim va boshqa cho'l o'simliklari muhim ekologik rol o'ynaydi.\n\nCho'llarda mineral boyliklar katta miqdorda to'plangan. Tabiiy gaz, neft va boshqa foydali qazilmalar sanoat uchun muhim.\n\nCho'l ekotizimini muhofaza qilish zamonaviy ekologiyaning muhim vazifalaridan biri hisoblanadi.",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&h=800&fit=crop",
+      "category": "geografiya",
+      "features": [
+        "Katta cho'l maydoni",
+        "Moslashgan hayvonlar",
+        "Cho'l o'simliklari",
+        "Mineral resurslari"
+      ],
+      "stats": {
+        "area": "60% dan ortiq",
+        "species": "150+ cho'l turlari",
+        "protected": "5 ta qo'riqxona"
+      }
+    },
+    {
+      "id": "ormonlar",
+      "slug": "ormonlar",
+      "title": "O'rmonlar",
+      "excerpt": "Zarafshon, Ohangaron va boshqa hududlardagi o'rmonlar ekologik muvozanatni saqlaydi.",
+      "content": "O'zbekistondagi o'rmonlar asosan tog'li hududlarda joylashgan. Zarafshon va Ohangaron vodiysidagi o'rmonlar eng boy hududlardan hisoblanadi.\n\nArcha o'rmonlari mamlakatning o'ziga xos boyligi hisoblanadi. Bu o'rmonlar tuproq eroziyasini oldini olish va suv resurslarini saqlashda muhim rol o'ynaydi.\n\nO'rmon ekotizimlari ko'plab hayvon va o'simliklar uchun yashash joyi. Qushlar, sutemizuvchilar va hasharotlarning xilma-xilligi bu yerda yuqori darajada.\n\nO'rmonlarni tiklash va saqlash davlat dasturlari doirasida amalga oshirilmoqda.",
+      "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop",
+      "category": "ekologiya",
+      "features": [
+        "Archa o'rmonlari",
+        "Mevali daraxtlar",
+        "Tuproqni muhofaza",
+        "Kislorod ishlab chiqarish"
+      ],
+      "stats": {
+        "area": "3% dan ortiq",
+        "species": "300+ daraxt turlari",
+        "protected": "12 ta qo'riqxona"
+      }
+    },
+    {
+      "id": "yaylovlar",
+      "slug": "yaylovlar",
+      "title": "Yaylovlar",
+      "excerpt": "Keng yaylovlar chorvachilik va biologik xilma-xillik uchun muhim resurs.",
+      "content": "O'zbekistonning yaylov hududlari chorvachilik uchun muhim ahamiyatga ega. Tog' yaylovlari yozda, tekislik yaylovlari qishda foydalaniladi.\n\nYaylovlarda o'sadigan o'tlar va o'simliklar hayvonlar uchun tabiiy ozuqa manbai. Bu yerda ko'plab yovvoyi hayvonlar ham yashaydi.\n\nYaylovlarni to'g'ri foydalanish va saqlash ekologik muvozanatni ta'minlaydi. Haddan tashqari yayish tuproq degradatsiyasiga olib kelishi mumkin.\n\nHozirgi kunda yaylovlarni boshqarish zamonaviy usullar bilan amalga oshirilmoqda.",
+      "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&h=800&fit=crop",
+      "category": "qishloq-xojaligi",
+      "features": [
+        "Keng yaylov maydonlari",
+        "Chorvachilik bazasi",
+        "Yovvoyi hayvonlar yashash joyi",
+        "Ekologik turizm"
+      ],
+      "stats": {
+        "area": "20% dan ortiq",
+        "species": "400+ o't turlari",
+        "protected": "7 ta muhofaza zonasi"
+      }
+    },
+    {
+      "id": "mineral-resurslari",
+      "slug": "mineral-resurslari",
+      "title": "Mineral resurslari",
+      "excerpt": "O'zbekiston boy mineral zaxiralariga ega - oltin, mis, tabiiy gaz va neft.",
+      "content": "O'zbekiston jahonda mineral resurslari bo'yicha yetakchi mamlakatlardan biri hisoblanadi. Mamlakatda oltin, mis, uran va boshqa qimmatbaho metallar qazib olinadi.\n\nTabiiy gaz zaxiralari bo'yicha O'zbekiston mintaqada yetakchi o'rinni egallaydi. Gaz sanoatining rivojlanishi iqtisodiyotning muhim tarmog'i.\n\nKon sanoati iqtisodiyotning asosiy tarmoqlaridan biri. Lekin mineral resurslarni qazib olishda ekologik xavfsizlikni ta'minlash muhim vazifa.\n\nBarqaror rivojlanish tamoyillari asosida mineral resurslardan foydalanish davlat siyosatining asosiy yo'nalishi.",
+      "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=800&fit=crop",
+      "category": "geologiya",
+      "features": [
+        "Oltin zaxiralari",
+        "Tabiiy gaz",
+        "Mis va uran",
+        "Qimmatbaho metallar"
+      ],
+      "stats": {
+        "area": "Butun hudud",
+        "species": "50+ mineral tur",
+        "protected": "Barqaror qazib olish"
+      }
+    },
+    {
+      "id": "hayvonot-dunyosi",
+      "slug": "hayvonot-dunyosi",
+      "title": "Hayvonot dunyosi",
+      "excerpt": "O'zbekistonning boy va xilma-xil hayvonot dunyosi - sutemizuvchilar, qushlar, sudralib yuruvchilar.",
+      "content": "O'zbekiston hududida 500 dan ortiq umurtqali hayvonlar turlari yashaydi. Ularning orasida sutemizuvchilar, qushlar, sudralib yuruvchilar va amfibiyalar mavjud.\n\nQor qoploni, Turkiston silovsi, Buxoro bug'usi kabi noyob turlar faqat Markaziy Osiyoda uchraydi. Ular maxsus muhofaza ostida.\n\nQushlar dunyosi juda xilma-xil. O'zbekiston ko'chib yuruvchi qushlar uchun muhim to'xtash joyi hisoblanadi. 400 dan ortiq qush turlari qayd etilgan.\n\nSudralib yuruvchilar va amfibiyalar ham o'ziga xos xususiyatlarga ega. Cho'l zonasida yashaydigan turlar issiq iqlimga moslashgan.",
+      "image": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1200&h=800&fit=crop",
+      "category": "zoologiya",
+      "features": [
+        "500+ umurtqali tur",
+        "Noyob endemik turlar",
+        "Qo'riqxonalar tizimi",
+        "Migratsiya yo'llari"
+      ],
+      "stats": {
+        "area": "Barcha zona",
+        "species": "500+ hayvon turi",
+        "protected": "20 ta qo'riqxona"
+      }
+    },
+    {
+      "id": "osimliklar-dunyosi",
+      "slug": "osimliklar-dunyosi",
+      "title": "O'simliklar dunyosi",
+      "excerpt": "4000 dan ortiq o'simlik turlari - daraxtlar, butalar, o'tlar va noyob endemik turlar.",
+      "content": "O'zbekiston florasida 4000 dan ortiq o'simlik turlari qayd etilgan. Ularning 1500 ga yaqini foydalaniladigan o'simliklar hisoblanadi.\n\nTog'li hududlarda daraxt va buta turlari boy. Archa, yong'oq, olma, o'rik va boshqa mevali daraxtlar o'sadi.\n\nCho'l zonasida o'simliklar quruqlikka moslashgan. Saxovul, kandim, shuvoq kabi o'simliklar cho'l ekotizimining asosi.\n\nDorivor o'simliklar xilma-xilligi katta. 500 dan ortiq dorivor o'simlik turlari an'anaviy tibbiyotda ishlatiladi.",
+      "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&h=800&fit=crop",
+      "category": "botanika",
+      "features": [
+        "4000+ o'simlik turi",
+        "Endemik turlar",
+        "Dorivor o'simliklar",
+        "Mevali daraxtlar"
+      ],
+      "stats": {
+        "area": "Barcha zona",
+        "species": "4000+ o'simlik",
+        "protected": "18 ta botanika qo'riqxonasi"
+      }
+    }
+  ]
+}

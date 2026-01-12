@@ -91,5 +91,31 @@
     "contactInfo": "Contact Information",
     "gallery": "Gallery",
     "copyright": "© 2024 Red Book. All rights reserved."
+  },
+  "team": {
+    "title": "Our Team",
+    "description": "Professional team of experts working to protect nature",
+    "members": {
+      "member1": {
+        "name": "Aziza Karimova",
+        "position": "Chief Director",
+        "bio": "PhD in Biology, 15 years of experience"
+      },
+      "member2": {
+        "name": "Sardor Alimov",
+        "position": "Scientific Director",
+        "bio": "Ecology specialist, Professor"
+      },
+      "member3": {
+        "name": "Dilnoza Yusupova",
+        "position": "Researcher",
+        "bio": "Botany expert, 10 years of experience"
+      },
+      "member4": {
+        "name": "Javohir Toshmatov",
+        "position": "Zoologist",
+        "bio": "Animal kingdom specialist"
+      }
+    }
   }
 }

@@ -4,14 +4,7 @@ export default defineNuxtConfig({
 
   devtools: { enabled: true },
 
-  modules: [
-    '@nuxtjs/i18n',
-    '@pinia/nuxt',
-    '@nuxt/image',
-    'nuxt-icon',
-    '@nuxtjs/google-fonts',
-    '@vueuse/nuxt'
-  ],
+  modules: ['@nuxtjs/i18n', '@pinia/nuxt', '@nuxt/image', 'nuxt-icon', '@nuxtjs/google-fonts', '@vueuse/nuxt', 'nuxt-marquee'],
 
   // i18n configuration
   i18n: {

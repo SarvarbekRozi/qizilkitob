@@ -18,4 +18,6 @@ export interface BlogPost {
   publishDate: string
   category: string
   tags: string[]
+  video?: string
+  audio?: string
 }

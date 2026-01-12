@@ -38,49 +38,8 @@
       </Swiper>
     </section>
 
-    <!-- Stats Section -->
-    <section class="stats-section sec-pad">
-      <div class="auto-container">
-        <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-paw"></i>
-              </div>
-              <h3>{{ animalCount }}+</h3>
-              <p>Xavf ostidagi hayvonlar</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-leaf"></i>
-              </div>
-              <h3>{{ plantCount }}+</h3>
-              <p>Xavf ostidagi o'simliklar</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <h3>5+</h3>
-              <p>Muhofaza zonalari</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <h3>1000+</h3>
-              <p>Tadqiqotchilar va ko'ngillilar</p>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Logo Marquee -->
+    <LogoMarquee />
 
     <!-- About Section -->
     <section class="about-section sec-pad">
@@ -138,23 +97,8 @@
       </div>
     </section>
 
-    <!-- Featured Species Section -->
-    <section class="featured-section sec-pad" style="background-color: var(--bg-gray);">
-      <div class="auto-container">
-        <div class="sec-title centred">
-          <h2>{{ t('home.featured.title') }}</h2>
-          <p>{{ t('home.featured.description') }}</p>
-        </div>
-        <SpeciesGrid :species="featuredSpecies" />
-        <div class="row">
-          <div class="col-12 centred" style="margin-top: 30px;">
-            <NuxtLink :to="localePath('/species')" class="theme-btn">
-              {{ t('common.viewAll') }}
-            </NuxtLink>
-          </div>
-        </div>
-      </div>
-    </section>
+    <!-- Logo Marquee -->
+    <LogoMarquee />
 
     <!-- Latest News Section -->
     <section class="news-section sec-pad">
@@ -200,25 +144,62 @@
       </div>
     </section>
 
-    <!-- CTA Section -->
-    <section class="cta-section" style="background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1600&h=600&fit=crop');">
+    <!-- Logo Marquee -->
+    <LogoMarquee />
+
+    <!-- Stats Section -->
+    <section class="stats-section sec-pad">
       <div class="auto-container">
-        <div class="cta-content">
-          <h2>Tabiatni birga asraylik</h2>
-          <p>Xavf ostidagi turlarni muhofaza qilishda bizga qo'shiling</p>
-          <NuxtLink :to="localePath('/contact')" class="theme-btn btn-outline" style="border-color: white; color: white;">
-            Biz bilan bog'laning
-          </NuxtLink>
+        <div class="row">
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="stats-box">
+              <div class="icon">
+                <i class="fas fa-paw"></i>
+              </div>
+              <h3>{{ animalCount }}+</h3>
+              <p>Xavf ostidagi hayvonlar</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="stats-box">
+              <div class="icon">
+                <i class="fas fa-leaf"></i>
+              </div>
+              <h3>{{ plantCount }}+</h3>
+              <p>Xavf ostidagi o'simliklar</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="stats-box">
+              <div class="icon">
+                <i class="fas fa-shield-alt"></i>
+              </div>
+              <h3>5+</h3>
+              <p>Muhofaza zonalari</p>
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="stats-box">
+              <div class="icon">
+                <i class="fas fa-users"></i>
+              </div>
+              <h3>1000+</h3>
+              <p>Tadqiqotchilar va ko'ngillilar</p>
+            </div>
+          </div>
         </div>
       </div>
     </section>
+
+    <!-- Logo Marquee -->
+    <LogoMarquee />
   </div>
 </template>
 
 <script setup lang="ts">
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
-
+import LogoMarquee from '../components/ui/LogoMarquee'
 const SwiperAutoplay = Autoplay
 const SwiperEffectFade = EffectFade
 const SwiperPagination = Pagination
@@ -226,7 +207,7 @@ const SwiperPagination = Pagination
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const { getFeaturedSpecies, getSpeciesByCategory } = useSpeciesData()
+const { getSpeciesByCategory } = useSpeciesData()
 const { getLatestPosts } = useBlog()
 
 const heroSlides = [
@@ -265,7 +246,6 @@ const heroSlides = [
   }
 ]
 
-const featuredSpecies = computed(() => getFeaturedSpecies(6))
 const animalCount = computed(() => getSpeciesByCategory('animal').length)
 const plantCount = computed(() => getSpeciesByCategory('plant').length)
 const latestPosts = computed(() => getLatestPosts(3))

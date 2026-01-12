@@ -4,7 +4,7 @@
       <div
         v-for="item in species"
         :key="item.id"
-        class="col-lg-4 col-md-6 col-sm-12"
+        class="col-lg-3 col-md-6 col-sm-12"
       >
         <SpeciesCard :species="item" />
       </div>

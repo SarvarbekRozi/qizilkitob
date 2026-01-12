@@ -16,17 +16,15 @@
     <!-- Species Listing Section -->
     <section class="species-listing sec-pad">
       <div class="auto-container">
-        <!-- Search Bar -->
-        <UiSearchBar />
+        <!-- Category Title -->
+        <div class="section-header text-center" v-if="categoryTitle">
+          <h2>{{ categoryTitle }}</h2>
+          <p class="species-count">{{ displayedSpecies.length }} ta tur topildi</p>
+        </div>
 
+        <!-- Species Grid -->
         <div class="row">
-          <!-- Filter Sidebar -->
-          <div class="col-lg-3 col-md-12">
-            <SpeciesFilter />
-          </div>
-
-          <!-- Species Grid -->
-          <div class="col-lg-9 col-md-12">
+          <div class="col-lg-12">
             <SpeciesGrid :species="displayedSpecies" />
           </div>
         </div>
@@ -40,35 +38,55 @@ const { t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
 
-// Get filtered species and search results
-const { filteredSpecies, setCategory } = useFilter()
-const { searchResults } = useSearch()
+// Get all species
+const { allSpecies } = useSpeciesData()
 
-// Apply category filter from query params
-onMounted(() => {
-  const categoryParam = route.query.category as string
-  if (categoryParam === 'animal' || categoryParam === 'plant') {
-    setCategory(categoryParam)
+// Get query params
+const category = computed(() => route.query.category as string)
+const type = computed(() => route.query.type as string)
+
+// Type labels mapping
+const typeLabels: Record<string, string> = {
+  'mammal': 'Sutemizuvchilar',
+  'bird': 'Qushlar',
+  'reptile': 'Reptiliyalar',
+  'tree': 'Daraxtlar',
+  'flower': 'Gullar',
+  'herb': "O'tlar"
+}
+
+// Category title
+const categoryTitle = computed(() => {
+  if (type.value && typeLabels[type.value]) {
+    return typeLabels[type.value]
   }
+  if (category.value === 'animal') {
+    return 'Hayvonlar'
+  }
+  if (category.value === 'plant') {
+    return "O'simliklar"
+  }
+  return 'Barcha turlar'
 })
 
-// Combine filters and search
+// Filter species by category and type
 const displayedSpecies = computed(() => {
-  // First filter by category/danger level
-  let result = filteredSpecies.value
+  let result = allSpecies.value
 
-  // Then apply search if there's a search query
-  const searchIds = searchResults.value.map(s => s.id)
-  if (searchIds.length < filteredSpecies.value.length) {
-    result = result.filter(s => searchIds.includes(s.id))
+  // Filter by category
+  if (category.value) {
+    result = result.filter(s => s.category === category.value)
   }
+
+  // Note: type filtering would require type field in species data
+  // For now, we'll just filter by category
 
   return result
 })
 
 // SEO Meta
 useHead({
-  title: t('species.title'),
+  title: categoryTitle.value,
   meta: [
     {
       name: 'description',
@@ -142,6 +160,23 @@ useHead({
 
 .breadcrumb a:hover {
   color: var(--secondary-color);
+}
+
+.section-header {
+  margin-bottom: 50px;
+}
+
+.section-header h2 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--heading-color);
+  margin-bottom: 10px;
+}
+
+.species-count {
+  font-size: 16px;
+  color: var(--text-light);
+  font-weight: 500;
 }
 
 @media (max-width: 768px) {

@@ -30,10 +30,6 @@
                 </div>
               </div>
               <div class="content-box">
-                <div class="post-meta">
-                  <span><i class="fas fa-user"></i> {{ post.author }}</span>
-                  <span><i class="fas fa-tag"></i> {{ t(`blog.category`) }}</span>
-                </div>
                 <h3>
                   <NuxtLink :to="localePath(`/blog/${post.slug}`)">
                     {{ post.title[locale] }}
@@ -58,11 +54,13 @@ const localePath = useLocalePath()
 const { allPosts } = useBlog()
 
 const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString(locale.value === 'uz' ? 'uz-UZ' : 'en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  const d = new Date(date)
+  const day = d.getDate()
+  const month = d.getMonth() + 1
+  const year = d.getFullYear()
+
+  // Format: DD.MM.YYYY
+  return `${day.toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${year}`
 }
 
 useHead({
