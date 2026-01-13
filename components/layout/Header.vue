@@ -84,8 +84,18 @@
                     <NuxtLink :to="localePath('/blog')">Yangiliklar</NuxtLink>
                   </li>
 
-                  <li :class="{ current: isActive('/natural-resources') }">
+                  <li class="dropdown" :class="{ current: isActive('/natural-resources') }">
                     <NuxtLink :to="localePath('/natural-resources')">Tabiy boylik</NuxtLink>
+                    <ul>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=tog-tizimalari')">Tog' tizimlari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=daryolar-kolar')">Daryolar va ko'llar</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=chollar')">Cho'llar</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=ormonlar')">O'rmonlar</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=yaylovlar')">Yaylovlar</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=mineral-resurslari')">Mineral resurslari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=hayvonot-dunyosi')">Hayvonot dunyosi</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=osimliklar-dunyosi')">O'simliklar dunyosi</NuxtLink></li>
+                    </ul>
                   </li>
 
                   <li :class="{ current: isActive('/partners') }">

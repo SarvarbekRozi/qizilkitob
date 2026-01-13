@@ -62,6 +62,60 @@
               </NuxtLink>
             </li>
 
+            <li class="has-children">
+              <a href="#" @click.prevent="toggleSubmenu('natural-resources')">
+                Tabiy boylik
+                <span class="toggle-icon">+</span>
+              </a>
+              <ul v-show="activeSubmenu === 'natural-resources'">
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources')" @click="$emit('close')">
+                    Barchasi
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=tog-tizimalari')" @click="$emit('close')">
+                    Tog' tizimlari
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=daryolar-kolar')" @click="$emit('close')">
+                    Daryolar va ko'llar
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=chollar')" @click="$emit('close')">
+                    Cho'llar
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=ormonlar')" @click="$emit('close')">
+                    O'rmonlar
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=yaylovlar')" @click="$emit('close')">
+                    Yaylovlar
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=mineral-resurslari')" @click="$emit('close')">
+                    Mineral resurslari
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=hayvonot-dunyosi')" @click="$emit('close')">
+                    Hayvonot dunyosi
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=osimliklar-dunyosi')" @click="$emit('close')">
+                    O'simliklar dunyosi
+                  </NuxtLink>
+                </li>
+              </ul>
+            </li>
+
             <li>
               <NuxtLink :to="localePath('/map')" @click="$emit('close')">
                 {{ t('nav.map') }}

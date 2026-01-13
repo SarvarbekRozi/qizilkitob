@@ -17,13 +17,13 @@
     <section class="natural-resources-section sec-pad">
       <div class="auto-container">
         <div class="sec-title text-center">
-          <h2>O'zbekistonning Tabiy Boyliklari</h2>
+          <h2>{{ categoryTitle }}</h2>
           <p>Mamlakatimizning noyob tabiiy resurslari va ularni muhofaza qilish</p>
         </div>
 
         <div class="row">
           <!-- Resource Card -->
-          <div class="col-lg-3 col-md-6 col-sm-12" v-for="resource in allResources" :key="resource.id">
+          <div class="col-lg-3 col-md-6 col-sm-12" v-for="resource in filteredResources" :key="resource.id">
             <div class="resource-card">
               <div class="resource-image">
                 <img :src="resource.image" :alt="resource.title" />
@@ -49,7 +49,26 @@
 
 <script setup lang="ts">
 const localePath = useLocalePath()
+const route = useRoute()
 const { allResources } = useNaturalResources()
+
+// Filtrlash logikasi
+const categoryQuery = computed(() => route.query.category as string | undefined)
+
+const filteredResources = computed(() => {
+  if (!categoryQuery.value) {
+    return allResources.value
+  }
+  return allResources.value.filter(resource => resource.slug === categoryQuery.value)
+})
+
+// Kategoriya nomi
+const categoryTitle = computed(() => {
+  if (!categoryQuery.value || filteredResources.value.length === 0) {
+    return "O'zbekistonning Tabiy Boyliklari"
+  }
+  return filteredResources.value[0]?.title || "Tabiy boylik"
+})
 
 useHead({
   title: 'Tabiy boylik',

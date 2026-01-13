@@ -20,18 +20,18 @@
           <div class="hero-slide" :style="{ backgroundImage: `url(${slide.image})` }">
             <div class="hero-overlay"></div>
             <div class="auto-container">
-              <div class="hero-content">
-                <h1 class="hero-title">{{ slide.title[locale] }}</h1>
-                <p class="hero-subtitle">{{ slide.subtitle[locale] }}</p>
-                <div class="hero-buttons">
-                  <NuxtLink :to="localePath('/species')" class="theme-btn">
-                    {{ t('home.hero.cta') }}
-                  </NuxtLink>
-                  <NuxtLink :to="localePath('/about')" class="theme-btn btn-outline">
-                    {{ t('nav.about') }}
-                  </NuxtLink>
-                </div>
-              </div>
+<!--              <div class="hero-content">-->
+<!--                <h1 class="hero-title">{{ slide.title[locale] }}</h1>-->
+<!--                <p class="hero-subtitle">{{ slide.subtitle[locale] }}</p>-->
+<!--                <div class="hero-buttons">-->
+<!--                  <NuxtLink :to="localePath('/species')" class="theme-btn">-->
+<!--                    {{ t('home.hero.cta') }}-->
+<!--                  </NuxtLink>-->
+<!--                  <NuxtLink :to="localePath('/about')" class="theme-btn btn-outline">-->
+<!--                    {{ t('nav.about') }}-->
+<!--                  </NuxtLink>-->
+<!--                </div>-->
+<!--              </div>-->
             </div>
           </div>
         </SwiperSlide>
