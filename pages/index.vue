@@ -251,11 +251,16 @@ const plantCount = computed(() => getSpeciesByCategory('plant').length)
 const latestPosts = computed(() => getLatestPosts(3))
 
 const formatDate = (date: string) => {
-  return new Date(date).toLocaleDateString(locale.value === 'uz' ? 'uz-UZ' : 'en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric'
-  })
+  const d = new Date(date)
+  const months = locale.value === 'uz'
+    ? ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek']
+    : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+
+  const day = d.getDate().toString().padStart(2, '0')
+  const month = months[d.getMonth()]
+  const year = d.getFullYear()
+
+  return `${day} ${month}, ${year}`
 }
 </script>
 

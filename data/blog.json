@@ -1,25 +1,25 @@
 {
   "posts": [
     {
-      "id": "qizil-kitob-2024",
-      "slug": "qizil-kitob-2024",
+      "id": "qizil-kitob-2026",
+      "slug": "qizil-kitob-2026",
       "title": {
-        "en": "Red Book of Uzbekistan 2024: New Updates",
-        "uz": "O'zbekiston Qizil Kitobi 2024: Yangi yangilanishlar"
+        "en": "Red Book of Uzbekistan 2026: New Updates",
+        "uz": "O'zbekiston Qizil Kitobi 2026: Yangi yangilanishlar"
       },
       "excerpt": {
         "en": "The latest updates to Uzbekistan's Red Book include several newly identified endangered species and updated conservation statuses.",
         "uz": "O'zbekiston Qizil Kitobining so'nggi yangilanishlari bir nechta yangi aniqlangan yo'qolib ketish xavfi ostidagi turlarni va yangilangan muhofaza holatini o'z ichiga oladi."
       },
       "content": {
-        "en": "The Red Book of Uzbekistan has been updated for 2024, bringing important changes to the conservation status of many species. Scientists have identified several new species that require immediate protection, while others have shown signs of population recovery thanks to conservation efforts.\n\nKey highlights include:\n- Three new critically endangered plant species from the Tian Shan mountains\n- Updated population estimates for the snow leopard\n- Successful breeding programs for the Turkestan lynx\n- New habitat protection zones established in the Zarafshan range\n\nThese updates reflect the ongoing commitment to biodiversity conservation in Uzbekistan.",
-        "uz": "O'zbekiston Qizil Kitobi 2024 yil uchun yangilandi va ko'plab turlarning muhofaza holatiga muhim o'zgarishlar kiritdi. Olimlar zudlik bilan himoya qilishni talab qiladigan bir nechta yangi turlarni aniqladilar, boshqalari esa muhofaza sa'y-harakatlari tufayli populyatsiya tiklanish belgilarini ko'rsatdi.\n\nAsosiy yangiliklardan:\n- Tyan-Shan tog'laridan uchta yangi juda xavfli o'simlik turi\n- Qor qoploni populyatsiyasining yangilangan taxminlari\n- Turkiston silovsi uchun muvaffaqiyatli naslchilik dasturlari\n- Zarafshon tizmasida yangi yashash joylari muhofaza zonalari tashkil etildi\n\nBu yangilanishlar O'zbekistonda biologik xilma-xillikni muhofaza qilish bo'yicha davom etayotgan majburiyatni aks ettiradi."
+        "en": "The Red Book of Uzbekistan has been updated for 2026, bringing important changes to the conservation status of many species. Scientists have identified several new species that require immediate protection, while others have shown signs of population recovery thanks to conservation efforts.\n\nKey highlights include:\n- Three new critically endangered plant species from the Tian Shan mountains\n- Updated population estimates for the snow leopard\n- Successful breeding programs for the Turkestan lynx\n- New habitat protection zones established in the Zarafshan range\n\nThese updates reflect the ongoing commitment to biodiversity conservation in Uzbekistan.",
+        "uz": "O'zbekiston Qizil Kitobi 2026 yil uchun yangilandi va ko'plab turlarning muhofaza holatiga muhim o'zgarishlar kiritdi. Olimlar zudlik bilan himoya qilishni talab qiladigan bir nechta yangi turlarni aniqladilar, boshqalari esa muhofaza sa'y-harakatlari tufayli populyatsiya tiklanish belgilarini ko'rsatdi.\n\nAsosiy yangiliklardan:\n- Tyan-Shan tog'laridan uchta yangi juda xavfli o'simlik turi\n- Qor qoploni populyatsiyasining yangilangan taxminlari\n- Turkiston silovsi uchun muvaffaqiyatli naslchilik dasturlari\n- Zarafshon tizmasida yangi yashash joylari muhofaza zonalari tashkil etildi\n\nBu yangilanishlar O'zbekistonda biologik xilma-xillikni muhofaza qilish bo'yicha davom etayotgan majburiyatni aks ettiradi."
       },
       "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=800&fit=crop",
       "author": "Tabiat Muhofazasi Jamg'armasi",
-      "publishDate": "2024-12-15",
+      "publishDate": "2026-12-15",
       "category": "muhofaza",
-      "tags": ["qizil-kitob", "2024", "yangilanish", "muhofaza"],
+      "tags": ["qizil-kitob", "2026", "yangilanish", "muhofaza"],
       "video": "https://www.w3schools.com/html/mov_bbb.mp4",
       "audio": "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3"
     },
@@ -40,7 +40,7 @@
       },
       "image": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1200&h=800&fit=crop",
       "author": "Dr. Anvar Karimov",
-      "publishDate": "2024-12-10",
+      "publishDate": "2026-12-10",
       "category": "tadqiqot",
       "tags": ["qor-qoploni", "monitoring", "texnologiya", "tog'lar"]
     },
@@ -61,7 +61,7 @@
       },
       "image": "https://images.unsplash.com/photo-1448375240586-882707db888b?w=1200&h=800&fit=crop",
       "author": "Ekologiya Instituti",
-      "publishDate": "2024-12-05",
+      "publishDate": "2026-12-05",
       "category": "loyiha",
       "tags": ["archa", "o'rmon", "tiklash", "ekologiya"]
     },
@@ -82,16 +82,16 @@
       },
       "image": "https://images.unsplash.com/photo-1503676260728-1c00da094a0b?w=1200&h=800&fit=crop",
       "author": "Ta'lim Bo'limi",
-      "publishDate": "2024-11-28",
+      "publishDate": "2026-11-28",
       "category": "talim",
       "tags": ["bolalar", "ta'lim", "tarbiya", "kelajak"]
     },
     {
-      "id": "tuliplar-festivali-2024",
-      "slug": "tuliplar-festivali-2024",
+      "id": "tuliplar-festivali-2026",
+      "slug": "tuliplar-festivali-2026",
       "title": {
-        "en": "Wild Tulip Festival 2024: Celebrating Endemic Flora",
-        "uz": "Yovvoyi Tuliplar Festivali 2024: Endemik floranimizni nishonlash"
+        "en": "Wild Tulip Festival 2026: Celebrating Endemic Flora",
+        "uz": "Yovvoyi Tuliplar Festivali 2026: Endemik floranimizni nishonlash"
       },
       "excerpt": {
         "en": "Annual festival showcases Uzbekistan's unique tulip species and raises awareness about plant conservation.",
@@ -103,7 +103,7 @@
       },
       "image": "https://images.unsplash.com/photo-1490750967868-88aa4486c946?w=1200&h=800&fit=crop",
       "author": "Festival Tashkiliy Qo'mitasi",
-      "publishDate": "2024-11-20",
+      "publishDate": "2026-11-20",
       "category": "tadbir",
       "tags": ["lola", "festival", "botanika", "turizm"]
     },
@@ -124,7 +124,7 @@
       },
       "image": "https://images.unsplash.com/photo-1470071459604-3b5ec3a7fe05?w=1200&h=800&fit=crop",
       "author": "Prof. Malika Rahimova",
-      "publishDate": "2024-11-15",
+      "publishDate": "2026-11-15",
       "category": "tadqiqot",
       "tags": ["iqlim", "tadqiqot", "tog'lar", "ekologiya"]
     }
