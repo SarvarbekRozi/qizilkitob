@@ -53,8 +53,8 @@
               </div>
               <div class="experience-badge">
                 <div class="badge-inner">
-                  <h3>10+</h3>
-                  <p>Yillik<br/>Tajriba</p>
+                  <h3 style="color: white">10+</h3>
+                  <p style="color: white">Yillik<br/>Tajriba</p>
                 </div>
               </div>
             </div>
@@ -344,7 +344,10 @@ const formatDate = (date: string) => {
 
 /* Stats Section */
 .stats-section {
-  background: linear-gradient(135deg, #2e8b57 0%, #228b22 100%);
+  background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=600&fit=crop');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
   position: relative;
   padding: 80px 0;
 }
@@ -356,9 +359,13 @@ const formatDate = (date: string) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background-image: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(255,255,255,0.1)"/></svg>');
-  background-size: 30px 30px;
-  opacity: 0.3;
+  background: linear-gradient(135deg, rgba(34, 139, 34, 0.85), rgba(46, 125, 50, 0.9));
+  z-index: 1;
+}
+
+.stats-section .auto-container {
+  position: relative;
+  z-index: 2;
 }
 
 .stats-box {
@@ -449,7 +456,7 @@ const formatDate = (date: string) => {
   right: 0;
   width: 50%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(46, 139, 87, 0.03), rgba(34, 139, 34, 0.03));
+  background: linear-gradient(135deg, rgba(160, 51, 45, 0.03), rgba(212, 175, 55, 0.03));
   z-index: 0;
 }
 
@@ -477,7 +484,7 @@ const formatDate = (date: string) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(46, 139, 87, 0.3), transparent);
+  background: linear-gradient(135deg, rgba(160, 51, 45, 0.3), transparent);
   opacity: 0;
   transition: opacity 0.4s ease;
   z-index: 1;
@@ -509,7 +516,7 @@ const formatDate = (date: string) => {
   display: flex;
   align-items: center;
   justify-content: center;
-  box-shadow: 0 10px 30px rgba(46, 139, 87, 0.4);
+  box-shadow: 0 10px 30px rgba(160, 51, 45, 0.4);
   animation: pulse 2s ease-in-out infinite;
   z-index: 2;
 }
@@ -584,7 +591,6 @@ const formatDate = (date: string) => {
   font-size: 16px;
   color: var(--text-color);
   line-height: 1.8;
-  margin-bottom: 20px;
 }
 
 .about-section .features-list {
@@ -775,7 +781,7 @@ const formatDate = (date: string) => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(46, 139, 87, 0.9), rgba(34, 139, 34, 0.8));
+  background: linear-gradient(135deg, rgba(160, 51, 45, 0.9), rgba(212, 175, 55, 0.8));
 }
 
 .cta-content {

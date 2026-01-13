@@ -9,9 +9,12 @@
             <div class="footer-widget logo-widget">
               <figure class="footer-logo">
                 <NuxtLink :to="localePath('/')">
-                  <div class="logo-text">
-                    <i class="fas fa-book-open"></i>
-                    <span>QIZIL KITOB</span>
+                  <div class="logo-content">
+                    <img src="/public/logo-white.png" alt="" height="60" width="60">
+                    <div class="logo-text">
+                      <span class="brand-name">O'ZBEKISTON</span>
+                      <span class="brand-name">QIZIL KITOBI</span>
+                    </div>
                   </div>
                 </NuxtLink>
               </figure>
@@ -183,14 +186,36 @@ const galleryImages = [
   margin-bottom: 25px;
 }
 
-.logo-text {
+.logo-content {
   display: flex;
   align-items: center;
   gap: 15px;
-  color: var(--white-color);
-  font-size: 28px;
-  font-weight: 800;
+}
+
+.logo-content i {
+  font-size: 48px;
+  color: var(--primary-color);
   transition: all 0.3s ease;
+}
+
+.logo:hover .logo-content i {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.logo-text {
+  display: flex;
+  flex-direction: column;
+  line-height: 1.2;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  background:#ffffff;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .logo-text i {

@@ -29,10 +29,10 @@
           <div class="logo-box">
             <NuxtLink :to="localePath('/')" class="logo">
               <div class="logo-content">
-                <i class="fas fa-book-open"></i>
+                <img src="/public/logo-new.png" alt="" height="60" width="60">
                 <div class="logo-text">
-                  <span class="brand-name">QIZIL KITOB</span>
-                  <span class="brand-tagline">O'zbekiston</span>
+                  <span class="brand-name">O'ZBEKISTON</span>
+                  <span class="brand-name">QIZIL KITOBI</span>
                 </div>
               </div>
             </NuxtLink>
@@ -372,11 +372,10 @@ onMounted(() => {
 }
 
 .brand-name {
-  font-size: 24px;
-  font-weight: 800;
-  color: var(--heading-color);
+  font-size: 20px;
+  font-weight: 500;
   letter-spacing: 0.5px;
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  background:#b02923;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -403,7 +402,7 @@ onMounted(() => {
 
 .mobile-nav-toggler:hover {
   transform: scale(1.05);
-  box-shadow: 0 4px 15px rgba(46, 139, 87, 0.3);
+  box-shadow: 0 4px 15px rgba(160, 51, 45, 0.3);
 }
 
 .mobile-nav-toggler .icon-bar {
@@ -702,7 +701,7 @@ onMounted(() => {
 
 .search-btn:hover {
   transform: scale(1.05);
-  box-shadow: 0 5px 20px rgba(46, 139, 87, 0.4);
+  box-shadow: 0 5px 20px rgba(160, 51, 45, 0.4);
 }
 
 /* Responsive */

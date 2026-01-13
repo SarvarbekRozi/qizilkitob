@@ -97,7 +97,7 @@ useHead({
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(46, 139, 87, 0.5));
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(160, 51, 45, 0.5));
 }
 
 .page-title .content-box {

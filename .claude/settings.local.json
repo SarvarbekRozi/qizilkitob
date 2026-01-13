@@ -1,0 +1,7 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell.exe -NoProfile -Command \"\\(Get-Content -Path ''D:\\\\loyiha\\\\qizilkitob\\\\pages\\\\natural-resources\\\\[slug].vue'' -Raw -Encoding UTF8\\) -replace ''#2e8b57'', ''#A0332D'' -replace ''#228b22'', ''#3d6e3e'' -replace ''rgba\\\\\\(46, 139, 87,'', ''rgba\\(160, 51, 45,'' -replace ''rgba\\\\\\(34, 139, 34,'', ''rgba\\(61, 110, 62,'' | Set-Content -Path ''D:\\\\loyiha\\\\qizilkitob\\\\pages\\\\natural-resources\\\\[slug].vue'' -Encoding UTF8 -NoNewline\")"
+    ]
+  }
+}
