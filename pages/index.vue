@@ -215,33 +215,39 @@ const heroSlides = [
     image: 'https://images.unsplash.com/photo-1589656966895-2f33e7653819?w=1920&h=800&fit=crop',
     title: {
       uz: "O'zbekiston Qizil Kitobini Birga Asraylik",
-      en: "Together Protecting Uzbekistan's Red Book"
+      en: "Together Protecting Uzbekistan's Red Book",
+      ru: "Вместе сохраним Красную Книгу Узбекистана"
     },
     subtitle: {
       uz: "Yo'qolib ketish xavfi ostidagi noyob turlarni muhofaza qilish",
-      en: "Protecting endangered species from extinction"
+      en: "Protecting endangered species from extinction",
+      ru: "Защита редких видов от исчезновения"
     }
   },
   {
     image: 'https://images.unsplash.com/photo-1474511320723-9a56873867b5?w=1920&h=800&fit=crop',
     title: {
       uz: "Tabiat Boyliklarimizni Saqlaymiz",
-      en: "Preserving Our Natural Heritage"
+      en: "Preserving Our Natural Heritage",
+      ru: "Сохраняем наше природное наследие"
     },
     subtitle: {
       uz: "Har bir tur bizning kelajagimiz uchun muhim",
-      en: "Every species matters for our future"
+      en: "Every species matters for our future",
+      ru: "Каждый вид важен для нашего будущего"
     }
   },
   {
     image: 'https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=800&fit=crop',
     title: {
       uz: "Yovvoyi Tabiatni Himoya Qilish",
-      en: "Wildlife Conservation in Action"
+      en: "Wildlife Conservation in Action",
+      ru: "Охрана дикой природы в действии"
     },
     subtitle: {
       uz: "Ilmiy tadqiqotlar va muhofaza choralari",
-      en: "Scientific research and conservation measures"
+      en: "Scientific research and conservation measures",
+      ru: "Научные исследования и меры по сохранению"
     }
   }
 ]
@@ -252,9 +258,12 @@ const latestPosts = computed(() => getLatestPosts(3))
 
 const formatDate = (date: string) => {
   const d = new Date(date)
-  const months = locale.value === 'uz'
-    ? ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek']
-    : ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  const monthsMap: Record<string, string[]> = {
+    uz: ['Yan', 'Fev', 'Mar', 'Apr', 'May', 'Iyun', 'Iyul', 'Avg', 'Sen', 'Okt', 'Noy', 'Dek'],
+    ru: ['Янв', 'Фев', 'Мар', 'Апр', 'Май', 'Июн', 'Июл', 'Авг', 'Сен', 'Окт', 'Ноя', 'Дек'],
+    en: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
+  }
+  const months = monthsMap[locale.value] || monthsMap.en
 
   const day = d.getDate().toString().padStart(2, '0')
   const month = months[d.getMonth()]
