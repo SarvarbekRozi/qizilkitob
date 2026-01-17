@@ -10,7 +10,7 @@
               <figure class="footer-logo">
                 <NuxtLink :to="localePath('/')">
                   <div class="logo-content">
-                    <img src="/public/logo-white.png" alt="" height="60" width="60">
+                    <img src="/public/logo-new.png" alt="" height="60" width="60">
                     <div class="logo-text">
                       <span class="brand-name">O'ZBEKISTON</span>
                       <span class="brand-name">QIZIL KITOBI</span>
@@ -53,33 +53,45 @@
               <div class="widget-content">
                 <ul class="links-list clearfix">
                   <li>
+                    <NuxtLink :to="localePath('/')">
+                      <i class="fas fa-chevron-right"></i>
+                      Bosh sahifa
+                    </NuxtLink>
+                  </li>
+                  <li>
                     <NuxtLink :to="localePath('/about')">
                       <i class="fas fa-chevron-right"></i>
-                      {{ t('nav.about') }}
+                      Biz haqimizda
                     </NuxtLink>
                   </li>
                   <li>
                     <NuxtLink :to="localePath('/species')">
                       <i class="fas fa-chevron-right"></i>
-                      {{ t('nav.species') }}
-                    </NuxtLink>
-                  </li>
-                  <li>
-                    <NuxtLink :to="localePath('/gallery')">
-                      <i class="fas fa-chevron-right"></i>
-                      {{ t('nav.gallery') }}
+                      Turlar
                     </NuxtLink>
                   </li>
                   <li>
                     <NuxtLink :to="localePath('/blog')">
                       <i class="fas fa-chevron-right"></i>
-                      {{ t('nav.blog') }}
+                      Yangiliklar
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink :to="localePath('/natural-resources')">
+                      <i class="fas fa-chevron-right"></i>
+                      Tabiy boylik
+                    </NuxtLink>
+                  </li>
+                  <li>
+                    <NuxtLink :to="localePath('/partners')">
+                      <i class="fas fa-chevron-right"></i>
+                      Hamkorlar
                     </NuxtLink>
                   </li>
                   <li>
                     <NuxtLink :to="localePath('/contact')">
                       <i class="fas fa-chevron-right"></i>
-                      {{ t('nav.contact') }}
+                      Aloqa
                     </NuxtLink>
                   </li>
                 </ul>
@@ -176,6 +188,13 @@ const galleryImages = [
   background-repeat: no-repeat;
   background-position: center;
   opacity: 0.05;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.footer-top .auto-container {
+  position: relative;
+  z-index: 1;
 }
 
 .footer-widget {

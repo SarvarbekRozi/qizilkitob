@@ -58,7 +58,7 @@ const { t } = useI18n()
   padding: 30px;
   border-radius: var(--border-radius-large);
   position: sticky;
-  top: 100px;
+  top: 200px;
 }
 
 .species-stats h4 {

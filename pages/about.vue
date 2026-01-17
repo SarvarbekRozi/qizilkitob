@@ -22,13 +22,13 @@
               <img src="/images/species/gallery-1.jpg" alt="About Red Book" />
             </div>
           </div>
-          <div class="col-lg-6 col-md-12">
+          <div class="col-lg-6 col-md-12 content-box-wrapper">
             <div class="content-box">
-              <div class="sec-title">
+              <div class="sec-title text-center"">
                 <h2>{{ t('home.about.title') }}</h2>
               </div>
-              <p>{{ t('home.about.description') }}</p>
-              <p>Qizil Kitob - bu yo'qolib ketish xavfi ostidagi noyob va kam uchraydigan hayvonlar, o'simliklar va zamburug'lar haqidagi ma'lumotlar to'plami. Bu kitob tabiatni muhofaza qilish choralarini rejalashtirish va amalga oshirish uchun asosiy vosita hisoblanadi.</p>
+              <p class="text-center">{{ t('home.about.description') }}</p>
+              <p class="text-center">Qizil Kitob - bu yo'qolib ketish xavfi ostidagi noyob va kam uchraydigan hayvonlar, o'simliklar va zamburug'lar haqidagi ma'lumotlar to'plami. Bu kitob tabiatni muhofaza qilish choralarini rejalashtirish va amalga oshirish uchun asosiy vosita hisoblanadi.</p>
 
               <h3>Bizning maqsadlarimiz:</h3>
               <ul class="list-style">
@@ -139,6 +139,7 @@ useHead({
   position: relative;
   z-index: 2;
   text-align: center;
+
   color: var(--white-color);
 }
 
@@ -189,11 +190,16 @@ useHead({
   width: 100%;
   border-radius: var(--border-radius-large);
 }
+.content-box-wrapper{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
+}
 .content-box h3 {
   margin: 30px 0 15px;
+  text-align: center;
 }
-
 .list-style {
   list-style: none;
   margin: 20px 0;

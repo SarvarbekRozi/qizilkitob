@@ -16,6 +16,12 @@ export default defineNuxtConfig({
         name: "O'zbek"
       },
       {
+        code: 'ru',
+        iso: 'ru-RU',
+        file: 'ru.json',
+        name: 'Русский'
+      },
+      {
         code: 'en',
         iso: 'en-US',
         file: 'en.json',

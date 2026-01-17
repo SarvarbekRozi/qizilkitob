@@ -7,7 +7,8 @@
       "dangerLevel": "endangered",
       "name": {
         "en": "Kaufmann's Tulip",
-        "uz": "Kaufman lolasi"
+        "uz": "Kaufman lolasi",
+        "ru": "Тюльпан Кауфмана"
       },
       "scientificName": "Tulipa kaufmanniana",
       "description": {
@@ -28,6 +29,15 @@
             "Tyan-Shan tog'larining mahalliy turi",
             "Bog'dorchilik uchun muhim"
           ]
+        },
+        "ru": {
+          "short": "Раннецветущий тюльпан с кремовыми и красными лепестками",
+          "full": "Тюльпан Кауфмана — один из самых ранних тюльпанов, цветущих весной. Родом из гор Центральной Азии, он отличается красивыми кремовыми лепестками с красными отметинами. Этот тюльпан широко использовался для выведения декоративных сортов.",
+          "bullets": [
+            "Один из самых ранних весенних цветов",
+            "Родом из гор Тянь-Шаня",
+            "Важен для садоводства"
+          ]
         }
       },
       "images": {
@@ -43,7 +53,8 @@
       "habitat": {
         "location": {
           "en": "Tian Shan Mountains, Uzbekistan",
-          "uz": "Tyan-Shan tog'lari, O'zbekiston"
+          "uz": "Tyan-Shan tog'lari, O'zbekiston",
+          "ru": "Горы Тянь-Шань, Узбекистан"
         },
         "coordinates": {
           "lat": 41.5,
@@ -55,7 +66,8 @@
         "population": "Kamaymoqda",
         "threats": {
           "en": ["Over-collection", "Habitat degradation", "Climate change"],
-          "uz": ["Haddan tashqari yig'ish", "Yashash joyining buzilishi", "Iqlim o'zgarishi"]
+          "uz": ["Haddan tashqari yig'ish", "Yashash joyining buzilishi", "Iqlim o'zgarishi"],
+          "ru": ["Чрезмерный сбор", "Деградация среды обитания", "Изменение климата"]
         }
       },
       "relatedSpecies": ["greig-lolasi", "jizzax-aralashi"]
@@ -67,7 +79,8 @@
       "dangerLevel": "vulnerable",
       "name": {
         "en": "Greig's Tulip",
-        "uz": "Greig lolasi"
+        "uz": "Greig lolasi",
+        "ru": "Тюльпан Грейга"
       },
       "scientificName": "Tulipa greigii",
       "description": {
@@ -88,6 +101,15 @@
             "Yirik, jonli gullari",
             "Ko'plab bog' lolalarining ota-onasi"
           ]
+        },
+        "ru": {
+          "short": "Великолепный тюльпан с пятнистыми листьями и ярко-красными цветами",
+          "full": "Тюльпан Грейга известен своим эффектным видом с пятнистыми фиолетово-полосатыми листьями и крупными ярко-красными или оранжевыми цветами. Растёт на скалистых горных склонах и широко используется в программах селекции тюльпанов по всему миру.",
+          "bullets": [
+            "Характерная пятнистая листва",
+            "Крупные яркие цветы",
+            "Родитель многих садовых тюльпанов"
+          ]
         }
       },
       "images": {
@@ -103,7 +125,8 @@
       "habitat": {
         "location": {
           "en": "Mountain slopes of Central Asia",
-          "uz": "Markaziy Osiyo tog' yon bag'irlari"
+          "uz": "Markaziy Osiyo tog' yon bag'irlari",
+          "ru": "Горные склоны Центральной Азии"
         },
         "coordinates": {
           "lat": 40.8,
@@ -115,7 +138,8 @@
         "population": "Kamaymoqda",
         "threats": {
           "en": ["Collection for trade", "Grazing pressure", "Habitat loss"],
-          "uz": ["Savdo uchun yig'ish", "Yaylov bosimi", "Yashash joyining yo'qolishi"]
+          "uz": ["Savdo uchun yig'ish", "Yaylov bosimi", "Yashash joyining yo'qolishi"],
+          "ru": ["Сбор для торговли", "Давление выпаса", "Потеря среды обитания"]
         }
       },
       "relatedSpecies": ["kaufman-lolasi", "jizzax-aralashi"]
@@ -127,7 +151,8 @@
       "dangerLevel": "critically_endangered",
       "name": {
         "en": "Jizzakh Onion",
-        "uz": "Jizzax aralashi"
+        "uz": "Jizzax aralashi",
+        "ru": "Джизакский лук"
       },
       "scientificName": "Allium jizzaxense",
       "description": {
@@ -148,6 +173,15 @@
             "Juda cheklangan tarqalish",
             "Chiroyli bezak imkoniyati"
           ]
+        },
+        "ru": {
+          "short": "Редкий эндемичный вид лука из Узбекистана",
+          "full": "Джизакский лук — вид, находящийся на грани исчезновения, эндемичный для Джизакской области Узбекистана. Растёт в специфических скалистых местообитаниях и имеет красивые фиолетовые цветы. Этот вид имеет большое значение для сохранения из-за крайне ограниченного ареала.",
+          "bullets": [
+            "Эндемик Джизакской области",
+            "Крайне ограниченное распространение",
+            "Красивый декоративный потенциал"
+          ]
         }
       },
       "images": {
@@ -163,7 +197,8 @@
       "habitat": {
         "location": {
           "en": "Jizzakh region mountains",
-          "uz": "Jizzax viloyati tog'lari"
+          "uz": "Jizzax viloyati tog'lari",
+          "ru": "Горы Джизакской области"
         },
         "coordinates": {
           "lat": 40.1,
@@ -175,7 +210,8 @@
         "population": "Juda kam",
         "threats": {
           "en": ["Very limited range", "Habitat disturbance", "Collection"],
-          "uz": ["Juda cheklangan hudud", "Yashash joyining buzilishi", "Yig'ilishi"]
+          "uz": ["Juda cheklangan hudud", "Yashash joyining buzilishi", "Yig'ilishi"],
+          "ru": ["Очень ограниченный ареал", "Нарушение среды обитания", "Сбор"]
         }
       },
       "relatedSpecies": ["kaufman-lolasi"]
@@ -187,7 +223,8 @@
       "dangerLevel": "vulnerable",
       "name": {
         "en": "Zarafshan Juniper",
-        "uz": "Zarafshon archasi"
+        "uz": "Zarafshon archasi",
+        "ru": "Зеравшанский можжевельник"
       },
       "scientificName": "Juniperus seravschanica",
       "description": {
@@ -208,6 +245,15 @@
             "Yuzlab yillar yashaydi",
             "Suv havzalarini himoya qilish uchun muhim"
           ]
+        },
+        "ru": {
+          "short": "Древнее можжевеловое дерево, образующее горные леса",
+          "full": "Зеравшанский можжевельник — медленнорастущее вечнозелёное дерево, образующее уникальные горные леса в Центральной Азии. Эти древние деревья могут жить сотни лет и играют важную роль в предотвращении эрозии почвы и сохранении водных ресурсов.",
+          "bullets": [
+            "Образует древние горные леса",
+            "Живёт сотни лет",
+            "Критически важен для защиты водосборов"
+          ]
         }
       },
       "images": {
@@ -223,7 +269,8 @@
       "habitat": {
         "location": {
           "en": "Zarafshan and Hissar mountain ranges",
-          "uz": "Zarafshon va Hisor tog' tizmalari"
+          "uz": "Zarafshon va Hisor tog' tizmalari",
+          "ru": "Зеравшанский и Гиссарский хребты"
         },
         "coordinates": {
           "lat": 39.5,
@@ -235,7 +282,8 @@
         "population": "Kamaymoqda",
         "threats": {
           "en": ["Logging", "Forest fires", "Climate change"],
-          "uz": ["O'rmon kesish", "O'rmon yong'inlari", "Iqlim o'zgarishi"]
+          "uz": ["O'rmon kesish", "O'rmon yong'inlari", "Iqlim o'zgarishi"],
+          "ru": ["Вырубка", "Лесные пожары", "Изменение климата"]
         }
       },
       "relatedSpecies": []

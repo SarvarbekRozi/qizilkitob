@@ -18,15 +18,22 @@
     <!-- Species Details Section -->
     <section class="species-details sec-pad">
       <div class="auto-container">
-        <div class="row">
-          <!-- Main Content -->
+        <!-- Image and Stats Row - Centered -->
+        <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
-            <div class="detail-content">
-              <!-- Main Image -->
-              <figure class="main-image">
-                <img :src="species.images.main" :alt="species.name[locale]" />
-              </figure>
+            <figure class="main-image">
+              <img :src="species.images.main" :alt="species.name[locale]" />
+            </figure>
+          </div>
+          <div class="col-lg-4 col-md-12">
+            <SpeciesStats :stats="species.stats" />
+          </div>
+        </div>
 
+        <!-- Description Row -->
+        <div class="row">
+          <div class="col-12">
+            <div class="detail-content">
               <!-- Badges -->
               <div class="badges-row">
                 <SpeciesCategoryBadge :category="species.category" />
@@ -66,11 +73,6 @@
                 </div>
               </div>
             </div>
-          </div>
-
-          <!-- Sidebar -->
-          <div class="col-lg-4 col-md-12">
-            <SpeciesStats :stats="species.stats" />
           </div>
         </div>
       </div>

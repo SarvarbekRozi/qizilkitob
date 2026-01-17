@@ -20,18 +20,18 @@
           <div class="hero-slide" :style="{ backgroundImage: `url(${slide.image})` }">
             <div class="hero-overlay"></div>
             <div class="auto-container">
-<!--              <div class="hero-content">-->
-<!--                <h1 class="hero-title">{{ slide.title[locale] }}</h1>-->
-<!--                <p class="hero-subtitle">{{ slide.subtitle[locale] }}</p>-->
-<!--                <div class="hero-buttons">-->
-<!--                  <NuxtLink :to="localePath('/species')" class="theme-btn">-->
-<!--                    {{ t('home.hero.cta') }}-->
-<!--                  </NuxtLink>-->
-<!--                  <NuxtLink :to="localePath('/about')" class="theme-btn btn-outline">-->
-<!--                    {{ t('nav.about') }}-->
-<!--                  </NuxtLink>-->
-<!--                </div>-->
-<!--              </div>-->
+              <div class="hero-content">
+                <h1 class="hero-title">{{ slide.title[locale] }}</h1>
+                <p class="hero-subtitle">{{ slide.subtitle[locale] }}</p>
+                <div class="hero-buttons">
+                  <NuxtLink :to="localePath('/species')" class="theme-btn">
+                    {{ t('home.hero.cta') }}
+                  </NuxtLink>
+                  <NuxtLink :to="localePath('/about')" class="theme-btn btn-outline">
+                    {{ t('nav.about') }}
+                  </NuxtLink>
+                </div>
+              </div>
             </div>
           </div>
         </SwiperSlide>
@@ -352,7 +352,6 @@ const formatDate = (date: string) => {
   background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=600&fit=crop');
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
   position: relative;
   padding: 80px 0;
 }

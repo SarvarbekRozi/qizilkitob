@@ -7,7 +7,8 @@
       "dangerLevel": "vulnerable",
       "name": {
         "en": "Snow Leopard",
-        "uz": "Qor qoploni"
+        "uz": "Qor qoploni",
+        "ru": "Снежный барс"
       },
       "scientificName": "Panthera uncia",
       "description": {
@@ -28,6 +29,15 @@
             "Ajoyib tog'ga chiquvchi va sakrash qobiliyatiga ega",
             "O'tkir ko'zi bor yolg'iz ovchi"
           ]
+        },
+        "ru": {
+          "short": "Редкий вид крупной кошки, обитающий в высокогорье",
+          "full": "Снежный барс — крупная кошка, обитающая в горных хребтах Центральной и Южной Азии. Известный своим красивым густым мехом и мощным телосложением, он прекрасно приспособлен к жизни в холодных высокогорных условиях. Эти неуловимые кошки отлично лазают и могут прыгать на большие расстояния.",
+          "bullets": [
+            "Обитает в горах Центральной Азии",
+            "Отличные альпинисты и прыгуны",
+            "Одиночные охотники с острым зрением"
+          ]
         }
       },
       "images": {
@@ -46,7 +56,8 @@
       "habitat": {
         "location": {
           "en": "Central Asian mountains",
-          "uz": "Markaziy Osiyo tog'lari"
+          "uz": "Markaziy Osiyo tog'lari",
+          "ru": "Горы Центральной Азии"
         },
         "coordinates": {
           "lat": 41.311,
@@ -58,7 +69,8 @@
         "population": "~4000-6500",
         "threats": {
           "en": ["Poaching for fur", "Habitat loss", "Climate change"],
-          "uz": ["Mo'yna uchun brakonierlik", "Yashash joyining yo'qolishi", "Iqlim o'zgarishi"]
+          "uz": ["Mo'yna uchun brakonierlik", "Yashash joyining yo'qolishi", "Iqlim o'zgarishi"],
+          "ru": ["Браконьерство ради меха", "Потеря среды обитания", "Изменение климата"]
         }
       },
       "relatedSpecies": ["turkiston-silovsi", "qongir-ayiq"]
@@ -70,7 +82,8 @@
       "dangerLevel": "endangered",
       "name": {
         "en": "Turkestan Lynx",
-        "uz": "Turkiston silovsi"
+        "uz": "Turkiston silovsi",
+        "ru": "Туркестанская рысь"
       },
       "scientificName": "Lynx lynx isabellinus",
       "description": {
@@ -91,6 +104,15 @@
             "Ajoyib eshitish va tungi ko'rish qobiliyati",
             "Ekotizim muvozanati uchun muhim"
           ]
+        },
+        "ru": {
+          "short": "Дикая кошка среднего размера с характерными кисточками на ушах",
+          "full": "Туркестанская рысь — подвид евразийской рыси, обитающий в Центральной Азии. У неё красивая рыжевато-коричневая шерсть с тёмными пятнами и характерные чёрные кисточки на ушах. Эти кошки — отличные охотники и играют важную роль в контроле популяции грызунов.",
+          "bullets": [
+            "Кошка среднего размера с характерной внешностью",
+            "Отличный слух и ночное зрение",
+            "Важна для баланса экосистемы"
+          ]
         }
       },
       "images": {
@@ -106,7 +128,8 @@
       "habitat": {
         "location": {
           "en": "Mountain forests and rocky areas",
-          "uz": "Tog' o'rmonlari va toshloq hududlar"
+          "uz": "Tog' o'rmonlari va toshloq hududlar",
+          "ru": "Горные леса и скалистые районы"
         },
         "coordinates": {
           "lat": 40.5,
@@ -118,7 +141,8 @@
         "population": "~2000-3000",
         "threats": {
           "en": ["Habitat fragmentation", "Hunting", "Prey depletion"],
-          "uz": ["Yashash joyining parchalanishi", "Ov", "O'lja kamayishi"]
+          "uz": ["Yashash joyining parchalanishi", "Ov", "O'lja kamayishi"],
+          "ru": ["Фрагментация среды обитания", "Охота", "Истощение добычи"]
         }
       },
       "relatedSpecies": ["qor-qoploni", "qongir-ayiq"]
@@ -130,7 +154,8 @@
       "dangerLevel": "vulnerable",
       "name": {
         "en": "Brown Bear",
-        "uz": "Qo'ng'ir ayiq"
+        "uz": "Qo'ng'ir ayiq",
+        "ru": "Бурый медведь"
       },
       "scientificName": "Ursus arctos",
       "description": {
@@ -151,6 +176,15 @@
             "Mavsumga qarab o'zgaruvchan hamma narsaxo'r ovqatlanish",
             "Muhim urug' tarqatuvchi"
           ]
+        },
+        "ru": {
+          "short": "Крупное всеядное млекопитающее с густым мехом",
+          "full": "Бурый медведь — один из крупнейших наземных хищников. В Центральной Азии эти медведи обитают в горных лесах и альпийских лугах. Они всеядны, питаются как растениями, так и животными, и играют важную роль в распространении семян и здоровье экосистемы.",
+          "bullets": [
+            "Крупнейший наземный хищник в регионе",
+            "Всеядная диета с сезонными вариациями",
+            "Важный распространитель семян"
+          ]
         }
       },
       "images": {
@@ -166,7 +200,8 @@
       "habitat": {
         "location": {
           "en": "Mountain forests and meadows",
-          "uz": "Tog' o'rmonlari va yaylovlar"
+          "uz": "Tog' o'rmonlari va yaylovlar",
+          "ru": "Горные леса и луга"
         },
         "coordinates": {
           "lat": 41.0,
@@ -178,7 +213,8 @@
         "population": "~500-800",
         "threats": {
           "en": ["Habitat loss", "Human conflict", "Poaching"],
-          "uz": ["Yashash joyining yo'qolishi", "Inson bilan to'qnashuv", "Brakonierlik"]
+          "uz": ["Yashash joyining yo'qolishi", "Inson bilan to'qnashuv", "Brakonierlik"],
+          "ru": ["Потеря среды обитания", "Конфликт с человеком", "Браконьерство"]
         }
       },
       "relatedSpecies": ["qor-qoploni", "turkiston-silovsi"]
@@ -190,7 +226,8 @@
       "dangerLevel": "near_threatened",
       "name": {
         "en": "Striped Hyena",
-        "uz": "Sirtlon"
+        "uz": "Sirtlon",
+        "ru": "Полосатая гиена"
       },
       "scientificName": "Hyaena hyaena",
       "description": {
@@ -204,12 +241,21 @@
           ]
         },
         "uz": {
-          "short": "O'ziga xos yo'llar bilan tungi murda ye vchi",
-          "full": "Sirtlon quruq hududlarda uchraysigan tungi yirtqichdir. Yomon obro'siga qaramay, ular murda yevuvchilar sifatida ekologik muhim rol o'ynaб, o'likxo'rlarni tozalash va kasallik tarqalishini nazorat qilishda yordam beradi.",
+          "short": "O'ziga xos yo'llar bilan tungi murda yevchi",
+          "full": "Sirtlon quruq hududlarda uchraydigan tungi yirtqichdir. Yomon obro'siga qaramay, ular murda yevuvchilar sifatida ekologik muhim rol o'ynab, o'likxo'rlarni tozalash va kasallik tarqalishini nazorat qilishda yordam beradi.",
           "bullets": [
             "Asosan tungi va yolg'iz",
             "Ekotizimdagi muhim murda yevuvchi",
             "Kuchli jag' va hazm tizimi"
+          ]
+        },
+        "ru": {
+          "short": "Ночной падальщик с характерными полосами",
+          "full": "Полосатая гиена — ночное хищное животное, обитающее в засушливых регионах. Несмотря на репутацию, они играют важную экологическую роль как падальщики, помогая очищать падаль и контролировать распространение болезней.",
+          "bullets": [
+            "Преимущественно ночное и одиночное животное",
+            "Важный падальщик в экосистеме",
+            "Сильные челюсти и пищеварительная система"
           ]
         }
       },
@@ -226,7 +272,8 @@
       "habitat": {
         "location": {
           "en": "Arid and semi-arid regions",
-          "uz": "Qurg'oqchil va yarim qurg'oqchil hududlar"
+          "uz": "Qurg'oqchil va yarim qurg'oqchil hududlar",
+          "ru": "Засушливые и полузасушливые районы"
         },
         "coordinates": {
           "lat": 39.5,
@@ -238,7 +285,8 @@
         "population": "~1000-1500",
         "threats": {
           "en": ["Persecution", "Habitat loss", "Poisoning"],
-          "uz": ["Ta'qib", "Yashash joyining yo'qolishi", "Zaharlanish"]
+          "uz": ["Ta'qib", "Yashash joyining yo'qolishi", "Zaharlanish"],
+          "ru": ["Преследование", "Потеря среды обитания", "Отравление"]
         }
       },
       "relatedSpecies": ["turkiston-silovsi"]

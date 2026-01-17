@@ -1,4 +1,6 @@
 <template>
+  <!-- Placeholder to prevent content jump when header becomes fixed -->
+  <div v-if="isSticky" class="header-placeholder"></div>
   <header class="main-header header-style-one" :class="{ 'sticky-header': isSticky }">
     <!-- Header Top -->
     <div class="header-top">
@@ -159,6 +161,9 @@ const searchQuery = ref('')
 const searchInput = ref<HTMLInputElement | null>(null)
 
 const isActive = (path: string) => {
+  if (path === '/') {
+    return route.path === '/' || route.path === '/uz' || route.path === '/en'
+  }
   return route.path.includes(path)
 }
 
@@ -214,6 +219,11 @@ onMounted(() => {
 </script>
 
 <style scoped>
+/* Header Placeholder - prevents content jump when header becomes fixed */
+.header-placeholder {
+  height: 100px; /* Approximate header-lower height */
+}
+
 .main-header {
   position: relative;
   background-color: var(--white-color);
@@ -227,7 +237,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.3s ease;
+  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sticky-header .header-top {

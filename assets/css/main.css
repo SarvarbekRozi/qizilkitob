@@ -5,12 +5,17 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   font-family: var(--font-family);
   font-size: 16px;
   line-height: 1.7;
   color: var(--text-color);
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 h1, h2, h3, h4, h5, h6 {
