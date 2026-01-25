@@ -1,9 +1,6 @@
 <template>
-  <!-- Placeholder to prevent content jump when header becomes fixed -->
-  <div v-if="isSticky" class="header-placeholder"></div>
-  <header class="main-header header-style-one" :class="{ 'sticky-header': isSticky }">
-    <!-- Header Top -->
-    <div class="header-top">
+  <!-- Header Top - scrolls with page -->
+  <div ref="headerTopRef" class="header-top">
       <div class="auto-container">
         <div class="top-inner">
           <div class="top-left">
@@ -22,9 +19,13 @@
           </div>
         </div>
       </div>
-    </div>
+  </div>
 
-    <!-- Header Lower -->
+  <!-- Placeholder for fixed header -->
+  <div class="header-placeholder"></div>
+
+  <!-- Fixed Header with navigation -->
+  <header class="main-header" :style="{ top: headerTopPosition + 'px' }">
     <div class="header-lower">
       <div class="auto-container">
         <div class="outer-box">
@@ -155,10 +156,12 @@ const router = useRouter()
 const localePath = useLocalePath()
 
 const isMobileMenuOpen = ref(false)
-const isSticky = ref(false)
 const isSearchOpen = ref(false)
 const searchQuery = ref('')
 const searchInput = ref<HTMLInputElement | null>(null)
+const headerTopRef = ref<HTMLElement | null>(null)
+const headerTopHeight = ref(0)
+const scrollY = ref(0)
 
 const isActive = (path: string) => {
   if (path === '/') {
@@ -203,66 +206,62 @@ const handleKeydown = (e: KeyboardEvent) => {
   }
 }
 
-// Sticky header on scroll
+// Calculate header top position based on scroll
+const headerTopPosition = computed(() => {
+  const offset = headerTopHeight.value - scrollY.value
+  return Math.max(0, offset)
+})
+
+// Initialize and handle scroll
 onMounted(() => {
-  const handleScroll = () => {
-    isSticky.value = window.scrollY > 100
+  // Get header-top height
+  if (headerTopRef.value) {
+    headerTopHeight.value = headerTopRef.value.offsetHeight
   }
-  window.addEventListener('scroll', handleScroll)
+
+  const handleScroll = () => {
+    scrollY.value = window.scrollY
+  }
+
+  const handleResize = () => {
+    if (headerTopRef.value) {
+      headerTopHeight.value = headerTopRef.value.offsetHeight
+    }
+  }
+
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  window.addEventListener('resize', handleResize)
   window.addEventListener('keydown', handleKeydown)
 
   onUnmounted(() => {
     window.removeEventListener('scroll', handleScroll)
+    window.removeEventListener('resize', handleResize)
     window.removeEventListener('keydown', handleKeydown)
   })
 })
 </script>
 
 <style scoped>
-/* Header Placeholder - prevents content jump when header becomes fixed */
-.header-placeholder {
-  height: 100px; /* Approximate header-lower height */
-}
-
-.main-header {
-  position: relative;
-  background-color: var(--white-color);
-  z-index: 999;
-  transition: all 0.3s ease;
-}
-
-.sticky-header {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-  animation: slideDown 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-}
-
-.sticky-header .header-top {
-  display: none;
-}
-
-.sticky-header .header-lower {
-  padding: 12px 0;
-}
-
-@keyframes slideDown {
-  from {
-    transform: translateY(-100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-/* Header Top */
+/* Header Top - scrolls with page */
 .header-top {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
   padding: 12px 0;
   color: var(--white-color);
-  transition: all 0.3s ease;
+}
+
+/* Header Placeholder - prevents content jump when header-lower is fixed */
+.header-placeholder {
+  height: 80px;
+}
+
+/* Main Header - fixed navigation */
+.main-header {
+  position: fixed;
+  left: 0;
+  right: 0;
+  background-color: var(--white-color);
+  z-index: 999;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
 }
 
 .top-inner {
@@ -340,7 +339,7 @@ onMounted(() => {
 
 /* Header Lower */
 .header-lower {
-  padding: 20px 0;
+  padding: 12px 0;
   background: var(--white-color);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
@@ -758,6 +757,10 @@ onMounted(() => {
 }
 
 @media (max-width: 768px) {
+  .header-placeholder {
+    height: 90px;
+  }
+
   .header-top {
     padding: 8px 0;
   }
@@ -819,6 +822,10 @@ onMounted(() => {
 }
 
 @media (max-width: 480px) {
+  .header-placeholder {
+    height: 80px;
+  }
+
   .top-left .info {
     display: none;
   }
