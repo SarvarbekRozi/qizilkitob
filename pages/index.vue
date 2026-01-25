@@ -42,7 +42,7 @@
     <LogoMarquee />
 
     <!-- About Section -->
-    <section class="about-section sec-pad">
+    <section class="about-section ">
       <div class="pattern-bg"></div>
       <div class="auto-container">
         <div class="row align-items-center">
@@ -88,7 +88,7 @@
                   <div class="text">Ilmiy tadqiqotlarni qo'llab-quvvatlash</div>
                 </li>
               </ul>
-              <NuxtLink :to="localePath('/about')" class="theme-btn" style="margin-top: 30px;">
+              <NuxtLink :to="localePath('/about')" class="theme-btn" >
                 {{ t('common.readMore') }}
               </NuxtLink>
             </div>
@@ -458,20 +458,13 @@ const formatDate = (date: string) => {
 
 /* About Section */
 .about-section {
+  padding:50px;
   position: relative;
   background: var(--white-color);
   overflow: hidden;
 }
 
-.about-section .pattern-bg {
-  position: absolute;
-  top: 0;
-  right: 0;
-  width: 50%;
-  height: 100%;
-  background: linear-gradient(135deg, rgba(160, 51, 45, 0.03), rgba(212, 175, 55, 0.03));
-  z-index: 0;
-}
+
 
 .about-section .auto-container {
   position: relative;
@@ -509,7 +502,7 @@ const formatDate = (date: string) => {
 
 .about-section .image-box img {
   width: 100%;
-  height: 500px;
+  height: 780px;
   object-fit: cover;
   transition: transform 0.5s ease;
 }

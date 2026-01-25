@@ -20,26 +20,26 @@
               </figure>
               <p class="footer-text">{{ t('footer.about') }}</p>
               <ul class="footer-social clearfix">
+<!--                <li>-->
+<!--                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">-->
+<!--                    <i class="fab fa-facebook-f"></i>-->
+<!--                  </a>-->
+<!--                </li>-->
                 <li>
-                  <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook">
-                    <i class="fab fa-facebook-f"></i>
-                  </a>
-                </li>
-                <li>
-                  <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" title="Instagram">
+                  <a href="https://www.instagram.com/qizilkitob.uzb" target="_blank" rel="noopener noreferrer" title="Instagram">
                     <i class="fab fa-instagram"></i>
                   </a>
                 </li>
                 <li>
-                  <a href="https://telegram.org" target="_blank" rel="noopener noreferrer" title="Telegram">
+                  <a href="https://t.me/qizilkitobuz" target="_blank" rel="noopener noreferrer" title="Telegram">
                     <i class="fab fa-telegram"></i>
                   </a>
                 </li>
-                <li>
-                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube">
-                    <i class="fab fa-youtube"></i>
-                  </a>
-                </li>
+<!--                <li>-->
+<!--                  <a href="https://youtube.com" target="_blank" rel="noopener noreferrer" title="YouTube">-->
+<!--                    <i class="fab fa-youtube"></i>-->
+<!--                  </a>-->
+<!--                </li>-->
               </ul>
             </div>
           </div>

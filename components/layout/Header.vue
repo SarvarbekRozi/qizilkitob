@@ -14,9 +14,9 @@
           </div>
           <div class="top-right">
             <ul class="social-links clearfix">
-              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
-              <li><a href="#"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="#"><i class="fab fa-telegram"></i></a></li>
+<!--              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
+              <li><a href="https://www.instagram.com/qizilkitob.uzb" target="_blank"><i class="fab fa-instagram"></i></a></li>
+              <li><a href="https://t.me/qizilkitobuz" target="_blank"><i class="fab fa-telegram"></i></a></li>
             </ul>
             <LayoutLanguageSwitcher />
           </div>
