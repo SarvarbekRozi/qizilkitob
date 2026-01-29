@@ -5,11 +5,17 @@ export interface Species {
   dangerLevel: 'critically_endangered' | 'endangered' | 'vulnerable' | 'near_threatened'
   name: {
     en: string
+    ru: string
     uz: string
   }
   scientificName: string
   description: {
     en: {
+      short: string
+      full: string
+      bullets: string[]
+    }
+    ru: {
       short: string
       full: string
       bullets: string[]
@@ -21,13 +27,13 @@ export interface Species {
     }
   }
   images: {
-    main: string
+    main: string | null
     gallery?: string[]
   }
-  stats: {
+  stats?: {
     mass?: string
     speed?: string
-    lifespan: string
+    lifespan?: string
     diet?: string
     height?: string
     bloomPeriod?: string
@@ -36,6 +42,7 @@ export interface Species {
   habitat: {
     location: {
       en: string
+      ru: string
       uz: string
     }
     coordinates: {
@@ -48,10 +55,13 @@ export interface Species {
     population: string
     threats: {
       en: string[]
+      ru: string[]
       uz: string[]
     }
   }
   relatedSpecies: string[]
+  viewsCount?: number
+  featured?: boolean
 }
 
 export interface SpeciesData {

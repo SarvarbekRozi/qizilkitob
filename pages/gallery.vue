@@ -18,15 +18,15 @@
       <div class="auto-container">
         <div class="row">
           <div
-            v-for="species in allSpecies"
-            :key="species.id"
+            v-for="item in galleryItems"
+            :key="item.url"
             class="col-lg-4 col-md-6 col-sm-12"
           >
             <div class="gallery-item">
-              <img :src="species.images.main" :alt="species.name[locale]" />
+              <img :src="item.url" :alt="item.species?.name || ''" />
               <div class="overlay">
-                <h3>{{ species.name[locale] }}</h3>
-                <NuxtLink :to="localePath(`/species/${species.slug}`)" class="view-btn">
+                <h3>{{ item.species?.name }}</h3>
+                <NuxtLink :to="localePath(`/species/${item.species?.slug}`)" class="view-btn">
                   {{ t('common.viewDetails') }}
                 </NuxtLink>
               </div>
@@ -39,9 +39,16 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localePath = useLocalePath()
-const { allSpecies } = useSpeciesData()
+const { getSpeciesGallery } = useApi()
+
+const { data: galleryResponse } = await useAsyncData(
+  'gallery',
+  () => getSpeciesGallery({ per_page: 30 })
+)
+
+const galleryItems = computed(() => galleryResponse.value?.data || [])
 
 useHead({
   title: t('nav.gallery')

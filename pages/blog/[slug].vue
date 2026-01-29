@@ -22,7 +22,7 @@
             <article class="blog-post">
               <!-- Featured Image -->
               <figure class="featured-image">
-                <img :src="post.image" :alt="post.title[locale]" />
+                <img :src="post.image || ''" :alt="post.title[locale]" />
               </figure>
 
               <!-- Post Meta -->
@@ -75,8 +75,8 @@
                   <div v-for="comment in comments" :key="comment.id" class="comment-item">
                     <div class="comment-content">
                       <div class="comment-header">
-                        <span class="comment-author">Anonim</span>
-                        <span class="comment-date">{{ formatDate(comment.date) }}</span>
+                        <span class="comment-author">{{ comment.author }}</span>
+                        <span class="comment-date">{{ comment.date }}</span>
                       </div>
                       <p>{{ comment.message }}</p>
                     </div>
@@ -115,19 +115,26 @@
 </template>
 
 <script setup lang="ts">
+import type { BlogComment, BlogPost } from '~/types/blog'
+
 const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
+const { getBlogPostBySlug, getPostComments, addPostComment } = useApi()
 
-const { getPostBySlug } = useBlog()
+const slug = computed(() => route.params.slug as string)
 
-const post = computed(() => {
-  return getPostBySlug(route.params.slug as string)
-})
+const { data: postResponse } = await useAsyncData(
+  () => `blog-post-${slug.value}`,
+  () => getBlogPostBySlug(slug.value)
+)
+
+const post = computed<BlogPost | null>(() => (postResponse.value?.data as BlogPost) || null)
 
 const contentParagraphs = computed(() => {
-  if (!post.value) return []
-  return post.value.content[locale.value].split('\n\n')
+  if (!post.value?.content) return []
+  const content = post.value.content[locale.value] || ''
+  return content.split('\n\n').filter(Boolean)
 })
 
 const formatDate = (date: string) => {
@@ -135,75 +142,40 @@ const formatDate = (date: string) => {
   const day = d.getDate()
   const month = d.getMonth() + 1
   const year = d.getFullYear()
-
-  // Format: DD.MM.YYYY
   return `${day.toString().padStart(2, '0')}.${month.toString().padStart(2, '0')}.${year}`
 }
 
-// Comments state
-const comments = ref<Array<{
-  id: number
-  message: string
-  date: string
-}>>([])
-
-// Comment form state
-const commentForm = ref({
-  message: ''
-})
-
+const comments = ref<BlogComment[]>([])
+const commentForm = ref({ message: '' })
 const isSubmitting = ref(false)
 const submitMessage = ref<{ text: string; type: 'success' | 'error' } | null>(null)
 
-// Load comments from localStorage
-onMounted(() => {
-  const postSlug = route.params.slug as string
-  const savedComments = localStorage.getItem(`comments_${postSlug}`)
-  if (savedComments) {
-    comments.value = JSON.parse(savedComments)
-  }
-})
+const loadComments = async () => {
+  if (!post.value?.id) return
+  const res = await getPostComments(post.value.id)
+  comments.value = (res.data as BlogComment[]) || []
+}
 
-// Submit comment
+watch(post, () => {
+  loadComments()
+}, { immediate: true })
+
 const submitComment = async () => {
+  if (!post.value?.id) return
+
   isSubmitting.value = true
   submitMessage.value = null
 
-  // Simulate API delay
-  await new Promise(resolve => setTimeout(resolve, 500))
-
   try {
-    const newComment = {
-      id: Date.now(),
-      message: commentForm.value.message,
-      date: new Date().toISOString()
-    }
-
-    comments.value.unshift(newComment)
-
-    // Save to localStorage
-    const postSlug = route.params.slug as string
-    localStorage.setItem(`comments_${postSlug}`, JSON.stringify(comments.value))
-
-    // Reset form
-    commentForm.value = {
-      message: ''
-    }
-
-    submitMessage.value = {
-      text: 'Yuborildi',
-      type: 'success'
-    }
-
-    // Clear success message after 3 seconds
+    await addPostComment(post.value.id, { message: commentForm.value.message })
+    commentForm.value.message = ''
+    await loadComments()
+    submitMessage.value = { text: 'Yuborildi', type: 'success' }
     setTimeout(() => {
       submitMessage.value = null
     }, 3000)
   } catch (error) {
-    submitMessage.value = {
-      text: 'Xatolik yuz berdi',
-      type: 'error'
-    }
+    submitMessage.value = { text: 'Xatolik yuz berdi', type: 'error' }
   } finally {
     isSubmitting.value = false
   }

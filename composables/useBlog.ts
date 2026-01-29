@@ -1,29 +1,32 @@
-import type { BlogPost } from '~/types/blog'
-import blogData from '~/data/blog.json'
+﻿import type { BlogPost } from '~/types/blog'
 
 export const useBlog = () => {
-  const { locale } = useI18n()
+  const { getBlogPosts } = useApi()
 
-  const allPosts = computed<BlogPost[]>(() => {
-    return blogData.posts as BlogPost[]
-  })
+  const { data, pending, error, refresh } = useAsyncData(
+    'blog-all',
+    () => getBlogPosts({ per_page: 12, sort_by: 'publish_date', sort_dir: 'desc' })
+  )
+
+  const allPosts = computed<BlogPost[]>(() => (data.value?.data as BlogPost[]) || [])
 
   const getPostBySlug = (slug: string): BlogPost | undefined => {
     return allPosts.value.find(p => p.slug === slug)
   }
 
-  const getPostsByCategory = (category: string): BlogPost[] => {
-    return allPosts.value.filter(p => p.category === category)
+  const getPostsByCategory = (categorySlug: string): BlogPost[] => {
+    return allPosts.value.filter(p => p.category?.slug === categorySlug)
   }
 
   const getLatestPosts = (limit: number = 3): BlogPost[] => {
-    return allPosts.value
-      .sort((a, b) => new Date(b.publishDate).getTime() - new Date(a.publishDate).getTime())
-      .slice(0, limit)
+    return allPosts.value.slice(0, limit)
   }
 
   return {
     allPosts,
+    pending,
+    error,
+    refresh,
     getPostBySlug,
     getPostsByCategory,
     getLatestPosts

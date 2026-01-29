@@ -21,20 +21,30 @@
           <p>Mamlakatimizning noyob tabiiy resurslari va ularni muhofaza qilish</p>
         </div>
 
-        <div class="row">
+        <div v-if="pending" class="row">
+          <div class="col-lg-12">
+            <p class="loading-text">Yuklanmoqda...</p>
+          </div>
+        </div>
+        <div v-else-if="error" class="row">
+          <div class="col-lg-12">
+            <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
+          </div>
+        </div>
+        <div v-else class="row">
           <!-- Resource Card -->
-          <div class="col-lg-3 col-md-6 col-sm-12" v-for="resource in filteredResources" :key="resource.id">
+          <div class="col-lg-3 col-md-6 col-sm-12" v-for="resource in resources" :key="resource.id">
             <div class="resource-card">
               <div class="resource-image">
-                <img :src="resource.image" :alt="resource.title" />
+                <img :src="resource.image || ''" :alt="resource.title[locale]" />
               </div>
               <div class="resource-content">
                 <h3>
                   <NuxtLink :to="localePath(`/natural-resources/${resource.slug}`)">
-                    {{ resource.title }}
+                    {{ resource.title[locale] }}
                   </NuxtLink>
                 </h3>
-                <p>{{ resource.excerpt }}</p>
+                <p>{{ resource.excerpt[locale] }}</p>
                 <NuxtLink :to="localePath(`/natural-resources/${resource.slug}`)" class="read-more">
                   Batafsil <i class="fas fa-arrow-right"></i>
                 </NuxtLink>
@@ -42,33 +52,85 @@
             </div>
           </div>
         </div>
+
+        <!-- Pagination -->
+        <div v-if="pagination && pagination.last_page > 1" class="pagination-wrap">
+          <NuxtLink
+            v-if="pagination.current_page > 1"
+            :to="pageLink(pagination.current_page - 1)"
+            class="page-btn"
+          >
+            ‹
+          </NuxtLink>
+          <NuxtLink
+            v-for="p in pages"
+            :key="p"
+            :to="pageLink(p)"
+            class="page-btn"
+            :class="{ active: p === pagination.current_page }"
+          >
+            {{ p }}
+          </NuxtLink>
+          <NuxtLink
+            v-if="pagination.current_page < pagination.last_page"
+            :to="pageLink(pagination.current_page + 1)"
+            class="page-btn"
+          >
+            ›
+          </NuxtLink>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { NaturalResource } from '~/types/natural-resource'
+
+const { locale } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-const { allResources } = useNaturalResources()
+const { getNaturalResources } = useApi()
 
 // Filtrlash logikasi
 const categoryQuery = computed(() => route.query.category as string | undefined)
+const page = computed(() => Number(route.query.page) || 1)
 
-const filteredResources = computed(() => {
-  if (!categoryQuery.value) {
-    return allResources.value
-  }
-  return allResources.value.filter(resource => resource.slug === categoryQuery.value)
-})
+const { data: resourcesResponse, pending, error } = await useAsyncData(
+  () => `natural-resources-${categoryQuery.value || 'all'}-${page.value}`,
+  () => getNaturalResources({
+    category: categoryQuery.value,
+    page: page.value,
+    per_page: 12,
+    sort_by: 'sort',
+    sort_dir: 'asc'
+  }),
+  { watch: [categoryQuery, page] }
+)
+
+const resources = computed<NaturalResource[]>(() => (resourcesResponse.value?.data as NaturalResource[]) || [])
 
 // Kategoriya nomi
 const categoryTitle = computed(() => {
-  if (!categoryQuery.value || filteredResources.value.length === 0) {
+  if (!categoryQuery.value || resources.value.length === 0) {
     return "O'zbekistonning Tabiy Boyliklari"
   }
-  return filteredResources.value[0]?.title || "Tabiy boylik"
+  return resources.value[0]?.title?.[locale.value] || "Tabiy boylik"
 })
+
+const pagination = computed(() => resourcesResponse.value?.pagination || null)
+const pages = computed(() => {
+  if (!pagination.value) return []
+  const total = pagination.value.last_page || 1
+  return Array.from({ length: total }, (_, i) => i + 1)
+})
+
+const pageLink = (p: number) => {
+  return {
+    path: localePath('/natural-resources'),
+    query: { ...route.query, page: p }
+  }
+}
 
 useHead({
   title: 'Tabiy boylik',
@@ -237,6 +299,47 @@ useHead({
 .read-more:hover {
   color: var(--secondary-color);
   gap: 12px;
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-light);
+  padding: 20px 0;
+}
+
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  color: var(--heading-color);
+  background: var(--white-color);
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.page-btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.page-btn.active {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

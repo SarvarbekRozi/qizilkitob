@@ -115,7 +115,7 @@
           >
             <div class="news-card">
               <div class="image-box">
-                <img :src="post.image" :alt="post.title[locale]" />
+                <img :src="post.image || ''" :alt="post.title[locale]" />
                 <div class="date-badge">
                   {{ formatDate(post.publishDate) }}
                 </div>
@@ -207,8 +207,8 @@ const SwiperPagination = Pagination
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
-const { getSpeciesByCategory } = useSpeciesData()
 const { getLatestPosts } = useBlog()
+const { getSpeciesStats } = useApi()
 
 const heroSlides = [
   {
@@ -252,8 +252,13 @@ const heroSlides = [
   }
 ]
 
-const animalCount = computed(() => getSpeciesByCategory('animal').length)
-const plantCount = computed(() => getSpeciesByCategory('plant').length)
+const { data: statsResponse } = await useAsyncData(
+  'species-stats',
+  () => getSpeciesStats()
+)
+
+const animalCount = computed(() => statsResponse.value?.data?.animals || 0)
+const plantCount = computed(() => statsResponse.value?.data?.plants || 0)
 const latestPosts = computed(() => getLatestPosts(3))
 
 const formatDate = (date: string) => {

@@ -1,7 +1,7 @@
 <template>
   <div v-if="species" class="species-detail-page">
     <!-- Page Title -->
-    <section class="page-title" :style="{ backgroundImage: `url(${species.images.main})` }">
+    <section class="page-title" :style="{ backgroundImage: `url(${species.images.main || ''})` }">
       <div class="auto-container">
         <div class="content-box">
           <h1>{{ species.name[locale] }}</h1>
@@ -22,7 +22,7 @@
         <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
             <figure class="main-image">
-              <img :src="species.images.main" :alt="species.name[locale]" />
+              <img :src="species.images.main || ''" :alt="species.name[locale]" />
             </figure>
           </div>
           <div class="col-lg-4 col-md-12">
@@ -109,24 +109,23 @@
 </template>
 
 <script setup lang="ts">
+import type { Species } from '~/types/species'
+
 const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
+const { getSpeciesBySlug } = useApi()
 
-const { getSpeciesBySlug, getRelatedSpecies } = useSpeciesData()
+const slug = computed(() => route.params.slug as string)
 
-// Get species by slug
-const species = computed(() => {
-  return getSpeciesBySlug(route.params.slug as string)
-})
+const { data: speciesResponse } = await useAsyncData(
+  () => `species-${slug.value}`,
+  () => getSpeciesBySlug(slug.value)
+)
 
-// Get related species
-const relatedSpecies = computed(() => {
-  if (!species.value) return []
-  return getRelatedSpecies(species.value.relatedSpecies).slice(0, 3)
-})
+const species = computed<Species | null>(() => (speciesResponse.value?.data as Species) || null)
+const relatedSpecies = computed<Species[]>(() => (speciesResponse.value?.related as Species[]) || [])
 
-// Handle 404
 if (!species.value) {
   throw createError({
     statusCode: 404,
@@ -134,7 +133,6 @@ if (!species.value) {
   })
 }
 
-// SEO Meta
 useHead({
   title: species.value ? species.value.name[locale.value] : '',
   meta: [

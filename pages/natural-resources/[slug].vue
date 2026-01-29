@@ -4,11 +4,11 @@
     <section class="page-title">
       <div class="auto-container">
         <div class="content-box">
-          <h1>{{ resource.title }}</h1>
+          <h1>{{ resource.title[locale] }}</h1>
           <ul class="breadcrumb">
             <li><NuxtLink :to="localePath('/')">Bosh sahifa</NuxtLink></li>
             <li><NuxtLink :to="localePath('/natural-resources')">Tabiy boylik</NuxtLink></li>
-            <li>{{ resource.title }}</li>
+            <li>{{ resource.title[locale] }}</li>
           </ul>
         </div>
       </div>
@@ -22,7 +22,7 @@
             <article class="resource-post">
               <!-- Featured Image -->
               <figure class="featured-image">
-                <img :src="resource.image" :alt="resource.title" />
+                <img :src="resource.image || ''" :alt="resource.title[locale]" />
               </figure>
 
               <!-- Resource Stats -->
@@ -61,7 +61,7 @@
               <div class="resource-features">
                 <h3>Asosiy xususiyatlar</h3>
                 <ul class="features-list">
-                  <li v-for="(feature, index) in resource.features" :key="index">
+                  <li v-for="(feature, index) in resource.features[locale]" :key="index">
                     <i class="fas fa-check-circle"></i>
                     {{ feature }}
                   </li>
@@ -76,15 +76,23 @@
 </template>
 
 <script setup lang="ts">
+import type { NaturalResource } from '~/types/natural-resource'
+
+const { locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
+const { getNaturalResourceBySlug } = useApi()
 
-const { getResourceBySlug } = useNaturalResources()
+const slug = computed(() => route.params.slug as string)
 
-const slug = route.params.slug as string
-const resource = getResourceBySlug(slug)
+const { data: resourceResponse } = await useAsyncData(
+  () => `natural-resource-${slug.value}`,
+  () => getNaturalResourceBySlug(slug.value)
+)
 
-if (!resource) {
+const resource = computed<NaturalResource | null>(() => (resourceResponse.value?.data as NaturalResource) || null)
+
+if (!resource.value) {
   throw createError({
     statusCode: 404,
     message: 'Resource not found'
@@ -92,16 +100,17 @@ if (!resource) {
 }
 
 const contentParagraphs = computed(() => {
-  if (!resource) return []
-  return resource.content.split('\n\n')
+  if (!resource.value) return []
+  const content = resource.value.content[locale.value] || ''
+  return content.split('\n\n').filter(Boolean)
 })
 
 useHead({
-  title: resource.title,
+  title: resource.value ? resource.value.title[locale.value] : '',
   meta: [
     {
       name: 'description',
-      content: resource.excerpt
+      content: resource.value ? resource.value.excerpt[locale.value] : ''
     }
   ]
 })

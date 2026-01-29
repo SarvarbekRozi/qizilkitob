@@ -16,15 +16,25 @@
     <!-- Blog Section -->
     <section class="blog-section sec-pad">
       <div class="auto-container">
-        <div class="row">
+        <div v-if="pending" class="row">
+          <div class="col-lg-12">
+            <p class="loading-text">Yuklanmoqda...</p>
+          </div>
+        </div>
+        <div v-else-if="error" class="row">
+          <div class="col-lg-12">
+            <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
+          </div>
+        </div>
+        <div v-else class="row">
           <div
-            v-for="post in allPosts"
+            v-for="post in posts"
             :key="post.id"
             class="col-lg-4 col-md-6 col-sm-12"
           >
             <div class="blog-card">
               <div class="image-box">
-                <img :src="post.image" :alt="post.title[locale]" />
+                <img :src="post.image || ''" :alt="post.title[locale]" />
                 <div class="date-badge">
                   {{ formatDate(post.publishDate) }}
                 </div>
@@ -43,15 +53,68 @@
             </div>
           </div>
         </div>
+
+        <!-- Pagination -->
+        <div v-if="pagination && pagination.last_page > 1" class="pagination-wrap">
+          <NuxtLink
+            v-if="pagination.current_page > 1"
+            :to="pageLink(pagination.current_page - 1)"
+            class="page-btn"
+          >
+            ‹
+          </NuxtLink>
+          <NuxtLink
+            v-for="p in pages"
+            :key="p"
+            :to="pageLink(p)"
+            class="page-btn"
+            :class="{ active: p === pagination.current_page }"
+          >
+            {{ p }}
+          </NuxtLink>
+          <NuxtLink
+            v-if="pagination.current_page < pagination.last_page"
+            :to="pageLink(pagination.current_page + 1)"
+            class="page-btn"
+          >
+            ›
+          </NuxtLink>
+        </div>
       </div>
     </section>
   </div>
 </template>
 
 <script setup lang="ts">
+import type { BlogPost } from '~/types/blog'
+
 const { t, locale } = useI18n()
 const localePath = useLocalePath()
-const { allPosts } = useBlog()
+const route = useRoute()
+const { getBlogPosts } = useApi()
+
+const page = computed(() => Number(route.query.page) || 1)
+
+const { data: blogResponse, pending, error } = await useAsyncData(
+  () => `blog-${page.value}`,
+  () => getBlogPosts({ page: page.value, per_page: 9, sort_by: 'publish_date', sort_dir: 'desc' }),
+  { watch: [page] }
+)
+
+const posts = computed<BlogPost[]>(() => (blogResponse.value?.data as BlogPost[]) || [])
+const pagination = computed(() => blogResponse.value?.pagination || null)
+const pages = computed(() => {
+  if (!pagination.value) return []
+  const total = pagination.value.last_page || 1
+  return Array.from({ length: total }, (_, i) => i + 1)
+})
+
+const pageLink = (p: number) => {
+  return {
+    path: localePath('/blog'),
+    query: { ...route.query, page: p }
+  }
+}
 
 const formatDate = (date: string) => {
   const d = new Date(date)
@@ -232,6 +295,47 @@ useHead({
 .read-more:hover {
   color: var(--secondary-color);
   gap: 12px;
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-light);
+  padding: 20px 0;
+}
+
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  color: var(--heading-color);
+  background: var(--white-color);
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.page-btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.page-btn.active {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

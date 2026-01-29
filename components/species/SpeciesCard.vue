@@ -2,7 +2,7 @@
   <div class="species-card">
     <div class="card-inner">
       <figure class="image-box">
-        <img :src="species.images.main" :alt="species.name[locale]" />
+        <img :src="species.images.main || ''" :alt="species.name[locale]" />
         <div class="overlay-content">
           <div class="badges">
             <SpeciesCategoryBadge :category="species.category" />

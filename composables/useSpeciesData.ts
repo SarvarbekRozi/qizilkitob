@@ -1,15 +1,14 @@
-import type { Species } from '~/types/species'
-import animalsData from '~/data/species/animals.json'
-import plantsData from '~/data/species/plants.json'
+﻿import type { Species } from '~/types/species'
 
 export const useSpeciesData = () => {
-  const { locale } = useI18n()
+  const { getSpecies } = useApi()
 
-  const allSpecies = computed<Species[]>(() => {
-    const animals = animalsData.animals || []
-    const plants = plantsData.plants || []
-    return [...animals, ...plants] as Species[]
-  })
+  const { data, pending, error, refresh } = useAsyncData(
+    'species-all',
+    () => getSpecies({ per_page: 50, sort_by: 'sort', sort_dir: 'asc' })
+  )
+
+  const allSpecies = computed<Species[]>(() => (data.value?.data as Species[]) || [])
 
   const getSpeciesBySlug = (slug: string): Species | undefined => {
     return allSpecies.value.find(s => s.slug === slug)
@@ -24,7 +23,7 @@ export const useSpeciesData = () => {
   }
 
   const getRelatedSpecies = (speciesIds: string[]): Species[] => {
-    return allSpecies.value.filter(s => speciesIds.includes(s.id))
+    return allSpecies.value.filter(s => speciesIds.includes(s.slug))
   }
 
   const getFeaturedSpecies = (limit: number = 6): Species[] => {
@@ -33,6 +32,9 @@ export const useSpeciesData = () => {
 
   return {
     allSpecies,
+    pending,
+    error,
+    refresh,
     getSpeciesBySlug,
     getSpeciesByCategory,
     getSpeciesByDangerLevel,

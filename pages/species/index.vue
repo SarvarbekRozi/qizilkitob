@@ -23,10 +23,47 @@
         </div>
 
         <!-- Species Grid -->
-        <div class="row">
+        <div v-if="pending" class="row">
+          <div class="col-lg-12">
+            <p class="loading-text">Yuklanmoqda...</p>
+          </div>
+        </div>
+        <div v-else-if="error" class="row">
+          <div class="col-lg-12">
+            <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
+          </div>
+        </div>
+        <div v-else class="row">
           <div class="col-lg-12">
             <SpeciesGrid :species="displayedSpecies" />
           </div>
+        </div>
+
+        <!-- Pagination -->
+        <div v-if="pagination && pagination.last_page > 1" class="pagination-wrap">
+          <NuxtLink
+            v-if="pagination.current_page > 1"
+            :to="pageLink(pagination.current_page - 1)"
+            class="page-btn"
+          >
+            ‹
+          </NuxtLink>
+          <NuxtLink
+            v-for="p in pages"
+            :key="p"
+            :to="pageLink(p)"
+            class="page-btn"
+            :class="{ active: p === pagination.current_page }"
+          >
+            {{ p }}
+          </NuxtLink>
+          <NuxtLink
+            v-if="pagination.current_page < pagination.last_page"
+            :to="pageLink(pagination.current_page + 1)"
+            class="page-btn"
+          >
+            ›
+          </NuxtLink>
         </div>
       </div>
     </section>
@@ -34,16 +71,29 @@
 </template>
 
 <script setup lang="ts">
+import type { Species } from '~/types/species'
+
 const { t } = useI18n()
 const localePath = useLocalePath()
 const route = useRoute()
-
-// Get all species
-const { allSpecies } = useSpeciesData()
+const { getSpecies } = useApi()
 
 // Get query params
 const category = computed(() => route.query.category as string)
 const type = computed(() => route.query.type as string)
+const page = computed(() => Number(route.query.page) || 1)
+
+const { data: speciesResponse, pending, error } = await useAsyncData(
+  () => `species-${category.value}-${page.value}`,
+  () => getSpecies({
+    category: category.value,
+    page: page.value,
+    per_page: 12,
+    sort_by: 'sort',
+    sort_dir: 'asc'
+  }),
+  { watch: [category, page] }
+)
 
 // Type labels mapping
 const typeLabels: Record<string, string> = {
@@ -69,20 +119,27 @@ const categoryTitle = computed(() => {
   return 'Barcha turlar'
 })
 
-// Filter species by category and type
 const displayedSpecies = computed(() => {
-  let result = allSpecies.value
-
-  // Filter by category
-  if (category.value) {
-    result = result.filter(s => s.category === category.value)
-  }
-
-  // Note: type filtering would require type field in species data
-  // For now, we'll just filter by category
-
-  return result
+  return (speciesResponse.value?.data as Species[]) || []
 })
+
+const pagination = computed(() => speciesResponse.value?.pagination || null)
+
+const pages = computed(() => {
+  if (!pagination.value) return []
+  const total = pagination.value.last_page || 1
+  return Array.from({ length: total }, (_, i) => i + 1)
+})
+
+const pageLink = (p: number) => {
+  return {
+    path: localePath('/species'),
+    query: {
+      ...route.query,
+      page: p
+    }
+  }
+}
 
 // SEO Meta
 useHead({
@@ -177,6 +234,47 @@ useHead({
   font-size: 16px;
   color: var(--text-light);
   font-weight: 500;
+}
+
+.loading-text,
+.error-text {
+  text-align: center;
+  font-size: 16px;
+  color: var(--text-light);
+  padding: 20px 0;
+}
+
+.pagination-wrap {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 30px;
+}
+
+.page-btn {
+  min-width: 40px;
+  height: 40px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 1px solid #e0e0e0;
+  color: var(--heading-color);
+  background: var(--white-color);
+  transition: var(--transition);
+  font-weight: 600;
+}
+
+.page-btn:hover {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
+}
+
+.page-btn.active {
+  background: var(--primary-color);
+  color: var(--white-color);
+  border-color: var(--primary-color);
 }
 
 @media (max-width: 768px) {

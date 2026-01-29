@@ -63,9 +63,12 @@
                     </div>
                   </div>
                   <div class="col-md-12">
-                    <button type="submit" class="theme-btn">
-                      {{ t('contact.send') }}
+                    <button type="submit" class="theme-btn" :disabled="isSubmitting">
+                      {{ isSubmitting ? 'Yuklanmoqda...' : t('contact.send') }}
                     </button>
+                    <div v-if="submitMessage" class="submit-message" :class="submitMessage.type">
+                      {{ submitMessage.text }}
+                    </div>
                   </div>
                 </div>
               </form>
@@ -111,6 +114,8 @@
 const { t } = useI18n()
 const localePath = useLocalePath()
 
+const { submitContact } = useApi()
+
 const form = reactive({
   name: '',
   email: '',
@@ -118,13 +123,32 @@ const form = reactive({
   message: ''
 })
 
-const submitForm = () => {
-  alert('Form yuborildi! (Bu demo versiya)')
-  // Reset form
-  form.name = ''
-  form.email = ''
-  form.subject = ''
-  form.message = ''
+const isSubmitting = ref(false)
+const submitMessage = ref<{ text: string; type: 'success' | 'error' } | null>(null)
+
+const submitForm = async () => {
+  isSubmitting.value = true
+  submitMessage.value = null
+
+  try {
+    await submitContact({
+      name: form.name,
+      email: form.email,
+      subject: form.subject,
+      message: form.message
+    })
+
+    form.name = ''
+    form.email = ''
+    form.subject = ''
+    form.message = ''
+
+    submitMessage.value = { text: 'Yuborildi', type: 'success' }
+  } catch (error) {
+    submitMessage.value = { text: 'Xatolik yuz berdi', type: 'error' }
+  } finally {
+    isSubmitting.value = false
+  }
 }
 
 useHead({
@@ -301,6 +325,23 @@ useHead({
 .social-links a:hover {
   background-color: var(--primary-color);
   color: var(--white-color);
+}
+
+.submit-message {
+  margin-top: 15px;
+  padding: 10px 15px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.submit-message.success {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.submit-message.error {
+  background-color: #f8d7da;
+  color: #721c24;
 }
 
 @media (max-width: 991px) {

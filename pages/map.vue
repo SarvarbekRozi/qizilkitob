@@ -65,9 +65,14 @@
 </template>
 
 <script setup lang="ts">
-const { t, locale } = useI18n()
+const { t } = useI18n()
 const localePath = useLocalePath()
-const { allSpecies } = useSpeciesData()
+const { getSpeciesForMap } = useApi()
+
+const { data: mapResponse } = await useAsyncData(
+  'species-map',
+  () => getSpeciesForMap()
+)
 
 const filterCategory = ref<'all' | 'animal' | 'plant'>('all')
 let map: any = null
@@ -75,8 +80,9 @@ let markers: any[] = []
 let L: any = null
 
 const filteredSpecies = computed(() => {
-  if (filterCategory.value === 'all') return allSpecies.value
-  return allSpecies.value.filter(s => s.category === filterCategory.value)
+  const items = mapResponse.value?.data || []
+  if (filterCategory.value === 'all') return items
+  return items.filter((s: any) => s.category === filterCategory.value)
 })
 
 const getDangerLevelColor = (level: string) => {
@@ -121,7 +127,7 @@ const updateMarkers = () => {
   // Add markers for filtered species
   filteredSpecies.value.forEach(species => {
     if (species.habitat?.coordinates) {
-      const color = getDangerLevelColor(species.conservationStatus.level)
+      const color = getDangerLevelColor(species.dangerLevel)
 
       // Create custom icon with dynamic color
       const icon = L.divIcon({
@@ -136,17 +142,16 @@ const updateMarkers = () => {
       })
 
       const marker = L.marker(
-        [species.habitat.coordinates.lat, species.habitat.coordinates.lng],
+        [species.coordinates.lat, species.coordinates.lng],
         { icon }
       ).addTo(map!)
 
       // Add popup with species info
       marker.bindPopup(`
         <div class="species-popup">
-          <img src="${species.images.main}" alt="${species.name[locale.value]}" />
-          <h3>${species.name[locale.value]}</h3>
+          <img src="${species.image || ''}" alt="${species.name}" />
+          <h3>${species.name}</h3>
           <p class="scientific">${species.scientificName}</p>
-          <p class="location"><i class="fas fa-map-marker-alt"></i> ${species.habitat.location[locale.value]}</p>
           <a href="${localePath(`/species/${species.slug}`)}" class="view-btn">
             <i class="fas fa-eye"></i> Batafsil
           </a>
