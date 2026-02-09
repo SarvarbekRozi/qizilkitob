@@ -1,15 +1,13 @@
 <template>
   <div class="blog-page">
     <!-- Page Title -->
-    <section class="page-title">
+    <section class="simple-page-title">
       <div class="auto-container">
-        <div class="content-box">
-          <h1>{{ t('blog.title') }}</h1>
-          <ul class="breadcrumb">
-            <li><NuxtLink :to="localePath('/')">{{ t('nav.home') }}</NuxtLink></li>
-            <li>{{ t('nav.blog') }}</li>
-          </ul>
-        </div>
+        <h1>{{ t('blog.title') }}</h1>
+<!--        <ul class="breadcrumb">-->
+<!--          <li><NuxtLink :to="localePath('/')">{{ t('nav.home') }}</NuxtLink></li>-->
+<!--          <li>{{ t('nav.blog') }}</li>-->
+<!--        </ul>-->
       </div>
     </section>
 
@@ -132,70 +130,6 @@ useHead({
 </script>
 
 <style scoped>
-.page-title {
-  position: relative;
-  padding: 120px 0 80px;
-  background-image: url('/images/background/page-title.jpg');
-  background-size: cover;
-  background-position: center;
-}
-
-.page-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.page-title .content-box {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--white-color);
-}
-
-.page-title h1 {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--white-color);
-  margin-bottom: 15px;
-}
-
-.breadcrumb {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumb li {
-  color: var(--white-color);
-  font-size: 16px;
-}
-
-.breadcrumb li::after {
-  content: '/';
-  margin-left: 10px;
-}
-
-.breadcrumb li:last-child::after {
-  display: none;
-}
-
-.breadcrumb a {
-  color: var(--white-color);
-  transition: var(--transition);
-}
-
-.breadcrumb a:hover {
-  color: var(--secondary-color);
-}
-
 .blog-card {
   background-color: var(--white-color);
   border-radius: var(--border-radius-large);
@@ -339,79 +273,9 @@ useHead({
 }
 
 @media (max-width: 768px) {
-  .page-title {
-    padding: 80px 0 60px;
-  }
-
-  .page-title h1 {
-    font-size: 32px;
-  }
-
   .image-box {
     height: 200px;
   }
-}
-
-/*  padding: 120px 0 80px;*/
-/*  background-image: url('/images/background/page-title.jpg');*/
-/*  background-size: cover;*/
-/*  background-position: center;*/
-/*}*/
-
-.page-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.6);
-}
-
-.page-title .content-box {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--white-color);
-}
-
-.page-title h1 {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--white-color);
-  margin-bottom: 15px;
-}
-
-.breadcrumb {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumb li {
-  color: var(--white-color);
-  font-size: 16px;
-}
-
-.breadcrumb li::after {
-  content: '/';
-  margin-left: 10px;
-}
-
-.breadcrumb li:last-child::after {
-  display: none;
-}
-
-.breadcrumb a {
-  color: var(--white-color);
-  transition: var(--transition);
-}
-
-.breadcrumb a:hover {
-  color: var(--secondary-color);
 }
 
 .coming-soon {

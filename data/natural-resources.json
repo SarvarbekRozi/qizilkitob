@@ -1,163 +1,183 @@
 {
   "resources": [
     {
-      "id": "tog-tizimalari",
-      "slug": "tog-tizimalari",
-      "title": "Tog' tizimlari",
-      "excerpt": "Tyan-Shan va Pomir-Oloy tog' tizmalari noyob biologik xilma-xillik va tabiiy resurslar manbai.",
-      "content": "O'zbekistonning tog'li hududlari mamlakatning sharqiy va janubi-sharqiy qismlarida joylashgan. Bu yerda Tyan-Shan va Pomir-Oloy tog' tizmalari o'zining noyob tabiati bilan ajralib turadi.\n\nTog'lar mamlakatning eng muhim suv manbalari hisoblanadi. Bu yerda ko'plab daryolar boshlanadi va qishloq xo'jaligiga zarur bo'lgan suv ta'minoti amalga oshiriladi.\n\nTog'li hududlarda noyob o'simlik va hayvonlar dunyosi mavjud. Ko'plab endemik turlar faqat shu hududlarda uchraydi va ular maxsus muhofaza ostida.\n\nEkologik turizm uchun katta imkoniyatlar mavjud. Alpinizm, trekking va tog' sayyohligi yildan-yilga rivojlanib bormoqda.",
-      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop",
-      "category": "geografiya",
-      "features": [
-        "4000 metrdan baland cho'qqilar",
-        "Noyob flora va fauna",
-        "Muzliklar va doimiy qorlar",
-        "Ekologik turizm markazi"
-      ],
-      "stats": {
-        "area": "5% dan ortiq",
-        "species": "500+ tur",
-        "protected": "15 ta qo'riqxona"
-      }
-    },
-    {
-      "id": "daryolar-kolar",
-      "slug": "daryolar-kolar",
-      "title": "Daryolar va ko'llar",
-      "excerpt": "Amudaryo, Sirdaryo va boshqa suv havzalari hayot manbai va biologik xilma-xillik markazi.",
-      "content": "O'zbekiston hududidan ikkita yirik daryo - Amudaryo va Sirdaryo oqib o'tadi. Bu daryolar ming yillar davomida mamlakatning asosiy suv manbalari bo'lib kelgan.\n\nDaryolar atrofida rivojlangan ekotizimlar ko'plab hayvon va o'simlik turlarining yashash joyi hisoblanadi. Qamishzorlar, suv qushlari va baliqlar uchun muhim muhit.\n\nOrol dengizi masalasi va uning oqibatlari butun dunyo miqyosida muhokama qilinadi. Hozirda dengizni tiklash bo'yicha keng ko'lamli ishlar olib borilmoqda.\n\nKo'llar, jumladan, Aydarkul va boshqa sun'iy suv havzalari baliqchilik va dam olish uchun muhim ahamiyatga ega.",
-      "image": "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1200&h=800&fit=crop",
-      "category": "gidrologiya",
-      "features": [
-        "2 ta yirik daryo tizimi",
-        "Ko'plab ko'llar",
-        "Boy baliq resurslari",
-        "Suv qushlari migratsiya yo'li"
-      ],
-      "stats": {
-        "area": "Daryo havzalari",
-        "species": "200+ suv turlari",
-        "protected": "8 ta qo'riqxona"
-      }
-    },
-    {
-      "id": "chollar",
-      "slug": "chollar",
-      "title": "Cho'llar",
-      "excerpt": "Qizilqum va Qoraqum cho'llari o'ziga xos flora va faunaga ega noyob ekotizim.",
-      "content": "O'zbekiston hududining katta qismi cho'l zonasida joylashgan. Qizilqum cho'li eng katta cho'llardan biri hisoblanadi.\n\nCho'l sharoitlariga moslashgan o'simlik va hayvonlar hayoti o'ziga xos xususiyatlarga ega. Saxovul, kandim va boshqa cho'l o'simliklari muhim ekologik rol o'ynaydi.\n\nCho'llarda mineral boyliklar katta miqdorda to'plangan. Tabiiy gaz, neft va boshqa foydali qazilmalar sanoat uchun muhim.\n\nCho'l ekotizimini muhofaza qilish zamonaviy ekologiyaning muhim vazifalaridan biri hisoblanadi.",
-      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&h=800&fit=crop",
-      "category": "geografiya",
-      "features": [
-        "Katta cho'l maydoni",
-        "Moslashgan hayvonlar",
-        "Cho'l o'simliklari",
-        "Mineral resurslari"
-      ],
-      "stats": {
-        "area": "60% dan ortiq",
-        "species": "150+ cho'l turlari",
-        "protected": "5 ta qo'riqxona"
-      }
-    },
-    {
-      "id": "ormonlar",
-      "slug": "ormonlar",
-      "title": "O'rmonlar",
-      "excerpt": "Zarafshon, Ohangaron va boshqa hududlardagi o'rmonlar ekologik muvozanatni saqlaydi.",
-      "content": "O'zbekistondagi o'rmonlar asosan tog'li hududlarda joylashgan. Zarafshon va Ohangaron vodiysidagi o'rmonlar eng boy hududlardan hisoblanadi.\n\nArcha o'rmonlari mamlakatning o'ziga xos boyligi hisoblanadi. Bu o'rmonlar tuproq eroziyasini oldini olish va suv resurslarini saqlashda muhim rol o'ynaydi.\n\nO'rmon ekotizimlari ko'plab hayvon va o'simliklar uchun yashash joyi. Qushlar, sutemizuvchilar va hasharotlarning xilma-xilligi bu yerda yuqori darajada.\n\nO'rmonlarni tiklash va saqlash davlat dasturlari doirasida amalga oshirilmoqda.",
+      "id": "davlat-qoriqxonalari",
+      "slug": "davlat-qoriqxonalari",
+      "title": "Davlat qo'riqxonalari",
+      "excerpt": "O'zbekistonda 7 ta davlat qo'riqxonasi mavjud bo'lib, ularning umumiy maydoni 222 397 gektarni tashkil etadi.",
+      "content": "O'zbekiston Respublikasida 7 ta davlat qo'riqxonasi faoliyat yuritib kelmoqda. Ularning umumiy maydoni 222 397 gektarni tashkil etadi.\n\nDavlat qo'riqxonalari tabiatni muhofaza qilishning eng yuqori shakli hisoblanib, ularda barcha xo'jalik faoliyati taqiqlangan. Bu yerda ilmiy tadqiqotlar olib boriladi va noyob turlar muhofaza qilinadi.\n\nHar bir qo'riqxona o'ziga xos ekotizimga ega bo'lib, mahalliy flora va faunani saqlash va o'rganish uchun muhim ahamiyatga ega.",
       "image": "https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1200&h=800&fit=crop",
-      "category": "ekologiya",
+      "category": "davlat-qoriqxonalari",
       "features": [
-        "Archa o'rmonlari",
-        "Mevali daraxtlar",
-        "Tuproqni muhofaza",
-        "Kislorod ishlab chiqarish"
+        "7 ta davlat qo'riqxonasi",
+        "Umumiy maydoni 222 397 gektar",
+        "Ilmiy tadqiqot markazlari",
+        "Noyob turlar muhofazasi"
       ],
       "stats": {
-        "area": "3% dan ortiq",
-        "species": "300+ daraxt turlari",
-        "protected": "12 ta qo'riqxona"
+        "area": "222 397 gektar",
+        "species": "Minglab turlar",
+        "protected": "7 ta qo'riqxona"
       }
     },
     {
-      "id": "yaylovlar",
-      "slug": "yaylovlar",
-      "title": "Yaylovlar",
-      "excerpt": "Keng yaylovlar chorvachilik va biologik xilma-xillik uchun muhim resurs.",
-      "content": "O'zbekistonning yaylov hududlari chorvachilik uchun muhim ahamiyatga ega. Tog' yaylovlari yozda, tekislik yaylovlari qishda foydalaniladi.\n\nYaylovlarda o'sadigan o'tlar va o'simliklar hayvonlar uchun tabiiy ozuqa manbai. Bu yerda ko'plab yovvoyi hayvonlar ham yashaydi.\n\nYaylovlarni to'g'ri foydalanish va saqlash ekologik muvozanatni ta'minlaydi. Haddan tashqari yayish tuproq degradatsiyasiga olib kelishi mumkin.\n\nHozirgi kunda yaylovlarni boshqarish zamonaviy usullar bilan amalga oshirilmoqda.",
+      "id": "majmua-buyurtma-qoriqxonasi",
+      "slug": "majmua-buyurtma-qoriqxonasi",
+      "title": "Majmua (landshaft) buyurtma qo'riqxonasi",
+      "excerpt": "Sayg'achi majmua buyurtma qo'riqxonasi – 628 300 gektar maydonga ega yagona landshaft qo'riqxonasi.",
+      "content": "O'zbekistonda 1 ta majmua (landshaft) buyurtma qo'riqxonasi mavjud – bu Sayg'achi qo'riqxonasidir. Uning maydoni 628 300 gektarni tashkil etadi.\n\nSayg'achi qo'riqxonasi Qoraqalpog'iston Respublikasi hududida joylashgan bo'lib, Ustyurt platosining noyob landshaftini muhofaza qiladi.\n\nBu yerda sayg'ak (sayga) antilopasi va boshqa cho'l hayvonlari muhofaza qilinadi. Qo'riqxona noyob cho'l ekotizimini saqlashda muhim rol o'ynaydi.",
+      "image": "https://images.unsplash.com/photo-1509316785289-025f5b846b35?w=1200&h=800&fit=crop",
+      "category": "majmua-buyurtma-qoriqxonasi",
+      "features": [
+        "1 ta majmua qo'riqxona (Sayg'achi)",
+        "628 300 gektar maydon",
+        "Ustyurt platosi landshafti",
+        "Sayg'ak antilopasi muhofazasi"
+      ],
+      "stats": {
+        "area": "628 300 gektar",
+        "species": "Sayg'ak va cho'l hayvonlari",
+        "protected": "1 ta qo'riqxona"
+      }
+    },
+    {
+      "id": "milliy-tabiat-boglari",
+      "slug": "milliy-tabiat-boglari",
+      "title": "Milliy tabiat bog'lari",
+      "excerpt": "O'zbekistonda 12 ta milliy tabiat bog'i mavjud bo'lib, ularning maydoni 4 257 660 gektardan ortiq.",
+      "content": "O'zbekiston hududida 12 ta milliy tabiat bog'i tashkil etilgan. Ularning umumiy maydoni 4 257 660 gektardan ortiqni tashkil etadi.\n\nMilliy tabiat bog'lari tabiatni muhofaza qilish bilan birga, ekologik turizm va aholi dam olishi uchun ham xizmat qiladi.\n\nBu bog'larda noyob o'simlik va hayvon turlari saqlanadi, ilmiy tadqiqotlar olib boriladi hamda ekologik ta'lim ishlari amalga oshiriladi.",
+      "image": "https://images.unsplash.com/photo-1469474968028-56623f02e42e?w=1200&h=800&fit=crop",
+      "category": "milliy-tabiat-boglari",
+      "features": [
+        "12 ta milliy tabiat bog'i",
+        "4 257 660+ gektar maydon",
+        "Ekologik turizm imkoniyatlari",
+        "Ilmiy tadqiqot va ta'lim"
+      ],
+      "stats": {
+        "area": "4 257 660+ gektar",
+        "species": "Xilma-xil turlar",
+        "protected": "12 ta bog'"
+      }
+    },
+    {
+      "id": "tabiat-yodgorliklari",
+      "slug": "tabiat-yodgorliklari",
+      "title": "Tabiat yodgorliklari",
+      "excerpt": "O'zbekistonda 11 ta tabiat yodgorligi mavjud bo'lib, ularning umumiy maydoni 3 311 gektarni tashkil etadi.",
+      "content": "O'zbekiston hududida 11 ta tabiat yodgorligi mavjud. Ularning umumiy maydoni 3 311 gektarni tashkil etadi.\n\nTabiat yodgorliklari – bu ilmiy, madaniy yoki estetik jihatdan alohida ahamiyatga ega bo'lgan tabiiy obyektlardir.\n\nBu yodgorliklar orasida noyob g'or va daraxtlar, geologik tuzilmalar, manbalar va boshqa tabiiy obyektlar bor. Ularni saqlash kelajak avlodlar uchun muhim vazifadir.",
+      "image": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1200&h=800&fit=crop",
+      "category": "tabiat-yodgorliklari",
+      "features": [
+        "11 ta tabiat yodgorligi",
+        "Umumiy maydoni 3 311 gektar",
+        "Noyob geologik tuzilmalar",
+        "Ilmiy va madaniy ahamiyat"
+      ],
+      "stats": {
+        "area": "3 311 gektar",
+        "species": "Noyob obyektlar",
+        "protected": "11 ta yodgorlik"
+      }
+    },
+    {
+      "id": "buyurtma-qoriqxonalari",
+      "slug": "buyurtma-qoriqxonalari",
+      "title": "Buyurtma qo'riqxonalari",
+      "excerpt": "O'zbekistonda 11 ta buyurtma qo'riqxonasi mavjud bo'lib, jami 801 396 gektarni tashkil etadi.",
+      "content": "O'zbekistonda 11 ta buyurtma qo'riqxonasi faoliyat yuritmoqda. Ularning jami maydoni 801 396 gektarni tashkil etadi.\n\nBuyurtma qo'riqxonalari – bu ma'lum vaqt davomida yoki doimiy ravishda alohida muhofaza qilinadigan tabiiy hududlardir.\n\nBu qo'riqxonalarda hayvonlar va o'simliklarning alohida turlari yoki butun ekotizimlar muhofaza qilinadi. Cheklangan xo'jalik faoliyatiga ruxsat berilishi mumkin.",
       "image": "https://images.unsplash.com/photo-1501594907352-04cda38ebc29?w=1200&h=800&fit=crop",
-      "category": "qishloq-xojaligi",
+      "category": "buyurtma-qoriqxonalari",
       "features": [
-        "Keng yaylov maydonlari",
-        "Chorvachilik bazasi",
-        "Yovvoyi hayvonlar yashash joyi",
-        "Ekologik turizm"
+        "11 ta buyurtma qo'riqxona",
+        "Jami 801 396 gektar maydon",
+        "Turlar va ekotizim muhofazasi",
+        "Cheklangan xo'jalik faoliyati"
       ],
       "stats": {
-        "area": "20% dan ortiq",
-        "species": "400+ o't turlari",
-        "protected": "7 ta muhofaza zonasi"
+        "area": "801 396 gektar",
+        "species": "Ko'plab noyob turlar",
+        "protected": "11 ta qo'riqxona"
       }
     },
     {
-      "id": "mineral-resurslari",
-      "slug": "mineral-resurslari",
-      "title": "Mineral resurslari",
-      "excerpt": "O'zbekiston boy mineral zaxiralariga ega - oltin, mis, tabiiy gaz va neft.",
-      "content": "O'zbekiston jahonda mineral resurslari bo'yicha yetakchi mamlakatlardan biri hisoblanadi. Mamlakatda oltin, mis, uran va boshqa qimmatbaho metallar qazib olinadi.\n\nTabiiy gaz zaxiralari bo'yicha O'zbekiston mintaqada yetakchi o'rinni egallaydi. Gaz sanoatining rivojlanishi iqtisodiyotning muhim tarmog'i.\n\nKon sanoati iqtisodiyotning asosiy tarmoqlaridan biri. Lekin mineral resurslarni qazib olishda ekologik xavfsizlikni ta'minlash muhim vazifa.\n\nBarqaror rivojlanish tamoyillari asosida mineral resurslardan foydalanish davlat siyosatining asosiy yo'nalishi.",
-      "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=800&fit=crop",
-      "category": "geologiya",
-      "features": [
-        "Oltin zaxiralari",
-        "Tabiiy gaz",
-        "Mis va uran",
-        "Qimmatbaho metallar"
-      ],
-      "stats": {
-        "area": "Butun hudud",
-        "species": "50+ mineral tur",
-        "protected": "Barqaror qazib olish"
-      }
-    },
-    {
-      "id": "hayvonot-dunyosi",
-      "slug": "hayvonot-dunyosi",
-      "title": "Hayvonot dunyosi",
-      "excerpt": "O'zbekistonning boy va xilma-xil hayvonot dunyosi - sutemizuvchilar, qushlar, sudralib yuruvchilar.",
-      "content": "O'zbekiston hududida 500 dan ortiq umurtqali hayvonlar turlari yashaydi. Ularning orasida sutemizuvchilar, qushlar, sudralib yuruvchilar va amfibiyalar mavjud.\n\nQor qoploni, Turkiston silovsi, Buxoro bug'usi kabi noyob turlar faqat Markaziy Osiyoda uchraydi. Ular maxsus muhofaza ostida.\n\nQushlar dunyosi juda xilma-xil. O'zbekiston ko'chib yuruvchi qushlar uchun muhim to'xtash joyi hisoblanadi. 400 dan ortiq qush turlari qayd etilgan.\n\nSudralib yuruvchilar va amfibiyalar ham o'ziga xos xususiyatlarga ega. Cho'l zonasida yashaydigan turlar issiq iqlimga moslashgan.",
+      "id": "maxsus-jayron-pitomnigi",
+      "slug": "maxsus-jayron-pitomnigi",
+      "title": "Maxsus Jayron pitomnigi",
+      "excerpt": "Buxoro viloyatidagi maxsus Jayron pitomnigi – 16 522 gektar maydonda jayronlarni ko'paytirish markazi.",
+      "content": "O'zbekistonda 1 ta maxsus Jayron pitomnigi mavjud bo'lib, u Buxoro viloyatida joylashgan. Uning maydoni 16 522 gektarni tashkil etadi.\n\nBu pitomnik Buxoro jayronini (gazella subgutturosa) ko'paytirish va tabiatga qayta kiritish maqsadida tashkil etilgan.\n\nJayron pitomnigi noyob hayvonlarni saqlash va ularning sonini ko'paytirishda muhim rol o'ynaydi. Bu yerda ilmiy tadqiqotlar ham olib boriladi.",
       "image": "https://images.unsplash.com/photo-1564349683136-77e08dba1ef7?w=1200&h=800&fit=crop",
-      "category": "zoologiya",
+      "category": "maxsus-jayron-pitomnigi",
       "features": [
-        "500+ umurtqali tur",
-        "Noyob endemik turlar",
-        "Qo'riqxonalar tizimi",
-        "Migratsiya yo'llari"
+        "1 ta maxsus pitomnik (Buxoro)",
+        "16 522 gektar maydon",
+        "Buxoro jayroni ko'paytirish",
+        "Tabiatga qayta kiritish dasturi"
       ],
       "stats": {
-        "area": "Barcha zona",
-        "species": "500+ hayvon turi",
-        "protected": "20 ta qo'riqxona"
+        "area": "16 522 gektar",
+        "species": "Buxoro jayroni",
+        "protected": "1 ta pitomnik"
       }
     },
     {
-      "id": "osimliklar-dunyosi",
-      "slug": "osimliklar-dunyosi",
-      "title": "O'simliklar dunyosi",
-      "excerpt": "4000 dan ortiq o'simlik turlari - daraxtlar, butalar, o'tlar va noyob endemik turlar.",
-      "content": "O'zbekiston florasida 4000 dan ortiq o'simlik turlari qayd etilgan. Ularning 1500 ga yaqini foydalaniladigan o'simliklar hisoblanadi.\n\nTog'li hududlarda daraxt va buta turlari boy. Archa, yong'oq, olma, o'rik va boshqa mevali daraxtlar o'sadi.\n\nCho'l zonasida o'simliklar quruqlikka moslashgan. Saxovul, kandim, shuvoq kabi o'simliklar cho'l ekotizimining asosi.\n\nDorivor o'simliklar xilma-xilligi katta. 500 dan ortiq dorivor o'simlik turlari an'anaviy tibbiyotda ishlatiladi.",
-      "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&h=800&fit=crop",
-      "category": "botanika",
+      "id": "biosfera-rezervatlari",
+      "slug": "biosfera-rezervatlari",
+      "title": "Biosfera rezervatlari",
+      "excerpt": "O'zbekistonda 2 ta biosfera rezervati mavjud – Quyi Amudaryo va Ugam-Chatqol, umumiy maydoni 111 670 gektar.",
+      "content": "O'zbekistonda 2 ta biosfera rezervati mavjud: Quyi Amudaryo va Ugam-Chatqol. Ularning umumiy maydoni 111 670 gektarni tashkil etadi.\n\nBiosfera rezervatlari YuNESKO tomonidan tan olingan xalqaro ahamiyatga ega tabiiy hududlardir.\n\nQuyi Amudaryo biosfera rezervati daryo ekotizimini, Ugam-Chatqol esa tog' ekotizimini muhofaza qiladi. Bu yerda xalqaro hamkorlikda ilmiy tadqiqotlar olib boriladi.",
+      "image": "https://images.unsplash.com/photo-1439066615861-d1af74d74000?w=1200&h=800&fit=crop",
+      "category": "biosfera-rezervatlari",
       "features": [
-        "4000+ o'simlik turi",
-        "Endemik turlar",
-        "Dorivor o'simliklar",
-        "Mevali daraxtlar"
+        "2 ta biosfera rezervati",
+        "Quyi Amudaryo va Ugam-Chatqol",
+        "Umumiy maydoni 111 670 gektar",
+        "YuNESKO tomonidan tan olingan"
       ],
       "stats": {
-        "area": "Barcha zona",
-        "species": "4000+ o'simlik",
-        "protected": "18 ta botanika qo'riqxonasi"
+        "area": "111 670 gektar",
+        "species": "Noyob ekotizimlar",
+        "protected": "2 ta rezervat"
+      }
+    },
+    {
+      "id": "milliy-bog",
+      "slug": "milliy-bog",
+      "title": "Milliy bog'",
+      "excerpt": "Do'rmon milliy bog'i – 32,4 gektar maydonga ega O'zbekistonning yagona milliy bog'i.",
+      "content": "O'zbekistonda 1 ta milliy bog' mavjud – bu Do'rmon milliy bog'idir. Uning maydoni 32,4 gektarni tashkil etadi.\n\nDo'rmon milliy bog'i noyob daraxtlar va o'simliklar kolleksiyasiga ega. Bu yerda dendrologik tadqiqotlar olib boriladi.\n\nMilliy bog' aholini ekologik ta'lim berish va dam olish uchun ham xizmat qiladi. Bu yerda ko'plab noyob o'simlik turlari yetishtiriladi.",
+      "image": "https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?w=1200&h=800&fit=crop",
+      "category": "milliy-bog",
+      "features": [
+        "1 ta milliy bog' (Do'rmon)",
+        "32,4 gektar maydon",
+        "Noyob daraxtlar kolleksiyasi",
+        "Dendrologik tadqiqotlar"
+      ],
+      "stats": {
+        "area": "32,4 gektar",
+        "species": "Noyob o'simliklar",
+        "protected": "1 ta milliy bog'"
+      }
+    },
+    {
+      "id": "davlat-ormon-xojaliklari",
+      "slug": "davlat-ormon-xojaliklari",
+      "title": "Davlat o'rmon xo'jaliklari",
+      "excerpt": "O'zbekistonda 84 ta davlat o'rmon xo'jaligi tashkiloti mavjud, ularning umumiy hududi 11 441 523 gektardan ortiq.",
+      "content": "O'zbekistonda 84 ta davlat o'rmon xo'jaligi tashkiloti faoliyat yuritmoqda. Ularning umumiy hududi 11 441 523 gektardan ortiqni tashkil etadi.\n\nDavlat o'rmon xo'jaliklari mamlakatning o'rmon fondini boshqarish, o'rmonlarni muhofaza qilish va tiklash vazifalarini bajaradi.\n\nBu tashkilotlar o'rmon yong'inlarining oldini olish, noqonuniy daraxt kesishga qarshi kurash va yangi o'rmon maydonlarini barpo etish ishlarini olib boradi.",
+      "image": "https://images.unsplash.com/photo-1518837695005-2083093ee35b?w=1200&h=800&fit=crop",
+      "category": "davlat-ormon-xojaliklari",
+      "features": [
+        "84 ta tashkilot",
+        "11 441 523+ gektar hudud",
+        "O'rmonlarni muhofaza va tiklash",
+        "Yangi o'rmon maydonlarini barpo etish"
+      ],
+      "stats": {
+        "area": "11 441 523+ gektar",
+        "species": "Ko'plab o'rmon turlari",
+        "protected": "84 ta tashkilot"
       }
     }
   ]

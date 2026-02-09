@@ -97,8 +97,8 @@
       </div>
     </section>
 
-    <!-- Logo Marquee -->
-    <LogoMarquee />
+    <!-- Animal Icons Marquee -->
+    <IconMarquee type="animals" direction="left" />
 
     <!-- Latest News Section -->
     <section class="news-section sec-pad">
@@ -144,8 +144,34 @@
       </div>
     </section>
 
-    <!-- Logo Marquee -->
-    <LogoMarquee />
+    <!-- Plant Icons Marquee -->
+    <IconMarquee type="plants" direction="right" />
+
+    <!-- Natural Resources Cards Section -->
+    <section class="resources-cards-section sec-pad">
+      <div class="auto-container">
+        <div class="sec-title centred">
+          <h2>Muhofaza etiladigan hududlar</h2>
+          <p>O'zbekiston tabiatini muhofaza qilish tizimi</p>
+        </div>
+        <div class="resources-grid">
+          <NuxtLink
+            v-for="item in resourceCategories"
+            :key="item.slug"
+            :to="{ path: localePath('/natural-resources'), query: { category: item.slug } }"
+            class="resource-stat-card"
+          >
+            <div class="resource-stat-icon">
+              <i :class="item.icon"></i>
+            </div>
+            <div class="resource-stat-info">
+              <h4>{{ item.count }}</h4>
+              <p>{{ item.name }}</p>
+            </div>
+          </NuxtLink>
+        </div>
+      </div>
+    </section>
 
     <!-- Stats Section -->
     <section class="stats-section sec-pad">
@@ -200,6 +226,7 @@
 import { Swiper, SwiperSlide } from 'swiper/vue'
 import { Autoplay, EffectFade, Pagination } from 'swiper/modules'
 import LogoMarquee from '../components/ui/LogoMarquee'
+import IconMarquee from '../components/ui/IconMarquee'
 const SwiperAutoplay = Autoplay
 const SwiperEffectFade = EffectFade
 const SwiperPagination = Pagination
@@ -256,6 +283,63 @@ const { data: statsResponse } = await useAsyncData(
   'species-stats',
   () => getSpeciesStats()
 )
+
+const resourceCategories = [
+  {
+    slug: 'davlat-qoriqxonalari',
+    name: "Davlat qo'riqxonalari",
+    count: '7 ta',
+    icon: 'fas fa-mountain'
+  },
+  {
+    slug: 'majmua-buyurtma-qoriqxonasi',
+    name: "Majmua buyurtma qo'riqxonasi",
+    count: '1 ta',
+    icon: 'fas fa-map-marked-alt'
+  },
+  {
+    slug: 'milliy-tabiat-boglari',
+    name: "Milliy tabiat bog'lari",
+    count: '12 ta',
+    icon: 'fas fa-tree'
+  },
+  {
+    slug: 'tabiat-yodgorliklari',
+    name: 'Tabiat yodgorliklari',
+    count: '11 ta',
+    icon: 'fas fa-landmark'
+  },
+  {
+    slug: 'buyurtma-qoriqxonalari',
+    name: "Buyurtma qo'riqxonalari",
+    count: '11 ta',
+    icon: 'fas fa-shield-alt'
+  },
+  {
+    slug: 'maxsus-jayron-pitomnigi',
+    name: 'Maxsus Jayron pitomnigi',
+    count: '1 ta',
+    icon: 'fas fa-horse'
+  },
+  {
+    slug: 'biosfera-rezervatlari',
+    name: 'Biosfera rezervatlari',
+    count: '2 ta',
+    icon: 'fas fa-globe-americas'
+  },
+  {
+    slug: 'milliy-bog',
+    name: "Milliy bog'",
+    count: '1 ta',
+    icon: 'fas fa-leaf'
+  },
+  {
+    slug: 'davlat-ormon-xojaliklari',
+    name: "Davlat o'rmon xo'jaliklari",
+    count: '84 ta',
+    icon: 'fas fa-seedling'
+  }
+]
 
 const animalCount = computed(() => statsResponse.value?.data?.animals || 0)
 const plantCount = computed(() => statsResponse.value?.data?.plants || 0)
@@ -905,6 +989,110 @@ const formatDate = (date: string) => {
   }
 
   .cta-content p {
+    font-size: 18px;
+  }
+}
+
+/* Natural Resources Cards Section */
+.resources-cards-section {
+  background: #f8f9fa;
+  padding: 80px 0;
+}
+
+.resources-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.resource-stat-card {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  background: var(--white-color);
+  padding: 24px 20px;
+  border-radius: 14px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
+  transition: all 0.35s ease;
+  text-decoration: none;
+  border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.resource-stat-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(46, 125, 50, 0.18);
+  border-color: #2e7d32;
+}
+
+.resource-stat-icon {
+  width: 60px;
+  height: 60px;
+  min-width: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #2e7d32, #43a047);
+  border-radius: 14px;
+  transition: all 0.35s ease;
+}
+
+.resource-stat-card:hover .resource-stat-icon {
+  transform: rotate(8deg) scale(1.08);
+}
+
+.resource-stat-icon i {
+  font-size: 24px;
+  color: var(--white-color);
+}
+
+.resource-stat-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.resource-stat-info h4 {
+  font-size: 22px;
+  font-weight: 800;
+  color: #2e7d32;
+  margin: 0 0 4px;
+  line-height: 1;
+}
+
+.resource-stat-info p {
+  font-size: 14px;
+  color: var(--text-color);
+  margin: 0;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+@media (max-width: 991px) {
+  .resources-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .resources-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .resource-stat-card {
+    padding: 18px 16px;
+  }
+
+  .resource-stat-icon {
+    width: 50px;
+    height: 50px;
+    min-width: 50px;
+  }
+
+  .resource-stat-icon i {
+    font-size: 20px;
+  }
+
+  .resource-stat-info h4 {
     font-size: 18px;
   }
 }

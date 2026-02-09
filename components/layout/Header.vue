@@ -1,9 +1,9 @@
 <template>
   <!-- Placeholder for fixed header -->
-  <div class="header-placeholder"></div>
+  <div class="header-placeholder" :class="{ 'has-height': !isHomePage }"></div>
 
   <!-- Fixed Header with navigation -->
-  <header class="main-header" :class="{ scrolled: isScrolled }">
+  <header class="main-header" :class="{ scrolled: !isHomePage || isScrolled }">
     <div class="header-lower">
       <div class="auto-container">
         <div class="outer-box">
@@ -68,14 +68,15 @@
                   <li class="dropdown" :class="{ current: isActive('/natural-resources') }">
                     <NuxtLink :to="localePath('/natural-resources')">Tabiy boylik</NuxtLink>
                     <ul>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=tog-tizimalari')">Tog' tizimlari</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=daryolar-kolar')">Daryolar va ko'llar</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=chollar')">Cho'llar</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=ormonlar')">O'rmonlar</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=yaylovlar')">Yaylovlar</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=mineral-resurslari')">Mineral resurslari</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=hayvonot-dunyosi')">Hayvonot dunyosi</NuxtLink></li>
-                      <li><NuxtLink :to="localePath('/natural-resources?category=osimliklar-dunyosi')">O'simliklar dunyosi</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=davlat-qoriqxonalari')">Davlat qo'riqxonalari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=majmua-buyurtma-qoriqxonasi')">Majmua buyurtma qo'riqxonasi</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=milliy-tabiat-boglari')">Milliy tabiat bog'lari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=tabiat-yodgorliklari')">Tabiat yodgorliklari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=buyurtma-qoriqxonalari')">Buyurtma qo'riqxonalari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=maxsus-jayron-pitomnigi')">Maxsus Jayron pitomnigi</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=biosfera-rezervatlari')">Biosfera rezervatlari</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=milliy-bog')">Milliy bog'</NuxtLink></li>
+                      <li><NuxtLink :to="localePath('/natural-resources?category=davlat-ormon-xojaliklari')">Davlat o'rmon xo'jaliklari</NuxtLink></li>
                     </ul>
                   </li>
 
@@ -159,6 +160,10 @@ const searchQuery = ref('')
 const searchInput = ref<HTMLInputElement | null>(null)
 const isScrolled = ref(false)
 
+const isHomePage = computed(() => {
+  return route.path === '/' || route.path === '/uz' || route.path === '/en' || route.path === '/ru'
+})
+
 // Language switcher
 const langFlags: Record<string, string> = {
   uz: 'https://flagcdn.com/w40/uz.png',
@@ -241,6 +246,10 @@ onMounted(() => {
 /* Header Placeholder - prevents content jump when header-lower is fixed */
 .header-placeholder {
   height: 0;
+}
+
+.header-placeholder.has-height {
+  height: 80px;
 }
 
 /* Main Header - fixed navigation, transparent by default */
@@ -448,7 +457,7 @@ onMounted(() => {
   background: var(--white-color);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   padding: 15px;
-  min-width: 220px;
+  min-width: 280px;
   list-style: none;
   opacity: 0;
   visibility: hidden;

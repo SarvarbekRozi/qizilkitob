@@ -1,17 +1,14 @@
 <template>
   <div v-if="species" class="species-detail-page">
     <!-- Page Title -->
-    <section class="page-title" :style="{ backgroundImage: `url(${species.images.main || ''})` }">
+    <section class="simple-page-title">
       <div class="auto-container">
-        <div class="content-box">
-          <h1>{{ species.name[locale] }}</h1>
-          <p class="scientific-name">{{ species.scientificName }}</p>
-          <ul class="breadcrumb">
-            <li><NuxtLink :to="localePath('/')">{{ t('nav.home') }}</NuxtLink></li>
-            <li><NuxtLink :to="localePath('/species')">{{ t('nav.species') }}</NuxtLink></li>
-            <li>{{ species.name[locale] }}</li>
-          </ul>
-        </div>
+        <h1>{{ species.name[locale] }}</h1>
+<!--        <ul class="breadcrumb">-->
+<!--          <li><NuxtLink :to="localePath('/')">{{ t('nav.home') }}</NuxtLink></li>-->
+<!--          <li><NuxtLink :to="localePath('/species')">{{ t('nav.species') }}</NuxtLink></li>-->
+<!--          <li>{{ species.name[locale] }}</li>-->
+<!--        </ul>-->
       </div>
     </section>
 
@@ -21,9 +18,9 @@
         <!-- Image and Stats Row - Centered -->
         <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
-            <figure class="main-image">
-              <img :src="species.images.main || ''" :alt="species.name[locale]" />
-            </figure>
+<!--            <figure class="main-image">-->
+<!--              <img :src="species.images.main || ''" :alt="species.name[locale]" />-->
+<!--            </figure>-->
           </div>
           <div class="col-lg-4 col-md-12">
             <SpeciesStats :stats="species.stats" />
@@ -145,78 +142,6 @@ useHead({
 </script>
 
 <style scoped>
-.page-title {
-  position: relative;
-  padding: 140px 0 100px;
-  background-size: cover;
-  background-position: center;
-  background-attachment: fixed;
-}
-
-.page-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.75), rgba(46, 139, 87, 0.5));
-}
-
-.page-title .content-box {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--white-color);
-}
-
-.page-title h1 {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--white-color);
-  margin-bottom: 10px;
-}
-
-.scientific-name {
-  font-size: 20px;
-  font-style: italic;
-  color: var(--white-color);
-  opacity: 0.9;
-  margin-bottom: 15px;
-}
-
-.breadcrumb {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumb li {
-  color: var(--white-color);
-  font-size: 16px;
-}
-
-.breadcrumb li::after {
-  content: '/';
-  margin-left: 10px;
-}
-
-.breadcrumb li:last-child::after {
-  display: none;
-}
-
-.breadcrumb a {
-  color: var(--white-color);
-  transition: var(--transition);
-}
-
-.breadcrumb a:hover {
-  color: var(--secondary-color);
-}
-
 .main-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);
@@ -324,37 +249,29 @@ useHead({
   font-weight: bold;
 }
 
-.sec-title {
-  margin-bottom: 50px;
-}
+/*.sec-title {*/
+/*  margin-bottom: 50px;*/
+/*}*/
 
-.sec-title h2 {
-  font-size: 42px;
-  font-weight: 700;
-  position: relative;
-  padding-bottom: 20px;
-}
+/*.sec-title h2 {*/
+/*  font-size: 42px;*/
+/*  font-weight: 700;*/
+/*  position: relative;*/
+/*  padding-bottom: 20px;*/
+/*}*/
 
-.sec-title.centred h2::after {
-  content: '';
-  position: absolute;
-  bottom: 0;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 80px;
-  height: 3px;
-  background-color: var(--primary-color);
-}
+/*.sec-title.centred h2::after {*/
+/*  content: '';*/
+/*  position: absolute;*/
+/*  bottom: 0;*/
+/*  left: 50%;*/
+/*  transform: translateX(-50%);*/
+/*  width: 80px;*/
+/*  height: 3px;*/
+/*  background-color: var(--primary-color);*/
+/*}*/
 
 @media (max-width: 768px) {
-  .page-title {
-    padding: 80px 0 60px;
-  }
-
-  .page-title h1 {
-    font-size: 32px;
-  }
-
   .main-image img {
     height: 300px;
   }

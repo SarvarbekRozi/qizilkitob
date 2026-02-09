@@ -1,16 +1,14 @@
 <template>
   <div class="resource-detail-page">
     <!-- Page Title -->
-    <section class="page-title">
+    <section class="simple-page-title">
       <div class="auto-container">
-        <div class="content-box">
-          <h1>{{ resource.title[locale] }}</h1>
-          <ul class="breadcrumb">
-            <li><NuxtLink :to="localePath('/')">Bosh sahifa</NuxtLink></li>
-            <li><NuxtLink :to="localePath('/natural-resources')">Tabiy boylik</NuxtLink></li>
-            <li>{{ resource.title[locale] }}</li>
-          </ul>
-        </div>
+        <h1>{{ resource.title[locale] }}</h1>
+<!--        <ul class="breadcrumb">-->
+<!--          <li><NuxtLink :to="localePath('/')">Bosh sahifa</NuxtLink></li>-->
+<!--          <li><NuxtLink :to="localePath('/natural-resources')">Tabiy boylik</NuxtLink></li>-->
+<!--          <li>{{ resource.title[locale] }}</li>-->
+<!--        </ul>-->
       </div>
     </section>
 
@@ -117,70 +115,6 @@ useHead({
 </script>
 
 <style scoped>
-.page-title {
-  position: relative;
-  padding: 120px 0 80px;
-  background-image: url('https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=1920&h=600&fit=crop');
-  background-size: cover;
-  background-position: center;
-}
-
-.page-title::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.7), rgba(46, 139, 87, 0.5));
-}
-
-.page-title .content-box {
-  position: relative;
-  z-index: 2;
-  text-align: center;
-  color: var(--white-color);
-}
-
-.page-title h1 {
-  font-size: 48px;
-  font-weight: 800;
-  color: var(--white-color);
-  margin-bottom: 15px;
-}
-
-.breadcrumb {
-  list-style: none;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumb li {
-  color: var(--white-color);
-  font-size: 16px;
-}
-
-.breadcrumb li::after {
-  content: '/';
-  margin-left: 10px;
-}
-
-.breadcrumb li:last-child::after {
-  display: none;
-}
-
-.breadcrumb a {
-  color: var(--white-color);
-  transition: var(--transition);
-}
-
-.breadcrumb a:hover {
-  color: var(--secondary-color);
-}
-
 .featured-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);
@@ -286,14 +220,6 @@ useHead({
 }
 
 @media (max-width: 768px) {
-  .page-title {
-    padding: 80px 0 60px;
-  }
-
-  .page-title h1 {
-    font-size: 32px;
-  }
-
   .featured-image img {
     height: 300px;
   }

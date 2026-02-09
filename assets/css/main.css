@@ -92,6 +92,45 @@ img {
   padding: var(--section-padding) 0;
 }
 
+/* Simple Page Title (used on internal pages) */
+.simple-page-title {
+  padding: 30px 0;
+  text-align: center;
+  background: #fff;
+}
+
+.simple-page-title h1 {
+  font-size: 36px;
+  font-weight: 800;
+  color: var(--text-color);
+  margin-bottom: 10px;
+}
+
+.simple-page-title .breadcrumb {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  color: var(--text-light);
+  font-size: 14px;
+}
+
+.simple-page-title .breadcrumb li::after {
+  content: '/';
+  margin-left: 8px;
+}
+
+.simple-page-title .breadcrumb li:last-child::after {
+  display: none;
+}
+
+.simple-page-title .breadcrumb a {
+  color: var(--primary-color);
+  text-decoration: none;
+}
+
 @media (max-width: 768px) {
   .sec-pad {
     padding: var(--section-padding-mobile) 0;
