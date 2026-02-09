@@ -74,43 +74,48 @@
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=tog-tizimalari')" @click="$emit('close')">
-                    Tog' tizimlari
+                  <NuxtLink :to="localePath('/natural-resources?category=davlat-qoriqxonalari')" @click="$emit('close')">
+                    Davlat qo'riqxonalari
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=daryolar-kolar')" @click="$emit('close')">
-                    Daryolar va ko'llar
+                  <NuxtLink :to="localePath('/natural-resources?category=majmua-buyurtma-qoriqxonasi')" @click="$emit('close')">
+                    Majmua buyurtma qo'riqxonasi
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=chollar')" @click="$emit('close')">
-                    Cho'llar
+                  <NuxtLink :to="localePath('/natural-resources?category=milliy-tabiat-boglari')" @click="$emit('close')">
+                    Milliy tabiat bog'lari
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=ormonlar')" @click="$emit('close')">
-                    O'rmonlar
+                  <NuxtLink :to="localePath('/natural-resources?category=tabiat-yodgorliklari')" @click="$emit('close')">
+                    Tabiat yodgorliklari
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=yaylovlar')" @click="$emit('close')">
-                    Yaylovlar
+                  <NuxtLink :to="localePath('/natural-resources?category=buyurtma-qoriqxonalari')" @click="$emit('close')">
+                    Buyurtma qo'riqxonalari
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=mineral-resurslari')" @click="$emit('close')">
-                    Mineral resurslari
+                  <NuxtLink :to="localePath('/natural-resources?category=maxsus-jayron-pitomnigi')" @click="$emit('close')">
+                    Maxsus Jayron pitomnigi
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=hayvonot-dunyosi')" @click="$emit('close')">
-                    Hayvonot dunyosi
+                  <NuxtLink :to="localePath('/natural-resources?category=biosfera-rezervatlari')" @click="$emit('close')">
+                    Biosfera rezervatlari
                   </NuxtLink>
                 </li>
                 <li>
-                  <NuxtLink :to="localePath('/natural-resources?category=osimliklar-dunyosi')" @click="$emit('close')">
-                    O'simliklar dunyosi
+                  <NuxtLink :to="localePath('/natural-resources?category=milliy-bog')" @click="$emit('close')">
+                    Milliy bog'
+                  </NuxtLink>
+                </li>
+                <li>
+                  <NuxtLink :to="localePath('/natural-resources?category=davlat-ormon-xojaliklari')" @click="$emit('close')">
+                    Davlat o'rmon xo'jaliklari
                   </NuxtLink>
                 </li>
               </ul>
@@ -131,7 +136,19 @@
         </nav>
 
         <div class="mobile-menu-footer">
-          <LayoutLanguageSwitcher />
+          <div class="mobile-lang-title">Tilni tanlang</div>
+          <div class="mobile-lang-switcher">
+            <button
+              v-for="lang in availableLocales"
+              :key="lang.code"
+              :class="{ active: locale === lang.code }"
+              class="mobile-lang-btn"
+              @click="switchLanguage(lang.code)"
+            >
+              <img :src="langFlags[lang.code]" :alt="lang.name" class="mobile-lang-flag" />
+              {{ lang.name }}
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -141,10 +158,22 @@
 <script setup lang="ts">
 defineEmits(['close'])
 
-const { t } = useI18n()
+const { t, locale, locales, setLocale } = useI18n()
 const localePath = useLocalePath()
 
 const activeSubmenu = ref<string | null>(null)
+
+const langFlags: Record<string, string> = {
+  uz: 'https://flagcdn.com/w40/uz.png',
+  ru: 'https://flagcdn.com/w40/ru.png',
+  en: 'https://flagcdn.com/w40/gb.png',
+}
+
+const availableLocales = computed(() => locales.value)
+
+const switchLanguage = async (code: string) => {
+  await setLocale(code)
+}
 
 const toggleSubmenu = (menu: string) => {
   activeSubmenu.value = activeSubmenu.value === menu ? null : menu
@@ -267,6 +296,53 @@ const toggleSubmenu = (menu: string) => {
   margin-top: 30px;
   padding-top: 20px;
   border-top: 1px solid #eee;
+}
+
+.mobile-lang-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-bottom: 12px;
+}
+
+.mobile-lang-switcher {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mobile-lang-btn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  border: 1px solid #eee;
+  background: var(--white-color);
+  border-radius: 8px;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--heading-color);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.mobile-lang-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--primary-color);
+}
+
+.mobile-lang-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white-color);
+  border-color: transparent;
+}
+
+.mobile-lang-flag {
+  width: 28px;
+  height: 20px;
+  object-fit: cover;
+  border-radius: 3px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
 }
 
 @keyframes fadeIn {

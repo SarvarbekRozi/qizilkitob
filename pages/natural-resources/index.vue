@@ -110,12 +110,24 @@ const { data: resourcesResponse, pending, error } = await useAsyncData(
 
 const resources = computed<NaturalResource[]>(() => (resourcesResponse.value?.data as NaturalResource[]) || [])
 
+const categoryLabelMap: Record<string, string> = {
+  'davlat-qoriqxonalari': "Davlat qo'riqxonalari",
+  'majmua-buyurtma-qoriqxonasi': "Majmua buyurtma qo'riqxonasi",
+  'milliy-tabiat-boglari': "Milliy tabiat bog'lari",
+  'tabiat-yodgorliklari': 'Tabiat yodgorliklari',
+  'buyurtma-qoriqxonalari': "Buyurtma qo'riqxonalari",
+  'maxsus-jayron-pitomnigi': 'Maxsus Jayron pitomnigi',
+  'biosfera-rezervatlari': 'Biosfera rezervatlari',
+  'milliy-bog': "Milliy bog'",
+  'davlat-ormon-xojaliklari': "Davlat o'rmon xo'jaliklari"
+}
+
 // Kategoriya nomi
 const categoryTitle = computed(() => {
-  if (!categoryQuery.value || resources.value.length === 0) {
+  if (!categoryQuery.value) {
     return "O'zbekistonning Tabiy Boyliklari"
   }
-  return resources.value[0]?.title?.[locale.value] || "Tabiy boylik"
+  return categoryLabelMap[categoryQuery.value] || "Tabiy boylik"
 })
 
 const pagination = computed(() => resourcesResponse.value?.pagination || null)
@@ -132,15 +144,15 @@ const pageLink = (p: number) => {
   }
 }
 
-useHead({
-  title: 'Tabiy boylik',
+useHead(() => ({
+  title: categoryTitle.value,
   meta: [
     {
       name: 'description',
       content: "O'zbekistonning noyob tabiiy boyliklari va ularni muhofaza qilish"
     }
   ]
-})
+}))
 </script>
 
 <style scoped>

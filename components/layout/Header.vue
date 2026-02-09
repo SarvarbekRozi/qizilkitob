@@ -1,31 +1,9 @@
 <template>
-  <!-- Header Top - scrolls with page -->
-  <div ref="headerTopRef" class="header-top">
-      <div class="auto-container">
-        <div class="top-inner">
-          <div class="top-left">
-            <ul class="info clearfix">
-              <li><i class="fas fa-map-marker-alt"></i>{{ t('contact.address') }}</li>
-              <li><i class="fas fa-envelope"></i><a href="mailto:info@redbook.uz">info@redbook.uz</a></li>
-            </ul>
-          </div>
-          <div class="top-right">
-            <ul class="social-links clearfix">
-<!--              <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>-->
-              <li><a href="https://www.instagram.com/qizilkitob.uzb" target="_blank"><i class="fab fa-instagram"></i></a></li>
-              <li><a href="https://t.me/qizilkitobuz" target="_blank"><i class="fab fa-telegram"></i></a></li>
-            </ul>
-            <LayoutLanguageSwitcher />
-          </div>
-        </div>
-      </div>
-  </div>
-
   <!-- Placeholder for fixed header -->
   <div class="header-placeholder"></div>
 
   <!-- Fixed Header with navigation -->
-  <header class="main-header" :style="{ top: headerTopPosition + 'px' }">
+  <header class="main-header" :class="{ scrolled: isScrolled }">
     <div class="header-lower">
       <div class="auto-container">
         <div class="outer-box">
@@ -109,6 +87,26 @@
                     <NuxtLink :to="localePath('/contact')">Aloqa</NuxtLink>
                   </li>
 
+                  <!-- Language Dropdown -->
+                  <li class="dropdown lang-dropdown">
+                    <a href="#" @click.prevent>
+                      <img :src="currentFlag" :alt="currentLangName" class="lang-flag" />
+                      {{ currentLangName }}
+                    </a>
+                    <ul>
+                      <li v-for="lang in availableLocales" :key="lang.code">
+                        <a
+                          href="#"
+                          :class="{ 'active-lang': locale === lang.code }"
+                          @click.prevent="switchLanguage(lang.code)"
+                        >
+                          <img :src="langFlags[lang.code]" :alt="lang.name" class="lang-flag" />
+                          {{ lang.name }}
+                        </a>
+                      </li>
+                    </ul>
+                  </li>
+
                   <li class="search-icon">
                     <a href="#" @click.prevent="toggleSearch">
                       <i class="fas fa-search"></i>
@@ -150,7 +148,7 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale, locales, setLocale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 const localePath = useLocalePath()
@@ -159,9 +157,26 @@ const isMobileMenuOpen = ref(false)
 const isSearchOpen = ref(false)
 const searchQuery = ref('')
 const searchInput = ref<HTMLInputElement | null>(null)
-const headerTopRef = ref<HTMLElement | null>(null)
-const headerTopHeight = ref(0)
-const scrollY = ref(0)
+const isScrolled = ref(false)
+
+// Language switcher
+const langFlags: Record<string, string> = {
+  uz: 'https://flagcdn.com/w40/uz.png',
+  ru: 'https://flagcdn.com/w40/ru.png',
+  en: 'https://flagcdn.com/w40/gb.png',
+}
+
+const availableLocales = computed(() => locales.value)
+
+const currentFlag = computed(() => langFlags[locale.value] || langFlags.uz)
+const currentLangName = computed(() => {
+  const current = locales.value.find((l: any) => l.code === locale.value)
+  return current ? (current as any).name : "O'zbek"
+})
+
+const switchLanguage = async (code: string) => {
+  await setLocale(code)
+}
 
 const isActive = (path: string) => {
   if (path === '/') {
@@ -206,143 +221,59 @@ const handleKeydown = (e: KeyboardEvent) => {
   }
 }
 
-// Calculate header top position based on scroll
-const headerTopPosition = computed(() => {
-  const offset = headerTopHeight.value - scrollY.value
-  return Math.max(0, offset)
-})
+const handleScroll = () => {
+  isScrolled.value = window.scrollY > 50
+}
 
-// Initialize and handle scroll
 onMounted(() => {
-  // Get header-top height
-  if (headerTopRef.value) {
-    headerTopHeight.value = headerTopRef.value.offsetHeight
-  }
-
-  const handleScroll = () => {
-    scrollY.value = window.scrollY
-  }
-
-  const handleResize = () => {
-    if (headerTopRef.value) {
-      headerTopHeight.value = headerTopRef.value.offsetHeight
-    }
-  }
-
-  window.addEventListener('scroll', handleScroll, { passive: true })
-  window.addEventListener('resize', handleResize)
   window.addEventListener('keydown', handleKeydown)
+  window.addEventListener('scroll', handleScroll, { passive: true })
+  handleScroll()
 
   onUnmounted(() => {
-    window.removeEventListener('scroll', handleScroll)
-    window.removeEventListener('resize', handleResize)
     window.removeEventListener('keydown', handleKeydown)
+    window.removeEventListener('scroll', handleScroll)
   })
 })
 </script>
 
 <style scoped>
-/* Header Top - scrolls with page */
-.header-top {
-  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  padding: 12px 0;
-  color: var(--white-color);
-}
-
 /* Header Placeholder - prevents content jump when header-lower is fixed */
 .header-placeholder {
-  height: 80px;
+  height: 0;
 }
 
-/* Main Header - fixed navigation */
+/* Main Header - fixed navigation, transparent by default */
 .main-header {
   position: fixed;
+  top: 0;
   left: 0;
   right: 0;
-  background-color: var(--white-color);
+  background-color: transparent;
   z-index: 999;
+  box-shadow: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease, border-bottom 0.3s ease;
+}
+
+/* Scrolled state - white background */
+.main-header.scrolled {
+  background-color: var(--white-color);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.1);
-}
-
-.top-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 15px;
-}
-
-.top-left .info {
-  list-style: none;
-  display: flex;
-  gap: 30px;
-  margin: 0;
-  padding: 0;
-}
-
-.top-left .info li {
-  font-size: 14px;
-  color: rgba(255, 255, 255, 0.95);
-  display: flex;
-  align-items: center;
-  gap: 8px;
-}
-
-.top-left .info li i {
-  font-size: 16px;
-  color: rgba(255, 255, 255, 0.8);
-}
-
-.top-left .info a {
-  color: rgba(255, 255, 255, 0.95);
-  transition: all 0.3s ease;
-}
-
-.top-left .info a:hover {
-  color: var(--white-color);
-}
-
-.top-right {
-  display: flex;
-  align-items: center;
-  gap: 25px;
-}
-
-.social-links {
-  list-style: none;
-  display: flex;
-  gap: 12px;
-  margin: 0;
-  padding: 0;
-}
-
-.social-links a {
-  width: 32px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.15);
-  color: var(--white-color);
-  font-size: 14px;
-  border-radius: 50%;
-  transition: all 0.3s ease;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.social-links a:hover {
-  background: var(--white-color);
-  color: var(--primary-color);
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border-bottom: 1px solid transparent;
 }
 
 /* Header Lower */
 .header-lower {
   padding: 12px 0;
+  background: transparent;
+  box-shadow: none;
+  transition: all 0.3s ease;
+}
+
+.main-header.scrolled .header-lower {
   background: var(--white-color);
   box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-  transition: all 0.3s ease;
 }
 
 .outer-box {
@@ -384,10 +315,18 @@ onMounted(() => {
   font-size: 20px;
   font-weight: 500;
   letter-spacing: 0.5px;
-  background:#b02923;
+  color: var(--white-color);
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.main-header.scrolled .brand-name {
+  color: transparent;
+  background: #b02923;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
+  text-shadow: none;
 }
 
 .brand-tagline {
@@ -437,7 +376,7 @@ onMounted(() => {
 }
 
 .navigation li a {
-  color: var(--heading-color);
+  color: var(--white-color);
   font-size: 15px;
   font-weight: 600;
   padding: 10px 18px;
@@ -445,6 +384,12 @@ onMounted(() => {
   transition: all 0.3s ease;
   border-radius: 8px;
   position: relative;
+  text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+}
+
+.main-header.scrolled .navigation li a {
+  color: var(--heading-color);
+  text-shadow: none;
 }
 
 .navigation li a::before {
@@ -455,8 +400,12 @@ onMounted(() => {
   transform: translateX(-50%) scaleX(0);
   width: 80%;
   height: 2px;
+  background: linear-gradient(90deg, var(--secondary-color), var(--white-color));
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.main-header.scrolled .navigation li a::before {
   background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-  transition: transform 0.3s ease;
 }
 
 .navigation li a:hover::before,
@@ -466,6 +415,11 @@ onMounted(() => {
 
 .navigation li a:hover,
 .navigation li.current > a {
+  color: var(--secondary-color);
+}
+
+.main-header.scrolled .navigation li a:hover,
+.main-header.scrolled .navigation li.current > a {
   color: var(--primary-color);
 }
 
@@ -526,6 +480,8 @@ onMounted(() => {
   font-size: 14px;
   border-radius: 6px;
   transition: all 0.3s ease;
+  color: var(--heading-color) !important;
+  text-shadow: none !important;
 }
 
 .navigation .dropdown ul li a::before {
@@ -534,8 +490,8 @@ onMounted(() => {
 
 .navigation .dropdown ul li a:hover {
   background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
-  color: var(--white-color);
-  transform: translateX(5px);
+  color: var(--white-color)!important;
+  /*transform: translateX(5px);*/
 }
 
 /* Multi-level Dropdown (Submenu) */
@@ -590,6 +546,39 @@ onMounted(() => {
   padding-right: 35px !important;
 }
 
+/* Language Dropdown */
+.lang-flag {
+  width: 22px;
+  height: 15px;
+  object-fit: cover;
+  border-radius: 2px;
+  vertical-align: middle;
+}
+
+.lang-dropdown > a {
+  display: flex !important;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+.lang-dropdown > ul {
+  right: 0;
+  left: auto !important;
+  min-width: 180px !important;
+}
+
+.lang-dropdown ul li a {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+}
+
+.lang-dropdown ul li a.active-lang {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: var(--white-color)!important;
+}
+
 /* Search Icon */
 .navigation .search-icon a {
   padding: 10px 15px;
@@ -597,13 +586,21 @@ onMounted(() => {
 
 .navigation .search-icon i {
   font-size: 18px;
-  color: var(--heading-color);
+  color: var(--white-color);
   transition: var(--transition);
 }
 
+.main-header.scrolled .navigation .search-icon i {
+  color: var(--heading-color);
+}
+
 .navigation .search-icon:hover i {
-  color: var(--primary-color);
+  color: var(--secondary-color);
   transform: scale(1.1);
+}
+
+.main-header.scrolled .navigation .search-icon:hover i {
+  color: var(--primary-color);
 }
 
 /* Search Popup */
@@ -713,7 +710,23 @@ onMounted(() => {
   box-shadow: 0 5px 20px rgba(160, 51, 45, 0.4);
 }
 
+/* Wider container for header to fit all menus */
+.header-lower :deep(.auto-container) {
+  max-width: 1400px;
+}
+
 /* Responsive */
+@media (max-width: 1400px) {
+  .navigation {
+    gap: 2px;
+  }
+
+  .navigation li a {
+    padding: 10px 12px;
+    font-size: 14px;
+  }
+}
+
 @media (max-width: 1200px) {
   .main-menu {
     display: none;
@@ -722,27 +735,9 @@ onMounted(() => {
   .mobile-nav-toggler {
     display: flex;
   }
-
-  .navigation {
-    gap: 3px;
-  }
-
-  .navigation li a {
-    padding: 8px 12px;
-    font-size: 14px;
-  }
 }
 
 @media (max-width: 991px) {
-  .header-top {
-    padding: 10px 0;
-  }
-
-  .top-left .info {
-    gap: 20px;
-    font-size: 13px;
-  }
-
   .logo-content i {
     font-size: 40px;
   }
@@ -759,36 +754,6 @@ onMounted(() => {
 @media (max-width: 768px) {
   .header-placeholder {
     height: 90px;
-  }
-
-  .header-top {
-    padding: 8px 0;
-  }
-
-  .top-left .info {
-    flex-direction: column;
-    gap: 8px;
-    font-size: 12px;
-  }
-
-  .top-inner {
-    flex-direction: column;
-    gap: 12px;
-    text-align: center;
-  }
-
-  .top-right {
-    gap: 15px;
-  }
-
-  .social-links {
-    gap: 10px;
-  }
-
-  .social-links a {
-    width: 30px;
-    height: 30px;
-    font-size: 13px;
   }
 
   .header-lower {
@@ -824,10 +789,6 @@ onMounted(() => {
 @media (max-width: 480px) {
   .header-placeholder {
     height: 80px;
-  }
-
-  .top-left .info {
-    display: none;
   }
 
   .logo-content i {
