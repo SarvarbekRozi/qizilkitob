@@ -1,7 +1,33 @@
 {
   "permissions": {
     "allow": [
-      "Bash(powershell.exe -NoProfile -Command \"\\(Get-Content -Path ''D:\\\\loyiha\\\\qizilkitob\\\\pages\\\\natural-resources\\\\[slug].vue'' -Raw -Encoding UTF8\\) -replace ''#2e8b57'', ''#A0332D'' -replace ''#228b22'', ''#3d6e3e'' -replace ''rgba\\\\\\(46, 139, 87,'', ''rgba\\(160, 51, 45,'' -replace ''rgba\\\\\\(34, 139, 34,'', ''rgba\\(61, 110, 62,'' | Set-Content -Path ''D:\\\\loyiha\\\\qizilkitob\\\\pages\\\\natural-resources\\\\[slug].vue'' -Encoding UTF8 -NoNewline\")"
+      "Bash(powershell.exe -NoProfile -Command \"\\(Get-Content -Path ''D:\\\\loyiha\\\\qizilkitob\\\\pages\\\\natural-resources\\\\[slug].vue'' -Raw -Encoding UTF8\\) -replace ''#2e8b57'', ''#A0332D'' -replace ''#228b22'', ''#3d6e3e'' -replace ''rgba\\\\\\(46, 139, 87,'', ''rgba\\(160, 51, 45,'' -replace ''rgba\\\\\\(34, 139, 34,'', ''rgba\\(61, 110, 62,'' | Set-Content -Path ''D:\\\\loyiha\\\\qizilkitob\\\\pages\\\\natural-resources\\\\[slug].vue'' -Encoding UTF8 -NoNewline\")",
+      "Bash(php --version 2>/dev/null && composer --version 2>/dev/null)",
+      "Bash(php --version 2>&1; composer --version 2>&1)",
+      "Read(//d/OSPanel/domains//**)",
+      "Read(//d/OSPanel//**)",
+      "Read(//d/loyiha/admin-ekolog-uz/vendor/**)",
+      "Read(//d/loyiha/admin-ekolog-uz/resources/views//**)",
+      "Bash(PHP83=\"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\"\nCOMPOSER=\"/d/OSPanel/userdata/composer/composer.phar\"\nDEST=\"/d/OSPanel.V-6/home/admin-qizilkitob\"\n\nmkdir -p \"$DEST\"\n\n\"$PHP83\" \"$COMPOSER\" create-project laravel/laravel \"$DEST\" --prefer-dist --no-interaction 2>&1 | tail -5)",
+      "Bash(PHP83=\"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\"\nCOMPOSER=\"/d/OSPanel/userdata/composer/composer.phar\"\nDEST=\"/d/OSPanel.V-6/home/admin-qizilkitob\"\n\nmkdir -p \"$DEST\" && \"$PHP83\" \"$COMPOSER\" create-project laravel/laravel \"$DEST\" --prefer-dist --no-interaction 2>&1 | tail -10)",
+      "Bash(PHP83=\"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\"\nCOMPOSER=\"/d/OSPanel/userdata/composer/composer.phar\"\nDEST=\"/d/OSPanel.V-6/home/admin-qizilkitob\"\n\n\"$PHP83\" \"$COMPOSER\" create-project laravel/laravel \"$DEST\" --prefer-dist --no-interaction 2>&1 | tail -15)",
+      "Bash(PHP83=\"D:/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\"\necho \"$PHP83\")",
+      "Bash(\"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\" -r \"echo PHP_VERSION;\")",
+      "Bash(cat > \"/d/OSPanel.V-6/home/admin-qizilkitob/.env\" << 'ENVEOF'\nAPP_NAME=\"Qizil Kitob Admin\"\nAPP_ENV=local\nAPP_KEY=base64:ViFDzNOFXJgB12lwp96tr3M8Rdp5teU/TdOdYT6iDyE=\nAPP_DEBUG=true\nAPP_URL=http://admin-qizilkitob.uz\n\nAPP_LOCALE=uz\nAPP_FALLBACK_LOCALE=uz\nAPP_FAKER_LOCALE=en_US\n\nAPP_MAINTENANCE_DRIVER=file\n\nBCRYPT_ROUNDS=12\n\nLOG_CHANNEL=stack\nLOG_STACK=single\nLOG_LEVEL=debug\n\nDB_CONNECTION=pgsql\nDB_HOST=127.0.0.1\nDB_PORT=5432\nDB_DATABASE=qizilkitob\nDB_USERNAME=postgres\nDB_PASSWORD=\n\nSESSION_DRIVER=file\nSESSION_LIFETIME=120\nSESSION_ENCRYPT=false\nSESSION_PATH=/\nSESSION_DOMAIN=null\n\nBROADCAST_CONNECTION=log\nFILESYSTEM_DISK=local\nQUEUE_CONNECTION=sync\n\nCACHE_STORE=file\n\nMAIL_MAILER=log\nMAIL_FROM_ADDRESS=\"admin@qizilkitob.uz\"\nMAIL_FROM_NAME=\"${APP_NAME}\"\n\nVITE_APP_NAME=\"${APP_NAME}\"\nENVEOF\necho \"done\")",
+      "Bash(php artisan:*)",
+      "Bash(\"/d/OSPanel.V-6/modules/PHP-8.2/PHP/php.exe\" artisan:*)",
+      "Bash(find /d/OSPanel.V-6/home/admin-qizilkitob/app /d/OSPanel.V-6/home/admin-qizilkitob/database/migrations /d/OSPanel.V-6/home/admin-qizilkitob/routes /d/OSPanel.V-6/home/admin-qizilkitob/resources/views /d/OSPanel.V-6/home/admin-qizilkitob/public/css /d/OSPanel.V-6/home/admin-qizilkitob/config -name \"*.php\" -o -name \"*.css\" -o -name \"*.blade.php\" 2>/dev/null | grep -v vendor | sort)",
+      "Bash(cd \"/d/OSPanel.V-6/home/admin-qizilkitob\" && \"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\" artisan route:list --path=api 2>&1 | head -40)",
+      "Bash(find /d/OSPanel.V-6/home -maxdepth 2 -name \"*.ini\" ! -path \"*/vendor/*\" 2>/dev/null | head -10)",
+      "Bash(find /d/OSPanel.V-6/home -maxdepth 1 -name \"*.conf\" 2>/dev/null | head -10; ls /d/OSPanel.V-6/home/tms-api/ | head -5)",
+      "Bash(find /d/OSPanel.V-6 -name \"*.db\" -maxdepth 3 2>/dev/null | head -5)",
+      "Bash(find /d/OSPanel.V-6 -name \"*.dat\" -maxdepth 3 2>/dev/null | head)",
+      "Bash(ls /d/OSPanel.V-6/addons/ 2>/dev/null | head; find /d/OSPanel.V-6 -name \"*.json\" -path \"*/projects*\" -o -name \"projects.dat\" 2>/dev/null | head)",
+      "Bash(cat > \"/d/loyiha/qizilkitob/.env\" << 'EOF'\nNUXT_PUBLIC_API_BASE=http://admin-qizilkitob.uz/api/v2\nEOF\necho \"done\")",
+      "Bash(grep -v \"^$\")",
+      "Bash(sed -i 's|APP_URL=http://admin-qizilkitob.uz|APP_URL=http://localhost:8000|' /d/OSPanel.V-6/home/admin-qizilkitob/.env\nsed -i 's|DB_HOST=127.127.126.49|DB_HOST=127.0.0.1|' /d/OSPanel.V-6/home/admin-qizilkitob/.env\ngrep \"APP_URL\\\\|DB_HOST\\\\|DB_DATABASE\\\\|DB_PORT\" /d/OSPanel.V-6/home/admin-qizilkitob/.env)",
+      "Bash(cd \"/d/OSPanel.V-6/home/admin-qizilkitob\" && \"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\" -r \"\n\\\\$ch = curl_init\\('http://127.0.0.1:8000/api/v2/species'\\);\ncurl_setopt\\(\\\\$ch, CURLOPT_RETURNTRANSFER, true\\);\ncurl_setopt\\(\\\\$ch, CURLOPT_TIMEOUT, 5\\);\n\\\\$res = curl_exec\\(\\\\$ch\\);\n\\\\$err = curl_error\\(\\\\$ch\\);\necho \\\\$err ? 'ERROR: '.\\\\$err : substr\\(\\\\$res, 0, 200\\);\n\" 2>&1)",
+      "Bash(cd \"/d/OSPanel.V-6/home/admin-qizilkitob\" && \"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\" artisan migrate --force 2>&1)"
     ]
   }
 }

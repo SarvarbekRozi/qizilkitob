@@ -16,51 +16,68 @@
 <!--        </div>-->
 
         <!-- International Partners -->
-        <div class="partner-category">
+        <div class="partner-category" v-if="internationalPartners.length">
           <h3 class="category-title">Xalqaro tashkilotlar</h3>
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6" v-for="partner in internationalPartners" :key="partner.id">
               <div class="partner-card">
                 <div class="partner-logo">
-                  <img :src="partner.logo" :alt="partner.name" />
+                  <img v-if="partner.logo" :src="partner.logo" :alt="partnerName(partner)" />
+                  <div v-else class="partner-logo-placeholder">{{ partnerName(partner).charAt(0) }}</div>
                 </div>
-                <h4>{{ partner.name }}</h4>
-                <p>{{ partner.description }}</p>
+                <h4>{{ partnerName(partner) }}</h4>
+                <p v-if="partnerDesc(partner)" class="partner-desc">{{ partnerDesc(partner) }}</p>
+                <a v-if="partner.website" :href="partner.website" target="_blank" rel="noopener" class="partner-website">
+                  <i class="fas fa-globe"></i> {{ partner.website.replace(/^https?:\/\//, '') }}
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- National Partners -->
-        <div class="partner-category">
+        <div class="partner-category" v-if="nationalPartners.length">
           <h3 class="category-title">Milliy tashkilotlar</h3>
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6" v-for="partner in nationalPartners" :key="partner.id">
               <div class="partner-card">
                 <div class="partner-logo">
-                  <img :src="partner.logo" :alt="partner.name" />
+                  <img v-if="partner.logo" :src="partner.logo" :alt="partnerName(partner)" />
+                  <div v-else class="partner-logo-placeholder">{{ partnerName(partner).charAt(0) }}</div>
                 </div>
-                <h4>{{ partner.name }}</h4>
-                <p>{{ partner.description }}</p>
+                <h4>{{ partnerName(partner) }}</h4>
+                <p v-if="partnerDesc(partner)" class="partner-desc">{{ partnerDesc(partner) }}</p>
+                <a v-if="partner.website" :href="partner.website" target="_blank" rel="noopener" class="partner-website">
+                  <i class="fas fa-globe"></i> {{ partner.website.replace(/^https?:\/\//, '') }}
+                </a>
               </div>
             </div>
           </div>
         </div>
 
         <!-- Research Partners -->
-        <div class="partner-category">
+        <div class="partner-category" v-if="researchPartners.length">
           <h3 class="category-title">Ilmiy hamkorlar</h3>
           <div class="row">
             <div class="col-lg-3 col-md-4 col-sm-6" v-for="partner in researchPartners" :key="partner.id">
               <div class="partner-card">
                 <div class="partner-logo">
-                  <img :src="partner.logo" :alt="partner.name" />
+                  <img v-if="partner.logo" :src="partner.logo" :alt="partnerName(partner)" />
+                  <div v-else class="partner-logo-placeholder">{{ partnerName(partner).charAt(0) }}</div>
                 </div>
-                <h4>{{ partner.name }}</h4>
-                <p>{{ partner.description }}</p>
+                <h4>{{ partnerName(partner) }}</h4>
+                <p v-if="partnerDesc(partner)" class="partner-desc">{{ partnerDesc(partner) }}</p>
+                <a v-if="partner.website" :href="partner.website" target="_blank" rel="noopener" class="partner-website">
+                  <i class="fas fa-globe"></i> {{ partner.website.replace(/^https?:\/\//, '') }}
+                </a>
               </div>
             </div>
           </div>
+        </div>
+
+        <!-- Hech qanday hamkor yo'q -->
+        <div v-if="!allPartners.length" class="text-center py-5">
+          <p style="color: var(--text-color); font-size: 16px;">Hamkorlar ma'lumotlari yuklanmoqda...</p>
         </div>
       </div>
     </section>
@@ -68,88 +85,30 @@
 </template>
 
 <script setup lang="ts">
-const localePath = useLocalePath()
+const { locale } = useI18n()
+const { getPartners } = useApi()
 
-const internationalPartners = [
-  {
-    id: 1,
-    name: "WWF",
-    description: "Jahon tabiatni muhofaza qilish jamg'armasi",
-    logo: "https://via.placeholder.com/200x100/2E8B57/FFFFFF?text=WWF"
-  },
-  {
-    id: 2,
-    name: "IUCN",
-    description: "Xalqaro tabiatni muhofaza qilish ittifoqi",
-    logo: "https://via.placeholder.com/200x100/4CAF50/FFFFFF?text=IUCN"
-  },
-  {
-    id: 3,
-    name: "UNESCO",
-    description: "BMT Ta'lim, fan va madaniyat tashkiloti",
-    logo: "https://via.placeholder.com/200x100/009688/FFFFFF?text=UNESCO"
-  },
-  {
-    id: 4,
-    name: "UNDP",
-    description: "BMT Taraqqiyot dasturi",
-    logo: "https://via.placeholder.com/200x100/00BCD4/FFFFFF?text=UNDP"
-  }
-]
+const { data: partnersResponse } = await useAsyncData('partners', () => getPartners())
 
-const nationalPartners = [
-  {
-    id: 5,
-    name: "Ekologiya vazirligi",
-    description: "O'zbekiston Respublikasi Ekologiya, atrof-muhitni muhofaza qilish va iqlim o'zgarishi vazirligi",
-    logo: "https://via.placeholder.com/200x100/FF9800/FFFFFF?text=Ekologiya"
-  },
-  {
-    id: 6,
-    name: "Qo'riqxonalar",
-    description: "Davlat tabiat qo'riqxonalari tizimi",
-    logo: "https://via.placeholder.com/200x100/FF5722/FFFFFF?text=Qo'riqxona"
-  },
-  {
-    id: 7,
-    name: "Zoologiya instituti",
-    description: "O'zbekiston Zoologiya instituti",
-    logo: "https://via.placeholder.com/200x100/F44336/FFFFFF?text=Zoologiya"
-  },
-  {
-    id: 8,
-    name: "Botanika bog'i",
-    description: "Respublika botanika bog'i",
-    logo: "https://via.placeholder.com/200x100/E91E63/FFFFFF?text=Botanika"
-  }
-]
+const allPartners = computed(() => (partnersResponse.value as any)?.data ?? [])
 
-const researchPartners = [
-  {
-    id: 9,
-    name: "Fan Akademiyasi",
-    description: "O'zbekiston Respublikasi Fanlar Akademiyasi",
-    logo: "https://via.placeholder.com/200x100/9C27B0/FFFFFF?text=Fan"
-  },
-  {
-    id: 10,
-    name: "Universitet",
-    description: "Milliy universitet biologiya fakulteti",
-    logo: "https://via.placeholder.com/200x100/673AB7/FFFFFF?text=Universitet"
-  },
-  {
-    id: 11,
-    name: "Tadqiqot markazi",
-    description: "Biologik xilma-xillik tadqiqot markazi",
-    logo: "https://via.placeholder.com/200x100/3F51B5/FFFFFF?text=Tadqiqot"
-  },
-  {
-    id: 12,
-    name: "Ekologiya markazi",
-    description: "Amaliy ekologiya markazi",
-    logo: "https://via.placeholder.com/200x100/2196F3/FFFFFF?text=Ekologiya"
-  }
-]
+const internationalPartners = computed(() =>
+  allPartners.value.filter((p: any) => p.type === 'international')
+)
+const nationalPartners = computed(() =>
+  allPartners.value.filter((p: any) => p.type === 'national')
+)
+const researchPartners = computed(() =>
+  allPartners.value.filter((p: any) => p.type === 'research')
+)
+
+const partnerName = (partner: any) => {
+  return partner.name?.[locale.value] || partner.name?.uz || partner.name?.ru || ''
+}
+
+const partnerDesc = (partner: any) => {
+  return partner.description?.[locale.value] || partner.description?.uz || partner.description?.ru || ''
+}
 
 useHead({
   title: 'Hamkorlar',
@@ -229,18 +188,52 @@ useHead({
   border-radius: var(--border-radius);
 }
 
-.partner-card h4 {
-  font-size: 20px;
+.partner-logo-placeholder {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 32px;
   font-weight: 700;
-  color: var(--heading-color);
-  margin-bottom: 10px;
 }
 
-.partner-card p {
-  font-size: 14px;
+.partner-card-link {
+  text-decoration: none;
+  display: block;
+}
+
+.partner-card h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-bottom: 8px;
+}
+
+.partner-desc {
+  font-size: 13px;
   line-height: 1.6;
   color: var(--text-color);
-  margin: 0;
+  margin-bottom: 12px;
+}
+
+.partner-website {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--primary-color);
+  font-weight: 500;
+  word-break: break-all;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.partner-website:hover {
+  color: var(--secondary-color);
 }
 
 @media (max-width: 768px) {

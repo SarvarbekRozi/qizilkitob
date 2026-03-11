@@ -58,6 +58,8 @@ export const useApi = () => {
   const submitContact = (body: { name: string; email: string; subject?: string; message: string }) =>
     fetchApi<{ message: string; id: number }>(`/contact`, { method: 'POST', body })
 
+  const getPartners = (params: Record<string, any> = {}) => fetchApi<{ data: any[] }>(`/partners`, { params })
+
   return {
     getSpecies,
     getSpeciesBySlug,
@@ -77,6 +79,7 @@ export const useApi = () => {
     getBlogCategories,
     getPostComments,
     addPostComment,
-    submitContact
+    submitContact,
+    getPartners
   }
 }
