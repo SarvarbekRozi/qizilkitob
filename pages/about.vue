@@ -53,19 +53,26 @@
           <p>Professional mutaxassislar jamoasi tabiatni muhofaza qilish uchun ishlamoqda</p>
         </div>
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-12" v-for="member in teamMembers" :key="member.name">
+          <div class="col-lg-3 col-md-6 col-sm-12" v-for="member in teamMembers" :key="member.id">
             <div class="team-card">
               <div class="team-image">
-                <img :src="member.image" :alt="member.name" />
+                <img :src="member.image || 'https://images.unsplash.com/photo-1535713875002-d1d0cf377fde?w=400&h=400&fit=crop'"
+                     :alt="member.name?.[locale] || member.name?.uz" />
               </div>
               <div class="team-info">
-                <h4>{{ member.name }}</h4>
-                <p class="position">{{ member.position }}</p>
-                <p class="bio">{{ member.bio }}</p>
+                <h4>{{ member.name?.[locale] || member.name?.uz }}</h4>
+                <p class="position">{{ member.position?.[locale] || member.position?.uz }}</p>
+                <p class="bio">{{ member.bio?.[locale] || member.bio?.uz }}</p>
                 <div class="social-links">
-                  <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
-                  <a href="#" aria-label="Twitter"><i class="fa-brands fa-twitter"></i></a>
-                  <a href="#" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                  <a v-if="member.social?.facebook" :href="member.social.facebook" target="_blank" rel="noopener" aria-label="Facebook">
+                    <i class="fa-brands fa-facebook-f"></i>
+                  </a>
+                  <a v-if="member.social?.twitter" :href="member.social.twitter" target="_blank" rel="noopener" aria-label="Twitter">
+                    <i class="fa-brands fa-twitter"></i>
+                  </a>
+                  <a v-if="member.social?.linkedin" :href="member.social.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+                    <i class="fa-brands fa-linkedin-in"></i>
+                  </a>
                 </div>
               </div>
             </div>
@@ -77,35 +84,12 @@
 </template>
 
 <script setup lang="ts">
-const { t } = useI18n()
+const { t, locale } = useI18n()
 const localePath = useLocalePath()
+const { getTeamMembers } = useApi()
 
-const teamMembers = [
-  {
-    name: "Aziza Karimova",
-    position: "Bosh direktor",
-    bio: "Biologiya fanlari nomzodi, 15 yillik tajriba",
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop'
-  },
-  {
-    name: "Sardor Alimov",
-    position: "Ilmiy rahbar",
-    bio: "Ekologiya bo'yicha mutaxassis, professor",
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop'
-  },
-  {
-    name: "Dilnoza Yusupova",
-    position: "Tadqiqotchi",
-    bio: "Botanika bo'yicha ekspert, 10 yillik tajriba",
-    image: 'https://images.unsplash.com/photo-1594744803329-e58b31de8bf5?w=400&h=400&fit=crop'
-  },
-  {
-    name: "Javohir Toshmatov",
-    position: "Zoolog",
-    bio: "Hayvonlar olami bo'yicha mutaxassis",
-    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=400&h=400&fit=crop'
-  }
-]
+const { data: teamResponse } = await useAsyncData('team-members', () => getTeamMembers())
+const teamMembers = computed(() => (teamResponse.value as any)?.data ?? [])
 
 useHead({
   title: t('nav.about'),

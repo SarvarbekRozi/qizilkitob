@@ -166,7 +166,7 @@
             </div>
             <div class="resource-stat-info">
               <h4>{{ item.count }}</h4>
-              <p>{{ item.name }}</p>
+              <p>{{ item.name?.[locale] || item.name?.uz || item.name }}</p>
             </div>
           </NuxtLink>
         </div>
@@ -177,40 +177,13 @@
     <section class="stats-section sec-pad">
       <div class="auto-container">
         <div class="row">
-          <div class="col-lg-3 col-md-6 col-sm-12">
+          <div v-for="stat in siteStats" :key="stat.id" class="col-lg-3 col-md-6 col-sm-12">
             <div class="stats-box">
               <div class="icon">
-                <i class="fas fa-paw"></i>
+                <i :class="stat.icon"></i>
               </div>
-              <h3>{{ animalCount }}+</h3>
-              <p>Xavf ostidagi hayvonlar</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-leaf"></i>
-              </div>
-              <h3>{{ plantCount }}+</h3>
-              <p>Xavf ostidagi o'simliklar</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-shield-alt"></i>
-              </div>
-              <h3>5+</h3>
-              <p>Muhofaza zonalari</p>
-            </div>
-          </div>
-          <div class="col-lg-3 col-md-6 col-sm-12">
-            <div class="stats-box">
-              <div class="icon">
-                <i class="fas fa-users"></i>
-              </div>
-              <h3>1000+</h3>
-              <p>Tadqiqotchilar va ko'ngillilar</p>
+              <h3>{{ stat.value }}{{ stat.suffix }}</h3>
+              <p>{{ stat.label?.[locale] || stat.label?.uz }}</p>
             </div>
           </div>
         </div>
@@ -235,7 +208,7 @@ const { t, locale } = useI18n()
 const localePath = useLocalePath()
 
 const { getLatestPosts } = useBlog()
-const { getSpeciesStats } = useApi()
+const { getProtectedAreas, getSiteStats } = useApi()
 
 const heroSlides = [
   {
@@ -279,70 +252,13 @@ const heroSlides = [
   }
 ]
 
-const { data: statsResponse } = await useAsyncData(
-  'species-stats',
-  () => getSpeciesStats()
-)
+const [{ data: protectedAreasResponse }, { data: siteStatsResponse }] = await Promise.all([
+  useAsyncData('protected-areas', () => getProtectedAreas()),
+  useAsyncData('site-stats', () => getSiteStats()),
+])
 
-const resourceCategories = [
-  {
-    slug: 'davlat-qoriqxonalari',
-    name: "Davlat qo'riqxonalari",
-    count: '7 ta',
-    icon: 'fas fa-mountain'
-  },
-  {
-    slug: 'majmua-buyurtma-qoriqxonasi',
-    name: "Majmua buyurtma qo'riqxonasi",
-    count: '1 ta',
-    icon: 'fas fa-map-marked-alt'
-  },
-  {
-    slug: 'milliy-tabiat-boglari',
-    name: "Milliy tabiat bog'lari",
-    count: '12 ta',
-    icon: 'fas fa-tree'
-  },
-  {
-    slug: 'tabiat-yodgorliklari',
-    name: 'Tabiat yodgorliklari',
-    count: '11 ta',
-    icon: 'fas fa-landmark'
-  },
-  {
-    slug: 'buyurtma-qoriqxonalari',
-    name: "Buyurtma qo'riqxonalari",
-    count: '11 ta',
-    icon: 'fas fa-shield-alt'
-  },
-  {
-    slug: 'maxsus-jayron-pitomnigi',
-    name: 'Maxsus Jayron pitomnigi',
-    count: '1 ta',
-    icon: 'fas fa-horse'
-  },
-  {
-    slug: 'biosfera-rezervatlari',
-    name: 'Biosfera rezervatlari',
-    count: '2 ta',
-    icon: 'fas fa-globe-americas'
-  },
-  {
-    slug: 'milliy-bog',
-    name: "Milliy bog'",
-    count: '1 ta',
-    icon: 'fas fa-leaf'
-  },
-  {
-    slug: 'davlat-ormon-xojaliklari',
-    name: "Davlat o'rmon xo'jaliklari",
-    count: '84 ta',
-    icon: 'fas fa-seedling'
-  }
-]
-
-const animalCount = computed(() => statsResponse.value?.data?.animals || 0)
-const plantCount = computed(() => statsResponse.value?.data?.plants || 0)
+const resourceCategories = computed(() => (protectedAreasResponse.value as any)?.data ?? [])
+const siteStats = computed(() => (siteStatsResponse.value as any)?.data ?? [])
 const latestPosts = computed(() => getLatestPosts(3))
 
 const formatDate = (date: string) => {

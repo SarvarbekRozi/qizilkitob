@@ -60,6 +60,10 @@ export const useApi = () => {
 
   const getPartners = (params: Record<string, any> = {}) => fetchApi<{ data: any[] }>(`/partners`, { params })
 
+  const getProtectedAreas = () => fetchApi<{ data: any[] }>(`/protected-areas`)
+  const getSiteStats = () => fetchApi<{ data: any[] }>(`/site-stats`)
+  const getTeamMembers = () => fetchApi<{ data: any[] }>(`/team`)
+
   return {
     getSpecies,
     getSpeciesBySlug,
@@ -80,6 +84,9 @@ export const useApi = () => {
     getPostComments,
     addPostComment,
     submitContact,
-    getPartners
+    getPartners,
+    getProtectedAreas,
+    getSiteStats,
+    getTeamMembers
   }
 }

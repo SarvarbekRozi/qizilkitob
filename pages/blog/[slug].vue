@@ -28,6 +28,7 @@
               <!-- Post Meta -->
               <div class="post-meta">
                 <span><i class="fas fa-calendar"></i> {{ formatDate(post.publishDate) }}</span>
+                <span><i class="fas fa-eye"></i> {{ post.viewsCount ?? 0 }} marta ko'rilgan</span>
               </div>
 
               <!-- Post Content -->

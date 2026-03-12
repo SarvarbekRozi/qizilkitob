@@ -44,9 +44,14 @@
                   </NuxtLink>
                 </h3>
                 <p>{{ post.excerpt[locale] }}</p>
-                <NuxtLink :to="localePath(`/blog/${post.slug}`)" class="read-more">
-                  {{ t('blog.readMore') }} <i class="fas fa-arrow-right"></i>
-                </NuxtLink>
+                <div class="card-footer">
+                  <span class="views-count">
+                    <i class="fas fa-eye"></i> {{ post.viewsCount ?? 0 }}
+                  </span>
+                  <NuxtLink :to="localePath(`/blog/${post.slug}`)" class="read-more">
+                    {{ t('blog.readMore') }} <i class="fas fa-arrow-right"></i>
+                  </NuxtLink>
+                </div>
               </div>
             </div>
           </div>
@@ -215,6 +220,26 @@ useHead({
   line-height: 1.7;
   color: var(--text-color);
   margin-bottom: 20px;
+}
+
+.card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.views-count {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.views-count i {
+  font-size: 13px;
+  color: var(--primary-color);
 }
 
 .read-more {
