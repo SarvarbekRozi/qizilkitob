@@ -32,11 +32,7 @@
               </div>
 
               <!-- Post Content -->
-              <div class="post-content">
-                <p v-for="(paragraph, index) in contentParagraphs" :key="index">
-                  {{ paragraph }}
-                </p>
-              </div>
+              <div class="post-content" v-html="post.content[locale]"></div>
 
               <!-- Media Section -->
               <div class="media-section" v-if="post.video || post.audio">

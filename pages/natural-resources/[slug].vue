@@ -49,11 +49,7 @@
               </div>
 
               <!-- Resource Content -->
-              <div class="resource-content">
-                <p v-for="(paragraph, index) in contentParagraphs" :key="index">
-                  {{ paragraph }}
-                </p>
-              </div>
+              <div class="resource-content" v-html="resource.content[locale]"></div>
 
               <!-- Resource Features -->
               <div class="resource-features">

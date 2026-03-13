@@ -29,9 +29,9 @@
             <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
           </div>
         </div>
-        <div v-else class="row">
+        <div v-else class="row g-4">
           <!-- Resource Card -->
-          <div class="col-lg-3 col-md-6 col-sm-12" v-for="resource in resources" :key="resource.id">
+          <div class="col-lg-3 col-md-6 col-sm-12 d-flex" v-for="resource in resources" :key="resource.id">
             <div class="resource-card">
               <div class="resource-image">
                 <img :src="resource.image || ''" :alt="resource.title[locale]" />
@@ -176,8 +176,7 @@ useHead(() => ({
   overflow: hidden;
   box-shadow: 0 5px 25px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
-  margin-bottom: 30px;
-  height: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
 }

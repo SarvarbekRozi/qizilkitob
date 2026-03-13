@@ -24,11 +24,11 @@
             <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
           </div>
         </div>
-        <div v-else class="row">
+        <div v-else class="row g-4">
           <div
             v-for="post in posts"
             :key="post.id"
-            class="col-lg-4 col-md-6 col-sm-12"
+            class="col-lg-4 col-md-6 col-sm-12 d-flex"
           >
             <div class="blog-card">
               <div class="image-box">
@@ -141,7 +141,9 @@ useHead({
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
   transition: var(--transition);
-  margin-bottom: 30px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 .blog-card:hover {
@@ -180,6 +182,9 @@ useHead({
 
 .content-box {
   padding: 30px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
 }
 
 .post-meta {
@@ -220,6 +225,7 @@ useHead({
   line-height: 1.7;
   color: var(--text-color);
   margin-bottom: 20px;
+  flex: 1;
 }
 
 .card-footer {
