@@ -29,7 +29,9 @@
       "Bash(cd \"/d/OSPanel.V-6/home/admin-qizilkitob\" && \"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\" -r \"\n\\\\$ch = curl_init\\('http://127.0.0.1:8000/api/v2/species'\\);\ncurl_setopt\\(\\\\$ch, CURLOPT_RETURNTRANSFER, true\\);\ncurl_setopt\\(\\\\$ch, CURLOPT_TIMEOUT, 5\\);\n\\\\$res = curl_exec\\(\\\\$ch\\);\n\\\\$err = curl_error\\(\\\\$ch\\);\necho \\\\$err ? 'ERROR: '.\\\\$err : substr\\(\\\\$res, 0, 200\\);\n\" 2>&1)",
       "Bash(cd \"/d/OSPanel.V-6/home/admin-qizilkitob\" && \"/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe\" artisan migrate --force 2>&1)",
       "Bash(cd \"/d/OSPanel.V-6/home/admin-qizilkitob\" && /d/OSPanel.V-6/modules/PHP-8.2/PHP/php.exe artisan migrate --force 2>&1)",
-      "Bash(/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe artisan:*)"
+      "Bash(/d/OSPanel.V-6/modules/PHP-8.3/PHP/php.exe artisan:*)",
+      "Bash(ls \"/d/OSPanel.V-6/modules/Nginx-1.26/\"*.exe 2>/dev/null)",
+      "Bash(curl -s \"http://localhost:8000/api/v2/natural-resources?category=davlat-qoriqxonalari&page=1&per_page=12&sort_by=sort&sort_dir=asc\" 2>&1 | python -c \"import sys,json; d=json.load\\(sys.stdin\\); print\\('success:', d['success'], '| count:', len\\(d['result']['data']\\)\\)\" 2>/dev/null || curl -s \"http://localhost:8000/api/v2/natural-resources?category=davlat-qoriqxonalari&page=1&per_page=12&sort_by=sort&sort_dir=asc\" 2>&1 | head -100)"
     ]
   }
 }
