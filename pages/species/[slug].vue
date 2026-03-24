@@ -142,6 +142,9 @@ useHead({
 </script>
 
 <style scoped>
+.species-details{
+  padding-top: 0!important;
+}
 .main-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);
