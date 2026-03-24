@@ -29,7 +29,7 @@
             <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
           </div>
         </div>
-        <div v-else class="row g-4">
+        <div v-else class="row g-4 pb-4">
           <!-- Resource Card -->
           <div class="col-lg-3 col-md-6 col-sm-12 d-flex" v-for="resource in resources" :key="resource.id">
             <div class="resource-card">
@@ -230,6 +230,10 @@ useHead(() => ({
   color: var(--text-color);
   margin-bottom: 20px;
   flex: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 7;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .read-more {
