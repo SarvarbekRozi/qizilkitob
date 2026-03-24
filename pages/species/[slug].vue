@@ -18,9 +18,9 @@
         <!-- Image and Stats Row - Centered -->
         <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
-<!--            <figure class="main-image">-->
-<!--              <img :src="species.images.main || ''" :alt="species.name[locale]" />-->
-<!--            </figure>-->
+            <figure class="main-image">
+              <img :src="species.images.main || ''" :alt="species.name[locale]" />
+            </figure>
           </div>
           <div class="col-lg-4 col-md-12">
             <SpeciesStats :stats="species.stats" />
@@ -39,7 +39,7 @@
 
               <!-- Description -->
               <div class="description-box">
-                <h2>{{ t('nav.about') }} {{ species.name[locale] }}</h2>
+                <h2>{{ species.name[locale] }}</h2>
                 <p>{{ species.description[locale].full }}</p>
 
                 <h3>{{ t('species.features', 'Xususiyatlari') }}</h3>
