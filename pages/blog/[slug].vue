@@ -32,7 +32,7 @@
               </div>
 
               <!-- Post Content -->
-              <div class="post-content" v-html="post.content[locale]"></div>
+              <div class="post-content" v-html="toLines(post.content[locale])"></div>
 
               <!-- Media Section -->
               <div class="media-section" v-if="post.video || post.audio">
@@ -118,6 +118,9 @@ const { t, locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const { getBlogPostBySlug, getPostComments, addPostComment } = useApi()
+
+const toLines = (html: string) =>
+  (html || '').replace(/<p[^>]*>/gi, '').replace(/<\/p>/gi, '<br>').replace(/(<br\s*\/?>\s*){3,}/gi, '<br><br>').replace(/(<br\s*\/?>\s*)+$/i, '')
 
 const slug = computed(() => route.params.slug as string)
 

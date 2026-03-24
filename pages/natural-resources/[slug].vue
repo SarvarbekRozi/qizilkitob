@@ -49,7 +49,7 @@
               </div>
 
               <!-- Resource Content -->
-              <div class="resource-content" v-html="resource.content[locale]"></div>
+              <div class="resource-content" v-html="toLines(resource.content[locale])"></div>
 
               <!-- Resource Features -->
               <div class="resource-features">
@@ -76,6 +76,9 @@ const { locale } = useI18n()
 const route = useRoute()
 const localePath = useLocalePath()
 const { getNaturalResourceBySlug } = useApi()
+
+const toLines = (html: string) =>
+  (html || '').replace(/<p[^>]*>/gi, '').replace(/<\/p>/gi, '<br>').replace(/(<br\s*\/?>\s*){3,}/gi, '<br><br>').replace(/(<br\s*\/?>\s*)+$/i, '')
 
 const slug = computed(() => route.params.slug as string)
 
@@ -208,6 +211,7 @@ useHead({
 
 .resource-features {
   margin-top: 40px;
+  margin-bottom: 40px;
   padding: 40px;
   background-color: var(--bg-gray);
   border-radius: var(--border-radius-large);
