@@ -163,10 +163,46 @@ useHead({
   font-weight: 700;
 }
 
-.resource-content p {
+.resource-content :deep(p) {
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.resource-content :deep(h1),
+.resource-content :deep(h2),
+.resource-content :deep(h3) {
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.resource-content :deep(ul),
+.resource-content :deep(ol) {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+
+.resource-content :deep(li) {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.resource-content :deep(a) {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.resource-content :deep(blockquote) {
+  border-left: 4px solid var(--primary-color);
+  padding: 10px 20px;
+  margin: 20px 0;
+  background: var(--bg-gray);
+  border-radius: 0 8px 8px 0;
   color: var(--text-color);
 }
 

@@ -230,10 +230,46 @@ useHead({
   color: var(--primary-color);
 }
 
-.post-content p {
+.post-content :deep(p) {
   font-size: 16px;
   line-height: 1.8;
   margin-bottom: 20px;
+  color: var(--text-color);
+}
+
+.post-content :deep(h1),
+.post-content :deep(h2),
+.post-content :deep(h3) {
+  font-weight: 700;
+  color: var(--heading-color);
+  margin-top: 30px;
+  margin-bottom: 15px;
+}
+
+.post-content :deep(ul),
+.post-content :deep(ol) {
+  padding-left: 24px;
+  margin-bottom: 20px;
+}
+
+.post-content :deep(li) {
+  font-size: 16px;
+  line-height: 1.8;
+  color: var(--text-color);
+  margin-bottom: 6px;
+}
+
+.post-content :deep(a) {
+  color: var(--primary-color);
+  text-decoration: underline;
+}
+
+.post-content :deep(blockquote) {
+  border-left: 4px solid var(--primary-color);
+  padding: 10px 20px;
+  margin: 20px 0;
+  background: var(--bg-gray);
+  border-radius: 0 8px 8px 0;
   color: var(--text-color);
 }
 
