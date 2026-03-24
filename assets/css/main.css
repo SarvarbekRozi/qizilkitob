@@ -88,9 +88,9 @@ img {
 }
 
 /*!* Section Padding *!*/
-/*.sec-pad {*/
-/*  padding: var(--section-padding) 0;*/
-/*}*/
+.sec-pad {
+  padding: var(--section-padding) 0;
+}
 
 /* Simple Page Title (used on internal pages) */
 .simple-page-title {

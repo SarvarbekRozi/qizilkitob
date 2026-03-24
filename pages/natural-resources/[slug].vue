@@ -114,6 +114,9 @@ useHead({
 </script>
 
 <style scoped>
+.resource-detail{
+  padding-top: 0!important;
+}
 .featured-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);
@@ -211,7 +214,6 @@ useHead({
 
 .resource-features {
   margin-top: 40px;
-  margin-bottom: 40px;
   padding: 40px;
   background-color: var(--bg-gray);
   border-radius: var(--border-radius-large);

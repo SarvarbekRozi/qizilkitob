@@ -24,7 +24,7 @@
             <p class="error-text">Ma'lumotlarni yuklashda xatolik yuz berdi.</p>
           </div>
         </div>
-        <div v-else class="row g-4">
+        <div v-else class="row g-4 pb-4">
           <div
             v-for="post in posts"
             :key="post.id"

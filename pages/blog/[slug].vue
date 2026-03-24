@@ -200,6 +200,9 @@ useHead({
 </script>
 
 <style scoped>
+.blog-detail{
+  padding-top: 0!important;
+}
 .featured-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);

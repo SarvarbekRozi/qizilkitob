@@ -152,8 +152,8 @@ useHead({
 </script>
 
 <style scoped>
-.section-header {
-  margin-bottom: 50px;
+.species-listing{
+  padding-top: 0!important;
 }
 
 .section-header h2 {
