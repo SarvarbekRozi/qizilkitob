@@ -18,8 +18,32 @@
         <!-- Image and Stats Row - Centered -->
         <div class="row align-items-center">
           <div class="col-lg-8 col-md-12">
-            <figure class="main-image">
-              <img :src="species.images.main || ''" :alt="species.name[locale]" />
+            <!-- Slider (multiple images) -->
+            <div v-if="allImages.length > 1" class="image-slider">
+              <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+                <div class="slide" v-for="(img, i) in allImages" :key="i">
+                  <img :src="img" :alt="species.name[locale]" />
+                </div>
+              </div>
+              <button class="slider-btn slider-prev" @click="prevSlide" aria-label="Oldingi">
+                <i class="fas fa-chevron-left"></i>
+              </button>
+              <button class="slider-btn slider-next" @click="nextSlide" aria-label="Keyingi">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <div class="slider-dots">
+                <span
+                  v-for="(img, i) in allImages"
+                  :key="i"
+                  class="dot"
+                  :class="{ active: i === currentSlide }"
+                  @click="currentSlide = i"
+                ></span>
+              </div>
+            </div>
+            <!-- Single image -->
+            <figure v-else class="main-image">
+              <img :src="allImages[0] || ''" :alt="species.name[locale]" />
             </figure>
           </div>
           <div class="col-lg-4 col-md-12">
@@ -113,6 +137,8 @@ const route = useRoute()
 const localePath = useLocalePath()
 const { getSpeciesBySlug } = useApi()
 
+const currentSlide = ref(0)
+
 const slug = computed(() => route.params.slug as string)
 
 const { data: speciesResponse } = await useAsyncData(
@@ -122,6 +148,17 @@ const { data: speciesResponse } = await useAsyncData(
 
 const species = computed<Species | null>(() => (speciesResponse.value?.data as Species) || null)
 const relatedSpecies = computed<Species[]>(() => (speciesResponse.value?.related as Species[]) || [])
+
+const allImages = computed<string[]>(() => {
+  const imgs: string[] = []
+  if (species.value?.images?.main) imgs.push(species.value.images.main)
+  if (species.value?.images?.gallery?.length) {
+    imgs.push(...(species.value.images.gallery as string[]))
+  }
+  return imgs
+})
+const prevSlide = () => { currentSlide.value = (currentSlide.value - 1 + allImages.value.length) % allImages.value.length }
+const nextSlide = () => { currentSlide.value = (currentSlide.value + 1) % allImages.value.length }
 
 if (!species.value) {
   throw createError({
@@ -145,6 +182,82 @@ useHead({
 .species-details{
   padding-top: 0!important;
 }
+
+/* Slider */
+.image-slider {
+  position: relative;
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  margin-bottom: 30px;
+  height: 500px;
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--heading-color);
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.slider-btn:hover {
+  background: var(--white-color);
+}
+
+.slider-prev { left: 15px; }
+.slider-next { right: 15px; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dot.active {
+  background: var(--white-color);
+}
+
 .main-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);
@@ -276,6 +389,10 @@ useHead({
 
 @media (max-width: 768px) {
   .main-image img {
+    height: 300px;
+  }
+
+  .image-slider {
     height: 300px;
   }
 }

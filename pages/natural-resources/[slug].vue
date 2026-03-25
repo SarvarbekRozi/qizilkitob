@@ -18,9 +18,31 @@
         <div class="row justify-content-center">
           <div class="col-lg-10 col-md-12">
             <article class="resource-post">
-              <!-- Featured Image -->
-              <figure class="featured-image">
-                <img :src="resource.image || ''" :alt="resource.title[locale]" />
+              <!-- Image Slider / Featured Image -->
+              <div v-if="allImages.length > 1" class="image-slider">
+                <div class="slider-track" :style="{ transform: `translateX(-${currentSlide * 100}%)` }">
+                  <div class="slide" v-for="(img, i) in allImages" :key="i">
+                    <img :src="img" :alt="resource.title[locale]" />
+                  </div>
+                </div>
+                <button class="slider-btn slider-prev" @click="prevSlide" aria-label="Oldingi">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="slider-btn slider-next" @click="nextSlide" aria-label="Keyingi">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
+                <div class="slider-dots">
+                  <span
+                    v-for="(img, i) in allImages"
+                    :key="i"
+                    class="dot"
+                    :class="{ active: i === currentSlide }"
+                    @click="currentSlide = i"
+                  ></span>
+                </div>
+              </div>
+              <figure v-else class="featured-image">
+                <img :src="allImages[0] || ''" :alt="resource.title[locale]" />
               </figure>
 
               <!-- Resource Stats -->
@@ -77,6 +99,8 @@ const route = useRoute()
 const localePath = useLocalePath()
 const { getNaturalResourceBySlug } = useApi()
 
+const currentSlide = ref(0)
+
 const toLines = (html: string) =>
   (html || '').replace(/<p[^>]*>/gi, '').replace(/<\/p>/gi, '<br>').replace(/(<br\s*\/?>\s*){3,}/gi, '<br><br>').replace(/(<br\s*\/?>\s*)+$/i, '')
 
@@ -88,6 +112,18 @@ const { data: resourceResponse } = await useAsyncData(
 )
 
 const resource = computed<NaturalResource | null>(() => (resourceResponse.value?.data as NaturalResource) || null)
+
+const allImages = computed<string[]>(() => {
+  const imgs: string[] = []
+  if (resource.value?.image) imgs.push(resource.value.image)
+  const gallery = (resource.value as any)?.images?.gallery
+  if (gallery?.length) {
+    imgs.push(...gallery.map((g: any) => (typeof g === 'string' ? g : g.url)).filter(Boolean))
+  }
+  return imgs
+})
+const prevSlide = () => { currentSlide.value = (currentSlide.value - 1 + allImages.value.length) % allImages.value.length }
+const nextSlide = () => { currentSlide.value = (currentSlide.value + 1) % allImages.value.length }
 
 if (!resource.value) {
   throw createError({
@@ -117,6 +153,82 @@ useHead({
 .resource-detail{
   padding-top: 0!important;
 }
+
+/* Slider */
+.image-slider {
+  position: relative;
+  border-radius: var(--border-radius-large);
+  overflow: hidden;
+  margin-bottom: 30px;
+  height: 500px;
+}
+
+.slider-track {
+  display: flex;
+  height: 100%;
+  transition: transform 0.4s ease;
+}
+
+.slide {
+  min-width: 100%;
+  height: 100%;
+}
+
+.slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slider-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.85);
+  border: none;
+  border-radius: 50%;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 16px;
+  color: var(--heading-color);
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.slider-btn:hover {
+  background: var(--white-color);
+}
+
+.slider-prev { left: 15px; }
+.slider-next { right: 15px; }
+
+.slider-dots {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+  z-index: 10;
+}
+
+.dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.dot.active {
+  background: var(--white-color);
+}
+
 .featured-image {
   margin-bottom: 30px;
   border-radius: var(--border-radius-large);
@@ -258,6 +370,10 @@ useHead({
 }
 
 @media (max-width: 768px) {
+  .image-slider {
+    height: 300px;
+  }
+
   .featured-image img {
     height: 300px;
   }
